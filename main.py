@@ -58,8 +58,9 @@ NAME2MODEL = {
 
 
 def main(opts, model_name):
+    device = "gpu" if opts['use_cuda'] else "cpu"
     # Setup Logger
-    file_handler = logging.FileHandler(filename=f"log/{model_name}.log")
+    file_handler = logging.FileHandler(filename=f"log/{model_name}_{device}.log")
     file_handler.setLevel(logging.DEBUG)
     logger = logging.getLogger(model_name)
     logger.setLevel(logging.DEBUG)
