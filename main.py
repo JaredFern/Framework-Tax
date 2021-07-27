@@ -4,7 +4,7 @@ import time
 
 import numpy as np
 import torch
-import transformers
+import transformers  # Requires sentencepiece
 import yaml
 
 NAME2MODEL = {
@@ -24,15 +24,15 @@ NAME2MODEL = {
         transformers.DistilBertTokenizer,
         "distilbert-base-cased",
     ],
-    "funnel_transformer": [
-        transformers.FunnelModel,
-        transformers.FunnelTokenizer,
-        "funnel-transformer/small",
-    ],
+    # "funnel_transformer": [
+    #     transformers.FunnelModel,
+    #     transformers.FunnelTokenizer,
+    #     "funnel-transformer/small",
+    # ],
     "ibert": [
         transformers.IBertModel,
-        transformers.BertTokenizer,
-        "kssteven/ibert-roberta-based",
+        transformers.RobertaTokenizer,
+        "kssteven/ibert-roberta-base",
     ],
     "longformer": [
         transformers.LongformerModel,
@@ -42,12 +42,12 @@ NAME2MODEL = {
     "mobile_bert": [
         transformers.MobileBertModel,
         transformers.MobileBertTokenizer,
-        "google/mobilebert-case",
+        "google/mobilebert-uncased",
     ],
     "reformer": [
         transformers.ReformerModel,
         transformers.ReformerTokenizer,
-        "reformer-enwik8",
+        "google/reformer-crime-and-punishment",  # Wiki8 ckpt not avail.t pul
     ],
     "squeeze_bert": [
         transformers.SqueezeBertModel,
