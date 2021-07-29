@@ -8,7 +8,7 @@ import transformers  # Requires sentencepiece
 import yaml
 
 NAME2MODEL = {
-    "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-cased"],
+    "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
     "roberta": [
         transformers.RobertaModel,
         transformers.RobertaTokenizer,
@@ -22,7 +22,7 @@ NAME2MODEL = {
     "distilbert": [
         transformers.DistilBertModel,
         transformers.DistilBertTokenizer,
-        "distilbert-base-cased",
+        "distilbert-base-uncased",
     ],
     # "funnel_transformer": [
     #     transformers.FunnelModel,
