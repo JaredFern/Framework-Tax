@@ -57,19 +57,26 @@ NAME2MODEL = {
 }
 
 
-def main(opts, model_name):
-    device = "gpu" if opts["use_cuda"] else "cpu"
-    # Setup Logger
-    file_handler = logging.FileHandler(filename=f"log/{model_name}_{device}.log")
+def _get_logger(model_name, device):
+    log_fname = f"log/{model_name}_{device}.log"
+    file_handler = logging.FileHandler(filename=log_fname)
     file_handler.setLevel(logging.DEBUG)
     logger = logging.getLogger(model_name)
     logger.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
+    return logger
 
+
+def main(opts, model_name):
     init_time = time.time()
+    device = "gpu" if opts["use_cuda"] else "cpu"
+    logger = _get_logger(model_name, device)
     model_fn, tokenizer, checkpoint = NAME2MODEL[model_name]
+
+    # Load Model & Tokenizer
     logger.info(f"Loading {model_name} model from {checkpoint}")
     tokenizer = tokenizer.from_pretrained(checkpoint)
+
     model = model_fn.from_pretrained(checkpoint)
     model.requires_grad_(opts["requires_grad"])
     model.eval()
@@ -81,7 +88,6 @@ def main(opts, model_name):
     for seq_len in seq_lengths:
         time_per_example = []
         for _ in range(opts["iters"]):
-
             if opts["randomized_text"]:
                 input_ids = torch.randint(tokenizer.vocab_size, (seq_len))
             else:
