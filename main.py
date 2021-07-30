@@ -58,7 +58,7 @@ NAME2MODEL = {
 
 
 def main(opts, model_name):
-    device = "gpu" if opts['use_cuda'] else "cpu"
+    device = "gpu" if opts["use_cuda"] else "cpu"
     # Setup Logger
     file_handler = logging.FileHandler(filename=f"log/{model_name}_{device}.log")
     file_handler.setLevel(logging.DEBUG)
@@ -100,6 +100,7 @@ def main(opts, model_name):
         logger.info(f"Sequence Length: {seq_len}, Time per example: {average_time}")
     logger.info(f"Averaged Times: {wallclock_times}")
     logger.info(f"Total Runtime: {time.time() - init_time}")
+    torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":
