@@ -7,6 +7,9 @@ import torch
 import transformers  # Requires sentencepiece
 import yaml
 
+# TODO: Refactor Model Config Yamls
+# TODO: Fix load for reformer character model
+
 NAME2MODEL = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
     "roberta": [
@@ -57,19 +60,26 @@ NAME2MODEL = {
 }
 
 
-def main(opts, model_name):
-    device = "gpu" if opts["use_cuda"] else "cpu"
-    # Setup Logger
-    file_handler = logging.FileHandler(filename=f"log/{model_name}_{device}.log")
+def _get_logger(model_name, device):
+    log_fname = f"log/{model_name}_{device}.log"
+    file_handler = logging.FileHandler(filename=log_fname)
     file_handler.setLevel(logging.DEBUG)
     logger = logging.getLogger(model_name)
     logger.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
+    return logger
 
+
+def main(opts, model_name):
     init_time = time.time()
+    device = "gpu" if opts["use_cuda"] else "cpu"
+    logger = _get_logger(model_name, device)
     model_fn, tokenizer, checkpoint = NAME2MODEL[model_name]
+
+    # Load Model & Tokenizer
     logger.info(f"Loading {model_name} model from {checkpoint}")
     tokenizer = tokenizer.from_pretrained(checkpoint)
+
     model = model_fn.from_pretrained(checkpoint)
     model.requires_grad_(opts["requires_grad"])
     model.eval()
@@ -81,7 +91,6 @@ def main(opts, model_name):
     for seq_len in seq_lengths:
         time_per_example = []
         for _ in range(opts["iters"]):
-
             if opts["randomized_text"]:
                 input_ids = torch.randint(tokenizer.vocab_size, (seq_len))
             else:
@@ -98,6 +107,7 @@ def main(opts, model_name):
         average_time = np.mean(time_per_example)
         wallclock_times.append(average_time)
         logger.info(f"Sequence Length: {seq_len}, Time per example: {average_time}")
+
     logger.info(f"Averaged Times: {wallclock_times}")
     logger.info(f"Total Runtime: {time.time() - init_time}")
     torch.cuda.empty_cache()
@@ -107,14 +117,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str)
     parser.add_argument("--model", type=str)
-    opts = parser.parse_args()
+    parser.add_argument("--hostname", type=str)
+    args = parser.parse_args()
 
     # Load config
-    with open(opts.config, "r") as config_file:
+    with open(args.config, "r") as config_file:
         params = yaml.safe_load(config_file)
 
-    if opts.model == "all":
+    if args.model == "all":
         for model in NAME2MODEL.keys():
             main(params, model)
     else:
-        main(params, opts.model)
+        main(params, args.model)
