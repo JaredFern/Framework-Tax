@@ -121,6 +121,11 @@ def main(opts, model_name):
         input_ids = _get_input_ids(
             tokenizer, seq_len, opts["randomized_text"], checkpoint
         )
+        if opts["use_cuda"]:
+            input_ids = input_ids.to("cuda")
+            model.to("cuda")
+
+
         _ = model(input_ids)
 
         for iter in tqdm(
