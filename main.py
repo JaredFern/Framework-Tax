@@ -30,11 +30,11 @@ NAME2MODEL = {
         transformers.DistilBertTokenizer,
         "distilbert-base-uncased",
     ],
-    "funnel_transformer": [
-        transformers.FunnelModel,
-        transformers.FunnelTokenizer,
-        "funnel-transformer/small",
-    ],
+    # "funnel_transformer": [
+    #     transformers.FunnelModel,
+    #     transformers.FunnelTokenizer,
+    #     "funnel-transformer/small",
+    # ],
     "ibert": [
         transformers.IBertModel,
         transformers.RobertaTokenizer,
@@ -78,8 +78,8 @@ def _get_logger(model_name, device):
     return logger
 
 
-def _get_input_ids(tokenizer, seq_len, random_ids=True, char_level=True):
-    if char_level:
+def _get_input_ids(tokenizer, seq_len, random_ids=True, model=""):
+    if model == "google/reformer-enwik8":
         input_ids = torch.randint(128, size=(seq_len,))  # Two-Byte Utf-8 Characters
     elif random_ids:
         input_ids = torch.randint(tokenizer.vocab_size, size=(seq_len,))
@@ -87,6 +87,7 @@ def _get_input_ids(tokenizer, seq_len, random_ids=True, char_level=True):
         tokens = seq_len * ["a"]
         input_ids = torch.tensor(tokenizer.convert_tokens_to_ids(tokens))
     input_ids = input_ids.unsqueeze(0)
+
     return input_ids
 
 
@@ -117,14 +118,18 @@ def main(opts, model_name):
         time_per_example = []
 
         # Warm up with a single example
-        input_ids = _get_input_ids(tokenizer, seq_len, opts["randomized_text"])
+        input_ids = _get_input_ids(
+            tokenizer, seq_len, opts["randomized_text"], checkpoint
+        )
         _ = model(input_ids)
 
         for iter in tqdm(
             range(opts["iters"]),
             desc=f"Batch Size: {opts['batch_size']}, Sequence Length: {seq_len}",
         ):
-            input_ids = _get_input_ids(tokenizer, seq_len, opts["randomized_text"])
+            input_ids = _get_input_ids(
+                tokenizer, seq_len, opts["randomized_text"], checkpoint
+            )
             if opts["use_cuda"]:
                 input_ids = input_ids.to("cuda")
                 model.to("cuda")
