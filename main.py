@@ -4,6 +4,7 @@ import os
 import pickle
 import time
 from collections import defaultdict
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -70,11 +71,12 @@ NAME2MODEL = {
 }
 
 
-def _get_logger(model_name, device):
-    log_fname = f"log/{model_name}_{device}.log"
+def _get_logger(results_dir, device):
+    Path(results_dir).mkdir(parents=True, exist_ok=True)
+    log_fname = f"{results_dir}/{device}.log"
     file_handler = logging.FileHandler(filename=log_fname)
     file_handler.setLevel(logging.DEBUG)
-    logger = logging.getLogger(model_name)
+    logger = logging.getLogger(log_fname)
     logger.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
     return logger
@@ -93,15 +95,17 @@ def _get_input_ids(tokenizer, seq_len, random_ids=True, model=""):
     return input_ids
 
 
-def main(opts, device, model_name, results_file):
+def main(opts, device, model_name, results_dir):
     init_time = time.time()
-    logger = _get_logger(model_name, device)
+
+    logger = _get_logger(results_dir, device)
     model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
 
     # Load Model & Tokenizer
     logger.info(f"Loading {model_name} model from {checkpoint}")
+    results_fname = f"{results_dir}/{device}.csv"
     dataframe = (
-        pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
+        pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
     )
 
     # Quick Fix for reformer tokenizer
@@ -136,7 +140,6 @@ def main(opts, device, model_name, results_file):
             input_ids = input_ids.to("cuda")
             model.to("cuda")
 
-
         _ = model(input_ids)
 
         for _ in tqdm(
@@ -168,14 +171,14 @@ def main(opts, device, model_name, results_file):
         logger.info(f"Sequence Length: {seq_len}, Time per example: {data['mean']}")
 
     logger.info(f"Total Runtime: {time.time() - init_time}")
-    dataframe.to_csv(results_file, index=False)
+    dataframe.to_csv(results_fname, index=False)
     torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config_file", type=str)
-    parser.add_argument("--results_file", type=str)
+    parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
     args = parser.parse_args()
@@ -186,6 +189,6 @@ if __name__ == "__main__":
 
     if args.model == "all":
         for model in NAME2MODEL.keys():
-            main(params, args.device, model, args.results_file)
+            main(params, args.device, model, args.results_dir)
     else:
-        main(params, args.device, args.model, args.results_file)
+        main(params, args.device, args.model, args.results_dir)
