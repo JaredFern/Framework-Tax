@@ -1,5 +1,5 @@
 batch_size: 1
-iters: 10
+iters: 100
 randomized_text: True
 requires_grad: False
 use_cuda: False

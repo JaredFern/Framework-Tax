@@ -6,12 +6,14 @@ import time
 from collections import defaultdict
 
 import numpy as np
+import pandas as pd
 import torch
 import transformers  # Requires sentencepiece
 import yaml
 from tqdm import tqdm
 
-# TODO: Refactor Model Config Yamls
+# TODO: Fork support for torch vision models
+# TODO: Fix visualizations to handle expanded metrics
 
 NAME2MODEL = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
@@ -58,7 +60,7 @@ NAME2MODEL = {
     "reformer": [
         transformers.ReformerModel,
         transformers.ReformerTokenizer,
-        "google/reformer-enwik8",  # Wiki8 ckpt not avail.t pul
+        "google/reformer-enwik8",
     ],
     "squeeze_bert": [
         transformers.SqueezeBertModel,
@@ -91,13 +93,16 @@ def _get_input_ids(tokenizer, seq_len, random_ids=True, model=""):
     return input_ids
 
 
-def main(opts, model_name):
+def main(opts, device, model_name, results_file):
     init_time = time.time()
-    logger = _get_logger(model_name, opts["device"])
+    logger = _get_logger(model_name, device)
     model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
 
     # Load Model & Tokenizer
     logger.info(f"Loading {model_name} model from {checkpoint}")
+    dataframe = (
+        pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
+    )
 
     # Quick Fix for reformer tokenizer
     if checkpoint == "google/reformer-enwik8":
@@ -113,8 +118,14 @@ def main(opts, model_name):
         2 ** seqlen for seqlen in range(10)
     ]  # Eval on sequence lengths up from 1 to 512
 
-    results = defaultdict(list)
     for seq_len in seq_lengths:
+        data = {
+            "device": device,
+            "model": model_name,
+            "accelerator": opts["use_cuda"],
+            "batch_size": opts["batch_size"],
+            "sequence_length": seq_len,
+        }
         time_per_example = []
 
         # Warm up with a single example
@@ -123,7 +134,7 @@ def main(opts, model_name):
         )
         _ = model(input_ids)
 
-        for iter in tqdm(
+        for _ in tqdm(
             range(opts["iters"]),
             desc=f"Batch Size: {opts['batch_size']}, Sequence Length: {seq_len}",
         ):
@@ -140,33 +151,36 @@ def main(opts, model_name):
             time_per_example.append(time.time() - init_example_time)
 
         # Compute statistics over individual wallclock times
-        results["median"].append(np.median(time_per_example))
-        results["mean"].append(np.mean(time_per_example))
-        results["std"].append(np.std(time_per_example))
-        results["min"].append(np.min(time_per_example))
-        results["max"].append(np.max(time_per_example))
-        results["pct_5"].append(np.percentile(time_per_example, 5))
-        results["pct_95"].append(np.percentile(time_per_example, 95))
-        logger.info(f"Sequence Length: {seq_len}, Time per example: {results['mean']}")
+        data["median"] = np.median(time_per_example)
+        data["mean"] = np.mean(time_per_example)
+        data["std"] = np.std(time_per_example)
+        data["min"] = np.min(time_per_example)
+        data["max"] = np.max(time_per_example)
+        data["5_pct"] = np.percentile(time_per_example, 5)
+        data["95_pct"] = np.percentile(time_per_example, 95)
+        dataframe = dataframe.append(data, ignore_index=True)
+
+        logger.info(f"Sequence Length: {seq_len}, Time per example: {data['mean']}")
 
     logger.info(f"Total Runtime: {time.time() - init_time}")
-    pickle.dump(results, open(f"log/{model_name}_{opts['device']}.out", "wb"))
+    dataframe.to_csv(results_file, index=False)
     torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", type=str)
-    parser.add_argument("--model", type=str)
+    parser.add_argument("--config_file", type=str)
+    parser.add_argument("--results_file", type=str)
     parser.add_argument("--device", type=str)
+    parser.add_argument("--model", type=str)
     args = parser.parse_args()
 
     # Load config
-    with open(args.config, "r") as config_file:
+    with open(args.config_file, "r") as config_file:
         params = yaml.safe_load(config_file)
 
     if args.model == "all":
         for model in NAME2MODEL.keys():
-            main(params, model)
+            main(params, args.device, model, args.results_file)
     else:
-        main(params, args.model)
+        main(params, args.device, args.model, args.results_file)

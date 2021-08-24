@@ -1,0 +1,17 @@
+# Device Params
+device: laptop
+accelerator: cpu
+MaxPowerUsage: 45
+OS: ubuntu2104
+ISA: x86
+Cpu: Intel i7-8550U
+CudaArchitecture: null
+AcceleratorAvailable: False
+CpuCores: 8
+GpuCores: null
+CpuClockSpeed: 9.18e8
+GpuClockSpeed: 0
+MemorySpeed: 2.13e9
+MemoryBandwidth: null
+Ram: 16
+Vram: null

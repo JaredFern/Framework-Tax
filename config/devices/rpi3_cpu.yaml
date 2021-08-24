@@ -1,0 +1,14 @@
+MaxPowerUsage: 5
+OS: ubuntu1804
+Isa: aarm64
+Cpu: Cortex-A53
+CudaArchitecture: NA
+AcceleratorAvailable: false
+CpuCores: 4
+GpuCores: 0
+CpuClockSpeed: 1.5e9
+GpuClockSpeed: 0
+MemoryFrequency:
+MemoryBandwidth:
+Ram: 1
+Vram: 0

@@ -1,0 +1,14 @@
+MaxPowerUsage: 10
+OS: ubuntu1804
+Isa: aarm64
+Cpu: Cortex-A57
+CudaArchitecture: Maxwell
+AcceleratorAvailable: true
+CpuCores: 4
+GpuCores: 128
+CpuClockSpeed: 1.5e9
+GpuClockSpeed:
+MemoryFrequency:
+MemoryBandwidth:
+Ram: 4
+Vram: 4
