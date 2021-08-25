@@ -1,0 +1,660 @@
+Loading bert model from bert-base-uncased
+Sequence Length: 1, Time per example: 0.011051015853881836
+Sequence Length: 2, Time per example: 0.012412390708923339
+Sequence Length: 4, Time per example: 0.015644237995147706
+Sequence Length: 8, Time per example: 0.0174070405960083
+Sequence Length: 16, Time per example: 0.02152120113372803
+Sequence Length: 32, Time per example: 0.022648231983184816
+Sequence Length: 64, Time per example: 0.028337328433990477
+Sequence Length: 128, Time per example: 0.03454692125320435
+Sequence Length: 256, Time per example: 0.06586371898651124
+Sequence Length: 512, Time per example: 0.14666958570480346
+Total Runtime: 39.91342496871948
+Loading roberta model from roberta-base
+Loading roberta model from roberta-base
+Sequence Length: 1, Time per example: 0.010842344760894775
+Sequence Length: 1, Time per example: 0.010842344760894775
+Sequence Length: 2, Time per example: 0.011521592140197753
+Sequence Length: 2, Time per example: 0.011521592140197753
+Sequence Length: 4, Time per example: 0.013595085144042968
+Sequence Length: 4, Time per example: 0.013595085144042968
+Sequence Length: 8, Time per example: 0.016192259788513182
+Sequence Length: 8, Time per example: 0.016192259788513182
+Sequence Length: 16, Time per example: 0.023541784286499022
+Sequence Length: 16, Time per example: 0.023541784286499022
+Sequence Length: 32, Time per example: 0.027340381145477294
+Sequence Length: 32, Time per example: 0.027340381145477294
+Sequence Length: 64, Time per example: 0.032826409339904786
+Sequence Length: 64, Time per example: 0.032826409339904786
+Sequence Length: 128, Time per example: 0.041005594730377196
+Sequence Length: 128, Time per example: 0.041005594730377196
+Sequence Length: 256, Time per example: 0.06752751111984252
+Sequence Length: 256, Time per example: 0.06752751111984252
+Sequence Length: 512, Time per example: 0.16195818662643433
+Sequence Length: 512, Time per example: 0.16195818662643433
+Total Runtime: 42.981024503707886
+Total Runtime: 42.981024503707886
+Loading deberta model from microsoft/deberta-base
+Loading deberta model from microsoft/deberta-base
+Loading deberta model from microsoft/deberta-base
+Sequence Length: 1, Time per example: 0.01566270351409912
+Sequence Length: 1, Time per example: 0.01566270351409912
+Sequence Length: 1, Time per example: 0.01566270351409912
+Sequence Length: 2, Time per example: 0.01880906581878662
+Sequence Length: 2, Time per example: 0.01880906581878662
+Sequence Length: 2, Time per example: 0.01880906581878662
+Sequence Length: 4, Time per example: 0.020806257724761964
+Sequence Length: 4, Time per example: 0.020806257724761964
+Sequence Length: 4, Time per example: 0.020806257724761964
+Sequence Length: 8, Time per example: 0.02377572774887085
+Sequence Length: 8, Time per example: 0.02377572774887085
+Sequence Length: 8, Time per example: 0.02377572774887085
+Sequence Length: 16, Time per example: 0.027212486267089844
+Sequence Length: 16, Time per example: 0.027212486267089844
+Sequence Length: 16, Time per example: 0.027212486267089844
+Sequence Length: 32, Time per example: 0.033699841499328614
+Sequence Length: 32, Time per example: 0.033699841499328614
+Sequence Length: 32, Time per example: 0.033699841499328614
+Sequence Length: 64, Time per example: 0.046794581413269046
+Sequence Length: 64, Time per example: 0.046794581413269046
+Sequence Length: 64, Time per example: 0.046794581413269046
+Sequence Length: 128, Time per example: 0.06726220846176148
+Sequence Length: 128, Time per example: 0.06726220846176148
+Sequence Length: 128, Time per example: 0.06726220846176148
+Sequence Length: 256, Time per example: 0.11743120193481445
+Sequence Length: 256, Time per example: 0.11743120193481445
+Sequence Length: 256, Time per example: 0.11743120193481445
+Sequence Length: 512, Time per example: 0.3270107102394104
+Sequence Length: 512, Time per example: 0.3270107102394104
+Sequence Length: 512, Time per example: 0.3270107102394104
+Total Runtime: 72.5783371925354
+Total Runtime: 72.5783371925354
+Total Runtime: 72.5783371925354
+Loading distilbert model from distilbert-base-uncased
+Loading distilbert model from distilbert-base-uncased
+Loading distilbert model from distilbert-base-uncased
+Loading distilbert model from distilbert-base-uncased
+Sequence Length: 1, Time per example: 0.004956398010253906
+Sequence Length: 1, Time per example: 0.004956398010253906
+Sequence Length: 1, Time per example: 0.004956398010253906
+Sequence Length: 1, Time per example: 0.004956398010253906
+Sequence Length: 2, Time per example: 0.00534282922744751
+Sequence Length: 2, Time per example: 0.00534282922744751
+Sequence Length: 2, Time per example: 0.00534282922744751
+Sequence Length: 2, Time per example: 0.00534282922744751
+Sequence Length: 4, Time per example: 0.006781563758850097
+Sequence Length: 4, Time per example: 0.006781563758850097
+Sequence Length: 4, Time per example: 0.006781563758850097
+Sequence Length: 4, Time per example: 0.006781563758850097
+Sequence Length: 8, Time per example: 0.007517614364624023
+Sequence Length: 8, Time per example: 0.007517614364624023
+Sequence Length: 8, Time per example: 0.007517614364624023
+Sequence Length: 8, Time per example: 0.007517614364624023
+Sequence Length: 16, Time per example: 0.009572336673736572
+Sequence Length: 16, Time per example: 0.009572336673736572
+Sequence Length: 16, Time per example: 0.009572336673736572
+Sequence Length: 16, Time per example: 0.009572336673736572
+Sequence Length: 32, Time per example: 0.014287354946136475
+Sequence Length: 32, Time per example: 0.014287354946136475
+Sequence Length: 32, Time per example: 0.014287354946136475
+Sequence Length: 32, Time per example: 0.014287354946136475
+Sequence Length: 64, Time per example: 0.016188461780548096
+Sequence Length: 64, Time per example: 0.016188461780548096
+Sequence Length: 64, Time per example: 0.016188461780548096
+Sequence Length: 64, Time per example: 0.016188461780548096
+Sequence Length: 128, Time per example: 0.021327905654907227
+Sequence Length: 128, Time per example: 0.021327905654907227
+Sequence Length: 128, Time per example: 0.021327905654907227
+Sequence Length: 128, Time per example: 0.021327905654907227
+Sequence Length: 256, Time per example: 0.0338525390625
+Sequence Length: 256, Time per example: 0.0338525390625
+Sequence Length: 256, Time per example: 0.0338525390625
+Sequence Length: 256, Time per example: 0.0338525390625
+Sequence Length: 512, Time per example: 0.06278339624404908
+Sequence Length: 512, Time per example: 0.06278339624404908
+Sequence Length: 512, Time per example: 0.06278339624404908
+Sequence Length: 512, Time per example: 0.06278339624404908
+Total Runtime: 20.08119535446167
+Total Runtime: 20.08119535446167
+Total Runtime: 20.08119535446167
+Total Runtime: 20.08119535446167
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Sequence Length: 1, Time per example: 0.012773365974426269
+Sequence Length: 1, Time per example: 0.012773365974426269
+Sequence Length: 1, Time per example: 0.012773365974426269
+Sequence Length: 1, Time per example: 0.012773365974426269
+Sequence Length: 1, Time per example: 0.012773365974426269
+Sequence Length: 2, Time per example: 0.015113959312438965
+Sequence Length: 2, Time per example: 0.015113959312438965
+Sequence Length: 2, Time per example: 0.015113959312438965
+Sequence Length: 2, Time per example: 0.015113959312438965
+Sequence Length: 2, Time per example: 0.015113959312438965
+Sequence Length: 4, Time per example: 0.015948576927185057
+Sequence Length: 4, Time per example: 0.015948576927185057
+Sequence Length: 4, Time per example: 0.015948576927185057
+Sequence Length: 4, Time per example: 0.015948576927185057
+Sequence Length: 4, Time per example: 0.015948576927185057
+Sequence Length: 8, Time per example: 0.01970837116241455
+Sequence Length: 8, Time per example: 0.01970837116241455
+Sequence Length: 8, Time per example: 0.01970837116241455
+Sequence Length: 8, Time per example: 0.01970837116241455
+Sequence Length: 8, Time per example: 0.01970837116241455
+Sequence Length: 16, Time per example: 0.028615944385528565
+Sequence Length: 16, Time per example: 0.028615944385528565
+Sequence Length: 16, Time per example: 0.028615944385528565
+Sequence Length: 16, Time per example: 0.028615944385528565
+Sequence Length: 16, Time per example: 0.028615944385528565
+Sequence Length: 32, Time per example: 0.03203294038772583
+Sequence Length: 32, Time per example: 0.03203294038772583
+Sequence Length: 32, Time per example: 0.03203294038772583
+Sequence Length: 32, Time per example: 0.03203294038772583
+Sequence Length: 32, Time per example: 0.03203294038772583
+Sequence Length: 64, Time per example: 0.03837906122207642
+Sequence Length: 64, Time per example: 0.03837906122207642
+Sequence Length: 64, Time per example: 0.03837906122207642
+Sequence Length: 64, Time per example: 0.03837906122207642
+Sequence Length: 64, Time per example: 0.03837906122207642
+Sequence Length: 128, Time per example: 0.04755993604660034
+Sequence Length: 128, Time per example: 0.04755993604660034
+Sequence Length: 128, Time per example: 0.04755993604660034
+Sequence Length: 128, Time per example: 0.04755993604660034
+Sequence Length: 128, Time per example: 0.04755993604660034
+Sequence Length: 256, Time per example: 0.0747834849357605
+Sequence Length: 256, Time per example: 0.0747834849357605
+Sequence Length: 256, Time per example: 0.0747834849357605
+Sequence Length: 256, Time per example: 0.0747834849357605
+Sequence Length: 256, Time per example: 0.0747834849357605
+Sequence Length: 512, Time per example: 0.1554512071609497
+Sequence Length: 512, Time per example: 0.1554512071609497
+Sequence Length: 512, Time per example: 0.1554512071609497
+Sequence Length: 512, Time per example: 0.1554512071609497
+Sequence Length: 512, Time per example: 0.1554512071609497
+Total Runtime: 46.49034571647644
+Total Runtime: 46.49034571647644
+Total Runtime: 46.49034571647644
+Total Runtime: 46.49034571647644
+Total Runtime: 46.49034571647644
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Sequence Length: 1, Time per example: 0.008306796550750733
+Sequence Length: 1, Time per example: 0.008306796550750733
+Sequence Length: 1, Time per example: 0.008306796550750733
+Sequence Length: 1, Time per example: 0.008306796550750733
+Sequence Length: 1, Time per example: 0.008306796550750733
+Sequence Length: 1, Time per example: 0.008306796550750733
+Sequence Length: 2, Time per example: 0.008522396087646484
+Sequence Length: 2, Time per example: 0.008522396087646484
+Sequence Length: 2, Time per example: 0.008522396087646484
+Sequence Length: 2, Time per example: 0.008522396087646484
+Sequence Length: 2, Time per example: 0.008522396087646484
+Sequence Length: 2, Time per example: 0.008522396087646484
+Sequence Length: 4, Time per example: 0.010498054027557373
+Sequence Length: 4, Time per example: 0.010498054027557373
+Sequence Length: 4, Time per example: 0.010498054027557373
+Sequence Length: 4, Time per example: 0.010498054027557373
+Sequence Length: 4, Time per example: 0.010498054027557373
+Sequence Length: 4, Time per example: 0.010498054027557373
+Sequence Length: 8, Time per example: 0.012394869327545166
+Sequence Length: 8, Time per example: 0.012394869327545166
+Sequence Length: 8, Time per example: 0.012394869327545166
+Sequence Length: 8, Time per example: 0.012394869327545166
+Sequence Length: 8, Time per example: 0.012394869327545166
+Sequence Length: 8, Time per example: 0.012394869327545166
+Sequence Length: 16, Time per example: 0.02142836332321167
+Sequence Length: 16, Time per example: 0.02142836332321167
+Sequence Length: 16, Time per example: 0.02142836332321167
+Sequence Length: 16, Time per example: 0.02142836332321167
+Sequence Length: 16, Time per example: 0.02142836332321167
+Sequence Length: 16, Time per example: 0.02142836332321167
+Sequence Length: 32, Time per example: 0.02514366865158081
+Sequence Length: 32, Time per example: 0.02514366865158081
+Sequence Length: 32, Time per example: 0.02514366865158081
+Sequence Length: 32, Time per example: 0.02514366865158081
+Sequence Length: 32, Time per example: 0.02514366865158081
+Sequence Length: 32, Time per example: 0.02514366865158081
+Sequence Length: 64, Time per example: 0.030232999324798584
+Sequence Length: 64, Time per example: 0.030232999324798584
+Sequence Length: 64, Time per example: 0.030232999324798584
+Sequence Length: 64, Time per example: 0.030232999324798584
+Sequence Length: 64, Time per example: 0.030232999324798584
+Sequence Length: 64, Time per example: 0.030232999324798584
+Sequence Length: 128, Time per example: 0.04008631944656372
+Sequence Length: 128, Time per example: 0.04008631944656372
+Sequence Length: 128, Time per example: 0.04008631944656372
+Sequence Length: 128, Time per example: 0.04008631944656372
+Sequence Length: 128, Time per example: 0.04008631944656372
+Sequence Length: 128, Time per example: 0.04008631944656372
+Sequence Length: 256, Time per example: 0.0705038332939148
+Sequence Length: 256, Time per example: 0.0705038332939148
+Sequence Length: 256, Time per example: 0.0705038332939148
+Sequence Length: 256, Time per example: 0.0705038332939148
+Sequence Length: 256, Time per example: 0.0705038332939148
+Sequence Length: 256, Time per example: 0.0705038332939148
+Sequence Length: 512, Time per example: 0.14765753984451294
+Sequence Length: 512, Time per example: 0.14765753984451294
+Sequence Length: 512, Time per example: 0.14765753984451294
+Sequence Length: 512, Time per example: 0.14765753984451294
+Sequence Length: 512, Time per example: 0.14765753984451294
+Sequence Length: 512, Time per example: 0.14765753984451294
+Total Runtime: 38.88958120346069
+Total Runtime: 38.88958120346069
+Total Runtime: 38.88958120346069
+Total Runtime: 38.88958120346069
+Total Runtime: 38.88958120346069
+Total Runtime: 38.88958120346069
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 1, Time per example: 0.1607186722755432
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 2, Time per example: 0.15301024675369262
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 4, Time per example: 0.16372759580612184
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 8, Time per example: 0.16391332149505616
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 16, Time per example: 0.18302978038787843
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 32, Time per example: 0.15981881856918334
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 64, Time per example: 0.15189559936523436
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 128, Time per example: 0.1738756275177002
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 256, Time per example: 0.18794121742248535
+Sequence Length: 512, Time per example: 0.19365440368652342
+Sequence Length: 512, Time per example: 0.19365440368652342
+Sequence Length: 512, Time per example: 0.19365440368652342
+Sequence Length: 512, Time per example: 0.19365440368652342
+Sequence Length: 512, Time per example: 0.19365440368652342
+Sequence Length: 512, Time per example: 0.19365440368652342
+Sequence Length: 512, Time per example: 0.19365440368652342
+Total Runtime: 172.93044686317444
+Total Runtime: 172.93044686317444
+Total Runtime: 172.93044686317444
+Total Runtime: 172.93044686317444
+Total Runtime: 172.93044686317444
+Total Runtime: 172.93044686317444
+Total Runtime: 172.93044686317444
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 1, Time per example: 0.021434645652770996
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 2, Time per example: 0.022336838245391847
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 4, Time per example: 0.01845895290374756
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 8, Time per example: 0.019415643215179443
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 16, Time per example: 0.02235992431640625
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 32, Time per example: 0.02524270534515381
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 64, Time per example: 0.0344154953956604
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 128, Time per example: 0.037980756759643554
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 256, Time per example: 0.052093515396118166
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Sequence Length: 512, Time per example: 0.07441835165023804
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Total Runtime: 34.75533699989319
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 1, Time per example: 0.017343575954437255
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 2, Time per example: 0.01720735788345337
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 4, Time per example: 0.024151575565338135
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 8, Time per example: 0.027951314449310302
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 16, Time per example: 0.043633346557617185
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 32, Time per example: 0.05030516624450684
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 64, Time per example: 0.06798553705215454
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 128, Time per example: 0.095079185962677
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 256, Time per example: 0.1531056594848633
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Sequence Length: 512, Time per example: 0.42455803871154785
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Total Runtime: 95.04255795478821
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 1, Time per example: 0.014058332443237304
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 2, Time per example: 0.016052303314208986
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 4, Time per example: 0.01580824375152588
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 8, Time per example: 0.018649852275848387
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 16, Time per example: 0.02021540641784668
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 32, Time per example: 0.022196378707885742
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 64, Time per example: 0.02378662347793579
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 128, Time per example: 0.03355271816253662
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 256, Time per example: 0.04137825012207031
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Sequence Length: 512, Time per example: 0.09392486572265625
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
+Total Runtime: 31.480212211608887
