@@ -3,6 +3,7 @@ import logging
 import os
 import pickle
 import time
+import timeit
 from collections import defaultdict
 from pathlib import Path
 
@@ -132,31 +133,14 @@ def main(opts, device, model_name, results_dir):
         }
         time_per_example = []
 
-        # Warm up with a single example
-        input_ids = _get_input_ids(
-            tokenizer, seq_len, opts["randomized_text"], checkpoint
-        )
+        input_ids = _get_input_ids(tokenizer, seq_len, opts["randomized_text"], checkpoint)
         if opts["use_cuda"]:
             input_ids = input_ids.to("cuda")
             model.to("cuda")
 
-        _ = model(input_ids)
-
-        for _ in tqdm(
-            range(opts["iters"]),
-            desc=f"Batch Size: {opts['batch_size']}, Sequence Length: {seq_len}",
-        ):
-            input_ids = _get_input_ids(
-                tokenizer, seq_len, opts["randomized_text"], checkpoint
-            )
-            if opts["use_cuda"]:
-                input_ids = input_ids.to("cuda")
-                model.to("cuda")
-
-            init_example_time = time.time()
-            _ = model(input_ids)
-
-            time_per_example.append(time.time() - init_example_time)
+        time_per_example = timeit.repeat(lambda:model(input_ids),
+                                         repeat=opts['iters'] + 1, number=1)
+        time_per_example = time_per_example[1:]  # Skip the first run as a warmup
 
         # Compute statistics over individual wallclock times
         data["median"] = np.median(time_per_example)
