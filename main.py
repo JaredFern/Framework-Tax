@@ -140,7 +140,6 @@ def main(opts, device, model_name, results_dir):
 
         time_per_example = timeit.repeat(lambda:model(input_ids),
                                          repeat=opts['iters'] + 1, number=1)
-        time_per_example = time_per_example[1:]  # Skip the first run as a warmup
 
         # Compute statistics over individual wallclock times
         data["median"] = np.median(time_per_example)
@@ -172,7 +171,13 @@ if __name__ == "__main__":
         params = yaml.safe_load(config_file)
 
     if args.model == "all":
-        for model in NAME2MODEL.keys():
-            main(params, args.device, model, args.results_dir)
+        model_list = NAME2MODEL.keys()
+    elif args.model == "efficient":
+        model_list = ['distilbert', 'squeeze_bert', 'mobile_bert', 'albert']
     else:
-        main(params, args.device, args.model, args.results_dir)
+        assert args.model in NAME2MODEL.keys()
+        model_list = [args.model]
+
+    for model in model_list:
+        main(params, args.device, model, args.results_dir)
+
