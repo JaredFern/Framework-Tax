@@ -3,6 +3,7 @@ import logging
 import os
 import pickle
 import time
+import timeit
 from collections import defaultdict
 from pathlib import Path
 
@@ -11,10 +12,12 @@ import pandas as pd
 import torch
 import transformers  # Requires sentencepiece
 import yaml
+from thop import profile
 from tqdm import tqdm
 
 # TODO: Fork support for torch vision models
 # TODO: Fix visualizations to handle expanded metrics
+# TODO: Validate thop flop counters
 
 NAME2MODEL = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
@@ -132,7 +135,6 @@ def main(opts, device, model_name, results_dir):
         }
         time_per_example = []
 
-        # Warm up with a single example
         input_ids = _get_input_ids(
             tokenizer, seq_len, opts["randomized_text"], checkpoint
         )
@@ -140,25 +142,13 @@ def main(opts, device, model_name, results_dir):
             input_ids = input_ids.to("cuda")
             model.to("cuda")
 
-        _ = model(input_ids)
-
-        for _ in tqdm(
-            range(opts["iters"]),
-            desc=f"Batch Size: {opts['batch_size']}, Sequence Length: {seq_len}",
-        ):
-            input_ids = _get_input_ids(
-                tokenizer, seq_len, opts["randomized_text"], checkpoint
-            )
-            if opts["use_cuda"]:
-                input_ids = input_ids.to("cuda")
-                model.to("cuda")
-
-            init_example_time = time.time()
-            _ = model(input_ids)
-            forward_example_time = time.time()
-            time_per_example.append(forward_example_time - init_example_time)
+        macs, params = profile(model, input_ids, verbose=False)
+        time_per_example = timeit.repeat(
+            lambda: model(input_ids), repeat=opts["iters"] + 1, number=1
+        )
 
         # Compute statistics over individual wallclock times
+        data["macs"] = macs
         data["median"] = np.median(time_per_example)
         data["mean"] = np.mean(time_per_example)
         data["std"] = np.std(time_per_example)
@@ -190,11 +180,10 @@ if __name__ == "__main__":
     if args.model == "all":
         model_list = NAME2MODEL.keys()
     elif args.model == "efficient":
-        model_list = ['distilbert', 'squeeze_bert', 'mobile_bert', 'albert']
+        model_list = ["distilbert", "squeeze_bert", "mobile_bert", "albert"]
     else:
         assert args.model in NAME2MODEL.keys()
         model_list = [args.model]
 
     for model in model_list:
         main(params, args.device, model, args.results_dir)
-
