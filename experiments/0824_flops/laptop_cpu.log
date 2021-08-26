@@ -1,0 +1,114 @@
+Loading bert model from bert-base-uncased
+Total Runtime: 4.709024667739868
+Loading roberta model from roberta-base
+Loading roberta model from roberta-base
+Loading bert model from bert-base-uncased
+Total Runtime: 3.3559672832489014
+Loading roberta model from roberta-base
+Loading roberta model from roberta-base
+Total Runtime: 3.6652989387512207
+Total Runtime: 3.6652989387512207
+Loading deberta model from microsoft/deberta-base
+Loading deberta model from microsoft/deberta-base
+Loading deberta model from microsoft/deberta-base
+Total Runtime: 4.625355005264282
+Total Runtime: 4.625355005264282
+Total Runtime: 4.625355005264282
+Loading distilbert model from distilbert-base-uncased
+Loading distilbert model from distilbert-base-uncased
+Loading distilbert model from distilbert-base-uncased
+Loading distilbert model from distilbert-base-uncased
+Total Runtime: 2.1403775215148926
+Total Runtime: 2.1403775215148926
+Total Runtime: 2.1403775215148926
+Total Runtime: 2.1403775215148926
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Loading ibert model from kssteven/ibert-roberta-base
+Total Runtime: 4.047795057296753
+Total Runtime: 4.047795057296753
+Total Runtime: 4.047795057296753
+Total Runtime: 4.047795057296753
+Total Runtime: 4.047795057296753
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Loading albert model from albert-base-v2
+Total Runtime: 2.394620418548584
+Total Runtime: 2.394620418548584
+Total Runtime: 2.394620418548584
+Total Runtime: 2.394620418548584
+Total Runtime: 2.394620418548584
+Total Runtime: 2.394620418548584
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Loading longformer model from allenai/longformer-base-4096
+Total Runtime: 9.407150506973267
+Total Runtime: 9.407150506973267
+Total Runtime: 9.407150506973267
+Total Runtime: 9.407150506973267
+Total Runtime: 9.407150506973267
+Total Runtime: 9.407150506973267
+Total Runtime: 9.407150506973267
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Loading mobile_bert model from google/mobilebert-uncased
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Total Runtime: 3.266608476638794
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Loading reformer model from google/reformer-enwik8
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Total Runtime: 5.805598258972168
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Loading squeeze_bert model from squeezebert/squeezebert-uncased
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
+Total Runtime: 2.4459614753723145
