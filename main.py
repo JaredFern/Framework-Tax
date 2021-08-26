@@ -3,6 +3,7 @@ import logging
 import os
 import pickle
 import time
+import timeit
 from collections import defaultdict
 from pathlib import Path
 
@@ -132,31 +133,13 @@ def main(opts, device, model_name, results_dir):
         }
         time_per_example = []
 
-        # Warm up with a single example
-        input_ids = _get_input_ids(
-            tokenizer, seq_len, opts["randomized_text"], checkpoint
-        )
+        input_ids = _get_input_ids(tokenizer, seq_len, opts["randomized_text"], checkpoint)
         if opts["use_cuda"]:
             input_ids = input_ids.to("cuda")
             model.to("cuda")
 
-        _ = model(input_ids)
-
-        for _ in tqdm(
-            range(opts["iters"]),
-            desc=f"Batch Size: {opts['batch_size']}, Sequence Length: {seq_len}",
-        ):
-            input_ids = _get_input_ids(
-                tokenizer, seq_len, opts["randomized_text"], checkpoint
-            )
-            if opts["use_cuda"]:
-                input_ids = input_ids.to("cuda")
-                model.to("cuda")
-
-            init_example_time = time.time()
-            _ = model(input_ids)
-
-            time_per_example.append(time.time() - init_example_time)
+        time_per_example = timeit.repeat(lambda:model(input_ids),
+                                         repeat=opts['iters'] + 1, number=1)
 
         # Compute statistics over individual wallclock times
         data["median"] = np.median(time_per_example)
@@ -188,7 +171,13 @@ if __name__ == "__main__":
         params = yaml.safe_load(config_file)
 
     if args.model == "all":
-        for model in NAME2MODEL.keys():
-            main(params, args.device, model, args.results_dir)
+        model_list = NAME2MODEL.keys()
+    elif args.model == "efficient":
+        model_list = ['distilbert', 'squeeze_bert', 'mobile_bert', 'albert']
     else:
-        main(params, args.device, args.model, args.results_dir)
+        assert args.model in NAME2MODEL.keys()
+        model_list = [args.model]
+
+    for model in model_list:
+        main(params, args.device, model, args.results_dir)
+
