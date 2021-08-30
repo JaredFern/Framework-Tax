@@ -1,23 +1,15 @@
 import argparse
-import logging
 import os
-import pickle
 import time
 import timeit
-from collections import defaultdict
-from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import torch
 import transformers  # Requires sentencepiece
 import yaml
-from thop import profile
-from tqdm import tqdm
 
-# TODO: Fork support for torch vision models
-# TODO: Fix visualizations to handle expanded metrics
-# TODO: Validate thop flop counters
+from metrics import gather_metrics
+from utils import _get_input_ids, _get_logger
 
 NAME2MODEL = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
@@ -74,32 +66,12 @@ NAME2MODEL = {
 }
 
 
-def _get_logger(results_dir, device):
-    Path(results_dir).mkdir(parents=True, exist_ok=True)
-    log_fname = f"{results_dir}/{device}.log"
-    file_handler = logging.FileHandler(filename=log_fname)
-    file_handler.setLevel(logging.DEBUG)
-    logger = logging.getLogger(log_fname)
-    logger.setLevel(logging.DEBUG)
-    logger.addHandler(file_handler)
-    return logger
-
-
-def _get_input_ids(tokenizer, seq_len, random_ids=True, model=""):
-    if model == "google/reformer-enwik8":
-        input_ids = torch.randint(128, size=(seq_len,))  # Two-Byte Utf-8 Characters
-    elif random_ids:
-        input_ids = torch.randint(tokenizer.vocab_size, size=(seq_len,))
-    else:
-        tokens = seq_len * ["a"]
-        input_ids = torch.tensor(tokenizer.convert_tokens_to_ids(tokens))
-    input_ids = input_ids.unsqueeze(0)
-
-    return input_ids
-
-
-def main(opts, device, model_name, results_dir):
-    init_time = time.time()
+def main(opts, device, model_name, metrics, results_dir):
+    logger = _get_logger(results_dir, device)
+    results_fname = f"{results_dir}/{device}.csv"
+    dataframe = (
+        pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
+    )
 
     logger = _get_logger(results_dir, device)
     model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
@@ -122,7 +94,7 @@ def main(opts, device, model_name, results_dir):
     model.eval()
 
     seq_lengths = [
-        2 ** seqlen for seqlen in range(10)
+        2 ** seqlen for seqlen in range(3, 10)
     ]  # Eval on sequence lengths up from 1 to 512
 
     for seq_len in seq_lengths:
@@ -133,7 +105,6 @@ def main(opts, device, model_name, results_dir):
             "batch_size": opts["batch_size"],
             "sequence_length": seq_len,
         }
-        time_per_example = []
 
         input_ids = _get_input_ids(
             tokenizer, seq_len, opts["randomized_text"], checkpoint
@@ -141,26 +112,15 @@ def main(opts, device, model_name, results_dir):
         if opts["use_cuda"]:
             input_ids = input_ids.to("cuda")
             model.to("cuda")
-
-        macs, params = profile(model, input_ids, verbose=False)
-        time_per_example = timeit.repeat(
-            lambda: model(input_ids), repeat=opts["iters"] + 1, number=1
-        )
+        _ = model(input_ids)
 
         # Compute statistics over individual wallclock times
-        data["macs"] = macs
-        data["median"] = np.median(time_per_example)
-        data["mean"] = np.mean(time_per_example)
-        data["std"] = np.std(time_per_example)
-        data["min"] = np.min(time_per_example)
-        data["max"] = np.max(time_per_example)
-        data["5_pct"] = np.percentile(time_per_example, 5)
-        data["95_pct"] = np.percentile(time_per_example, 95)
+        results = gather_metrics(opts, model, input_ids, metrics, logger)
+
+        # Combine the run params with the observed metrics
+        data.update(results)
         dataframe = dataframe.append(data, ignore_index=True)
 
-        logger.info(f"Sequence Length: {seq_len}, Time per example: {data['mean']}")
-
-    logger.info(f"Total Runtime: {time.time() - init_time}")
     dataframe.to_csv(results_fname, index=False)
     torch.cuda.empty_cache()
 
@@ -171,6 +131,9 @@ if __name__ == "__main__":
     parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
+    parser.add_argument(
+        "--metrics", choices=["wallclock", "flops", "memory", "params"], nargs="+"
+    )
     args = parser.parse_args()
 
     # Load config
@@ -178,12 +141,7 @@ if __name__ == "__main__":
         params = yaml.safe_load(config_file)
 
     if args.model == "all":
-        model_list = NAME2MODEL.keys()
-    elif args.model == "efficient":
-        model_list = ["distilbert", "squeeze_bert", "mobile_bert", "albert"]
+        for model in NAME2MODEL.keys():
+            main(params, args.device, model, args.metrics, args.results_dir)
     else:
-        assert args.model in NAME2MODEL.keys()
-        model_list = [args.model]
-
-    for model in model_list:
-        main(params, args.device, model, args.results_dir)
+        main(params, args.device, args.model, args.metrics, args.results_dir)
