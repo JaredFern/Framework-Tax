@@ -9,6 +9,6 @@ GpuCores: 0
 CpuClockSpeed: 3e9
 GpuClockSpeed: 0
 MemoryFrequency: 2.67e9
-MemoryBandwidth: 0
+MemoryBandwidth: 19.9e9
 Ram: 128
 Vram: 0
