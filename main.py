@@ -94,7 +94,7 @@ def main(opts, device, model_name, metrics, results_dir):
     model.eval()
 
     seq_lengths = [
-        2 ** seqlen for seqlen in range(3, 10)
+        2 ** seqlen for seqlen in range(10)
     ]  # Eval on sequence lengths up from 1 to 512
 
     for seq_len in seq_lengths:

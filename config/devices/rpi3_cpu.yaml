@@ -8,7 +8,7 @@ CpuCores: 4
 GpuCores: 0
 CpuClockSpeed: 1.5e9
 GpuClockSpeed: 0
-MemoryFrequency:
+MemoryFrequency: 5.0e8
 MemoryBandwidth:
 Ram: 1
 Vram: 0

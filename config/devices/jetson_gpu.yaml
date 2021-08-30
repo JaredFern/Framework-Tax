@@ -7,8 +7,8 @@ AcceleratorAvailable: true
 CpuCores: 4
 GpuCores: 128
 CpuClockSpeed: 1.5e9
-GpuClockSpeed:
-MemoryFrequency:
-MemoryBandwidth:
+GpuClockSpeed: 9.21e8
+MemoryFrequency: 1.6e9
+MemoryBandwidth: 6.9e9
 Ram: 4
 Vram: 4

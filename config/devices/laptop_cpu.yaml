@@ -9,9 +9,9 @@ CudaArchitecture: null
 AcceleratorAvailable: False
 CpuCores: 8
 GpuCores: null
-CpuClockSpeed: 9.18e8
+CpuClockSpeed: 1.8e9
 GpuClockSpeed: 0
 MemorySpeed: 2.13e9
-MemoryBandwidth: null
+MemoryBandwidth: 11.36e9
 Ram: 16
 Vram: null
