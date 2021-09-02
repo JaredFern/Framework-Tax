@@ -40,8 +40,8 @@ def gather_metrics(opts, model, input_constructor, metrics, logger, iters=100):
     if "wallclock" in metrics:
         wallclock_results = []
         timer = benchmark.Timer(
-            stmt='model(input_tensor)',
-            setup='input_tensor=input_constructor()',
+            stmt='model(input_tensor)', setup='input_tensor=input_constructor()',
+            num_threads=opts['num_threads'],
             globals={'model': model, 'input_constructor': input_constructor})
         data["mean"] = timer.timeit(opts['iters']).mean
         logger.info(f"Input Shape: {input_constructor().shape} - Time: {data['mean']}")
