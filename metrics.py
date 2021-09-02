@@ -18,6 +18,11 @@ def gather_metrics(opts, model, input_tensor, metrics, logger, iters=100):
 
     if "memory" in metrics:
         if opts["use_cuda"]:
+            # TODO: Fix nvml import on jetson
+            try:
+                import py3nvml.py3nvml as nvml
+            except:
+                Raise("NVML not available on device")
             nvml.nvmlInit()
             _ = model(input_tensor)
             handle = nvml.nvmlDeviceGetHandleByIndex(opts["device_idx"])
@@ -39,7 +44,7 @@ def gather_metrics(opts, model, input_tensor, metrics, logger, iters=100):
         timer = benchmark.Timer(
             stmt='model(input_tensor)',
             globals={'model': model, 'input_tensor': input_tensor})
-        data["mean"] = np.mean(timer.timeit(5).mean)
+        data["mean"] = timer.timeit(opts['iters']).mean
         logger.info(f"Input Shape: {input_tensor.shape} - Time: {data['mean']}")
     if not metrics:
         raise ValueError("No metrics specified.")

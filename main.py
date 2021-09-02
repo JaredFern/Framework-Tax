@@ -66,8 +66,7 @@ NAME2MODEL = {
 }
 
 
-def main(opts, device, model_name, metrics, results_dir):
-    logger = _get_logger(results_dir, device)
+def main(opts, device, model_name, metrics, results_dir, logger):
     results_fname = f"{results_dir}/{device}.csv"
     dataframe = (
         pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
@@ -133,6 +132,7 @@ if __name__ == "__main__":
         "--metrics", choices=["wallclock", "flops", "memory", "params"], nargs="+"
     )
     args = parser.parse_args()
+    logger = _get_logger(args.results_dir, args.device)
 
     # Load config
     with open(args.config_file, "r") as config_file:
@@ -140,7 +140,7 @@ if __name__ == "__main__":
 
     if args.model == "all":
         for model in NAME2MODEL.keys():
-            main(params, args.device, model, args.metrics, args.results_dir)
+            main(params, args.device, model, args.metrics, args.results_dir, logger)
     else:
-        main(params, args.device, args.model, args.metrics, args.results_dir)
+        main(params, args.device, args.model, args.metrics, args.results_dir, logger)
 
