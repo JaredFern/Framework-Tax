@@ -22,14 +22,10 @@ def _get_parameter_count(model, trainable_only=True):
         return sum(p.numel() for p in model.parameters())
 
 
-def _get_input_ids(tokenizer, seq_len, random_ids=True, model=""):
+def _get_input_ids(tokenizer, batch_size, seq_len):
     if model == "google/reformer-enwik8":
-        input_ids = torch.randint(128, size=(seq_len,))  # Two-Byte Utf-8 Characters
+        input_ids = torch.randint(128, size=(batch_size, seq_len,))  # Two-Byte Utf-8 Characters
     elif random_ids:
-        input_ids = torch.randint(tokenizer.vocab_size, size=(seq_len,))
-    else:
-        tokens = seq_len * ["a"]
-        input_ids = torch.tensor(tokenizer.convert_tokens_to_ids(tokens))
+        input_ids = torch.randint(tokenizer.vocab_size, size=(batch_size,seq_len,))
     input_ids = input_ids.unsqueeze(0)
-
     return input_ids

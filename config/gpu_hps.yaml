@@ -1,7 +1,7 @@
-batch_size: 1
-iters: 100
+batch_size: [1]
+iters: 20
 randomized_text: True
 requires_grad: False
 use_cuda: True
-device: gpu
+device: "cuda"
 device_idx: 0
