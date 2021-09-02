@@ -73,7 +73,6 @@ def main(opts, device, model_name, metrics, results_dir):
         pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
     )
 
-    logger = _get_logger(results_dir, device)
     model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
 
     # Load Model & Tokenizer
@@ -94,7 +93,7 @@ def main(opts, device, model_name, metrics, results_dir):
     model.eval()
 
     seq_lengths = [
-        2 ** seqlen for seqlen in range(3, 10)
+        2 ** seqlen for seqlen in range(10)
     ]  # Eval on sequence lengths up from 1 to 512
 
     for seq_len in seq_lengths:
@@ -112,7 +111,6 @@ def main(opts, device, model_name, metrics, results_dir):
         if opts["use_cuda"]:
             input_ids = input_ids.to("cuda")
             model.to("cuda")
-        _ = model(input_ids)
 
         # Compute statistics over individual wallclock times
         results = gather_metrics(opts, model, input_ids, metrics, logger)
@@ -145,3 +143,4 @@ if __name__ == "__main__":
             main(params, args.device, model, args.metrics, args.results_dir)
     else:
         main(params, args.device, args.model, args.metrics, args.results_dir)
+

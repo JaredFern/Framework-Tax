@@ -2,11 +2,9 @@ import time
 import timeit
 
 import numpy as np
-import py3nvml.py3nvml as nvml
 from memory_profiler import memory_usage
 from thop import profile as thop_profile
-from torch.profiler import ProfilerActivity, profile, record_function
-
+from torch.utils import benchmark
 from utils import _get_parameter_count
 
 
@@ -38,16 +36,11 @@ def gather_metrics(opts, model, input_tensor, metrics, logger, iters=100):
         macs, _ = thop_profile(model, (input_tensor,), verbose=False)
         data["macs"] = macs
     if "wallclock" in metrics:
-        time_per_example = timeit.repeat(
-            lambda: model(input_tensor), repeat=iters, number=1
-        )
-        data["median"] = np.median(time_per_example)
-        data["mean"] = np.mean(time_per_example)
-        data["std"] = np.std(time_per_example)
-        data["min"] = np.min(time_per_example)
-        data["max"] = np.max(time_per_example)
-        data["5_pct"] = np.percentile(time_per_example, 5)
-        data["95_pct"] = np.percentile(time_per_example, 95)
+        timer = benchmark.Timer(
+            stmt='model(input_tensor)',
+            globals={'model': model, 'input_tensor': input_tensor})
+        data["mean"] = np.mean(timer.timeit(5).mean)
+        logger.info(f"Input Shape: {input_tensor.shape} - Time: {data['mean']}")
     if not metrics:
         raise ValueError("No metrics specified.")
 
