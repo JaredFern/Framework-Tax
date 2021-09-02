@@ -8,10 +8,9 @@ import torch
 import transformers  # Requires sentencepiece
 import yaml
 from functools import partial
-from torch.utils.benchmark import FuzzedParameter,FuzzedTensor, Fuzzer
 
 from metrics import gather_metrics
-from utils import _get_input_ids, _get_logger
+from utils import _get_logger
 
 NAME2MODEL = {
    "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
@@ -74,26 +73,16 @@ def main(opts, device, model_name, metrics, results_dir, logger):
         pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
     )
 
-    model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
-
     # Load Model & Tokenizer
-    logger.info(f"Loading {model_name} model from {checkpoint}")
-    results_fname = f"{results_dir}/{device}.csv"
-    dataframe = (
-        pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
-    )
-
-    # Quick Fix for reformer tokenizer
-    if checkpoint == "google/reformer-enwik8":
-        tkr = tokenizer_fn.from_pretrained("google/reformer-crime-and-punishment")
-    else:
-        tkr = tokenizer_fn.from_pretrained(checkpoint)
-
+    logger.info(f"Loading {model_name} model.")
+    model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
+    tkr = tokenizer_fn.from_pretrained(checkpoint)
     model = model_fn.from_pretrained(checkpoint)
+    model.requires_grad_(opts["requires_grad"])
     if not opts['requires_grad']:
-        model.requires_grad_(opts["requires_grad"])
         model.eval()
 
+    # Set CUDA Devices
     if opts["use_cuda"]:
         model.to("cuda")
         device = torch.device(f"{opts['device']}:{opts['device_idx']}")
@@ -115,7 +104,6 @@ def main(opts, device, model_name, metrics, results_dir, logger):
                 "sequence_length": seq_len,
             }
 
-            # Compute statistics over individual wallclock times
             id_constructor = partial(torch.randint, low=0, high=tkr.vocab_size,
                                      size=(batch_size, seq_len), device=device)
 
