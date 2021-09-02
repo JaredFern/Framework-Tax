@@ -119,7 +119,6 @@ def main(opts, device, model_name, metrics, results_dir, logger):
             id_constructor = partial(torch.randint, low=0, high=tkr.vocab_size,
                                      size=(batch_size, seq_len), device=device)
 
-            import pdb; pdb.set_trace()
             results = gather_metrics(opts, model, id_constructor, metrics, logger)
 
             # Combine the run params with the observed metrics
