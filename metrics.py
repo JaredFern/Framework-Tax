@@ -6,6 +6,7 @@ import numpy as np
 from memory_profiler import memory_usage
 from thop import profile as thop_profile
 from torch.utils import benchmark
+
 from utils import _get_parameter_count
 
 

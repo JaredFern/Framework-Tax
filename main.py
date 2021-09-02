@@ -138,7 +138,8 @@ if __name__ == "__main__":
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
     parser.add_argument(
-        "--metrics", choices=["wallclock", "flops", "memory", "params"], nargs="+"
+        "--metrics", choices=["wallclock", "flops", "memory", "params"], nargs="+",
+        default=["wallclock", "flops", "memory", "params"]
     )
     args = parser.parse_args()
     logger = _get_logger(args.results_dir, args.device)
