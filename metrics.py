@@ -49,5 +49,4 @@ def gather_metrics(opts, model, input_constructor, metrics, logger, iters=100):
         raise ValueError("No metrics specified.")
 
     logger.info(f"Total Runtime: {time.time() - init_time}")
-    import pdb; pdb.set_trace()
     return data
