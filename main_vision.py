@@ -5,6 +5,7 @@ from functools import partial
 import pandas as pd
 import torch
 import yaml
+from timm import create_model
 from torchvision import datasets, models
 from torchvision import transforms as T
 
@@ -12,20 +13,23 @@ from metrics import gather_metrics
 from utils import _get_logger
 
 NAME2MODEL = {
-    "resnet18": models.resnet18,
-    "alexnet": models.alexnet,
-    "squeezenet": models.squeezenet1_0,
-    "vgg16": models.vgg16,
-    "densenet": models.densenet161,
-    "inception": models.inception_v3,
-    "googlenet": models.googlenet,
-    "shufflenet": models.shufflenet_v2_x1_0,
-    "mobilenet_v2": models.mobilenet_v2,
-    # "mobilenet_v3_large": models.mobilenet_v3_large,
-    # "mobilenet_v3_small": models.mobilenet_v3_small,
-    "resnext50_32x4d": models.resnext50_32x4d,
-    "wide_resnet50_2": models.wide_resnet50_2,
-    "mnasnet": models.mnasnet1_0,
+    "vit32": create_model("vit_base_patch32_224", pretrained=True),
+    "convit": create_model("convit_base", pretrained=True),
+    "efficientnet": create_model("efficientnetv2_m", pretrained=True),
+    "efficientnet_lite": create_model("efficientnet_lite1", pretrained=True),
+    "gernet": create_model("gernet_m", pretrained=True),
+    "resnet18": models.resnet18(pretrained=True),
+    "alexnet": models.alexnet(pretrained=True),
+    "squeezenet": models.squeezenet1_0(pretrained=True),
+    "vgg16": models.vgg16(pretrained=True),
+    "densenet": models.densenet161(pretrained=True),
+    "inception": models.inception_v3(pretrained=True),
+    "googlenet": models.googlenet(pretrained=True),
+    "shufflenet": models.shufflenet_v2_x1_0(pretrained=True),
+    "mobilenet_v2": models.mobilenet_v2(pretrained=True),
+    "resnext50_32x4d": models.resnext50_32x4d(pretrained=True),
+    "wide_resnet50_2": models.wide_resnet50_2(pretrained=True),
+    "mnasnet": models.mnasnet1_0(pretrained=True),
 }
 
 
@@ -37,7 +41,7 @@ def main(opts, device, model_name, metrics, results_dir, logger):
 
     # Load model and inputs
     logger.info(f"Loading {model_name} model")
-    model = NAME2MODEL[model_name](pretrained=True)
+    model = NAME2MODEL[model_name]
     model.requires_grad_(opts["requires_grad"])
     if not opts["requires_grad"]:
         model.eval()
@@ -52,6 +56,16 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     img_sizes = [224, 384, 448, 512]
     for batch_size in opts["batch_size"]:
         for img_size in img_sizes:
+            if model_name == "vit32":
+                model = create_model(
+                    "vit_base_patch32_224", pretrained=True, img_size=img_size
+                )
+                model.requires_grad_(opts["requires_grad"])
+                if not opts["requires_grad"]:
+                    model.eval()
+                if opts["use_cuda"]:
+                    model.to("cuda")
+
             data = {
                 "device": device,
                 "model": model_name,
