@@ -2,43 +2,43 @@ import argparse
 import os
 import time
 import timeit
+from functools import partial
 
 import pandas as pd
 import torch
 import transformers  # Requires sentencepiece
 import yaml
-from functools import partial
 
 from metrics import gather_metrics
 from utils import _get_logger
 
 NAME2MODEL = {
-   "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
-   "roberta": [
-       transformers.RobertaModel,
-       transformers.RobertaTokenizer,
-       "roberta-base",
-   ],
-   "deberta": [
-       transformers.DebertaModel,
-       transformers.DebertaTokenizer,
-       "microsoft/deberta-base",
-   ],
-   "distilbert": [
-       transformers.DistilBertModel,
-       transformers.DistilBertTokenizer,
-       "distilbert-base-uncased",
-   ],
+    "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
+    "roberta": [
+        transformers.RobertaModel,
+        transformers.RobertaTokenizer,
+        "roberta-base",
+    ],
+    "deberta": [
+        transformers.DebertaModel,
+        transformers.DebertaTokenizer,
+        "microsoft/deberta-base",
+    ],
+    "distilbert": [
+        transformers.DistilBertModel,
+        transformers.DistilBertTokenizer,
+        "distilbert-base-uncased",
+    ],
     "funnel_transformer": [
         transformers.FunnelModel,
         transformers.FunnelTokenizer,
         "funnel-transformer/small",
     ],
-   "ibert": [
-       transformers.IBertModel,
-       transformers.RobertaTokenizer,
-       "kssteven/ibert-roberta-base",
-   ],
+    "ibert": [
+        transformers.IBertModel,
+        transformers.RobertaTokenizer,
+        "kssteven/ibert-roberta-base",
+    ],
     "albert": [
         transformers.AlbertModel,
         transformers.AlbertTokenizer,
@@ -79,7 +79,7 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     tkr = tokenizer_fn.from_pretrained(checkpoint)
     model = model_fn.from_pretrained(checkpoint)
     model.requires_grad_(opts["requires_grad"])
-    if not opts['requires_grad']:
+    if not opts["requires_grad"]:
         model.eval()
 
     # Set CUDA Devices
@@ -92,20 +92,27 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     MIN_LENGTH = 3 if model_name == "funnel_transformer" else 0  # Min Length: 1
     MAX_LENGTH = 10  # Max Length: 512
 
-    seq_lengths = [2 ** seq for seq in range(MIN_LENGTH, MAX_LENGTH)]  # Eval lengths from 1 to 512
-    for batch_size in opts['batch_size']:
+    seq_lengths = [
+        2 ** seq for seq in range(MIN_LENGTH, MAX_LENGTH)
+    ]  # Eval lengths from 1 to 512
+    for batch_size in opts["batch_size"]:
         for seq_len in seq_lengths:
             data = {
                 "device": device,
                 "model": model_name,
                 "accelerator": opts["use_cuda"],
-                "requires_grad": opts['requires_grad'],
+                "requires_grad": opts["requires_grad"],
                 "batch_size": batch_size,
                 "sequence_length": seq_len,
             }
 
-            id_constructor = partial(torch.randint, low=0, high=tkr.vocab_size,
-                                     size=(batch_size, seq_len), device=device)
+            id_constructor = partial(
+                torch.randint,
+                low=0,
+                high=tkr.vocab_size,
+                size=(batch_size, seq_len),
+                device=device,
+            )
 
             results = gather_metrics(opts, model, id_constructor, metrics, logger)
 
@@ -125,8 +132,10 @@ if __name__ == "__main__":
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
     parser.add_argument(
-        "--metrics", choices=["wallclock", "flops", "memory", "params"], nargs="+",
-        default=["wallclock", "flops", "memory", "params"]
+        "--metrics",
+        choices=["wallclock", "flops", "memory", "params"],
+        nargs="+",
+        default=["wallclock", "flops", "memory", "params"],
     )
     args = parser.parse_args()
     logger = _get_logger(args.results_dir, args.device)
@@ -135,9 +144,4 @@ if __name__ == "__main__":
     with open(args.config_file, "r") as config_file:
         params = yaml.safe_load(config_file)
 
-    if args.model == "all":
-        for model in NAME2MODEL.keys():
-            main(params, args.device, model, args.metrics, args.results_dir, logger)
-    else:
-        main(params, args.device, args.model, args.metrics, args.results_dir, logger)
-
+    main(params, args.device, args.model, args.metrics, args.results_dir, logger)

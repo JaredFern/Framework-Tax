@@ -14,10 +14,7 @@ def gather_metrics(opts, model, input_constructor, metrics, logger, iters=100):
     data = {}
     init_time = time.time()
 
-    # TODO: Add torch operation profiling, analysis {Operation Type x Device}
     # TODO: Get Checkpoint Size
-    # TODO: Add controls for number of threads (swap to torch utils benchmark)
-
     if "memory" in metrics:
         if opts["use_cuda"] and importlib.util.find_spec("py3nvml"):
             # TODO: Fix nvml import on jetson
