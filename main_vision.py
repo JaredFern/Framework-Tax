@@ -70,8 +70,10 @@ def main(opts, device, model_name, metrics, results_dir, logger):
             data.update(results)
             dataframe = dataframe.append(data, ignore_index=True)
     del model
+    if opts["use_cuda"]:
+        torch.cuda.synchronize()
+        torch.cuda.empty_cache()
     dataframe.to_csv(results_fname, index=False)
-    torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":

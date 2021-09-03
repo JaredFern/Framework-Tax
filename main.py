@@ -122,7 +122,9 @@ def main(opts, device, model_name, metrics, results_dir, logger):
 
     del model
     dataframe.to_csv(results_fname, index=False)
-    torch.cuda.empty_cache()
+    if opts["use_cuda"]:
+        torch.cuda.synchronize()
+        torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":
