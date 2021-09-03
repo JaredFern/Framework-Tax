@@ -56,10 +56,11 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     img_sizes = [224, 384, 448, 512]
     for batch_size in opts["batch_size"]:
         for img_size in img_sizes:
-            if model_name == "vit32":
-                model = create_model(
-                    "vit_base_patch32_224", pretrained=True, img_size=img_size
+            if model_name in ["convit", "vit32"]:
+                ckpt = (
+                    "convit_base" if model_name == "convit" else "vit_base_patch32_224"
                 )
+                model = create_model(ckpt, pretrained=True, img_size=img_size)
                 model.requires_grad_(opts["requires_grad"])
                 if not opts["requires_grad"]:
                     model.eval()
