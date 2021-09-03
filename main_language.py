@@ -119,9 +119,9 @@ def main(opts, device, model_name, metrics, results_dir, logger):
             # Combine the run params with the observed metrics
             data.update(results)
             dataframe = dataframe.append(data, ignore_index=True)
+            dataframe.to_csv(results_fname, index=False)
 
     del model
-    dataframe.to_csv(results_fname, index=False)
     if opts["use_cuda"]:
         torch.cuda.synchronize()
         torch.cuda.empty_cache()
