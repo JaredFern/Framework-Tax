@@ -67,8 +67,8 @@ NAME2MODEL = {
 }
 
 
-def main(opts, device, model_name, metrics, results_dir, logger):
-    results_fname = f"{results_dir}/{device}.csv"
+def main(opts, device_name, model_name, metrics, results_dir, logger):
+    results_fname = f"{results_dir}/{device_name}.csv"
     dataframe = (
         pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
     )
@@ -98,7 +98,7 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     for batch_size in opts["batch_size"]:
         for seq_len in seq_lengths:
             data = {
-                "device": device,
+                "device": device_name,
                 "model": model_name,
                 "accelerator": opts["use_cuda"],
                 "requires_grad": opts["requires_grad"],
