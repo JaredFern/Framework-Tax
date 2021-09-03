@@ -4,9 +4,10 @@ EXP_DIR=$2
 DEVICE=$3
 
 declare -a MODELS=(
-    "vit32" "convit" "efficientnet" "efficientnet_lite" "gernet"
-    "resnet18" "alexnet" "squeezenet" "vgg16" "densenet" "inception" "googlenet"
-    "shufflenet" "mobilenet_v2" "resnext50_32x4d" "wide_resnet50_2" "mnasnet"
+"convit"
+    # "vit32" "convit" "efficientnet" "efficientnet_lite" "gernet"
+    # "resnet18" "alexnet" "squeezenet" "vgg16" "densenet" "inception" "googlenet"
+    # "shufflenet" "mobilenet_v2" "resnext50_32x4d" "wide_resnet50_2" "mnasnet"
 )
 
 

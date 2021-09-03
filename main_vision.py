@@ -14,7 +14,6 @@ from utils import _get_logger
 
 NAME2MODEL = {
     "vit32": create_model("vit_base_patch32_224", pretrained=True),
-    "convit": create_model("convit_base", pretrained=True),
     "efficientnet": create_model("efficientnetv2_m", pretrained=True),
     "efficientnet_lite": create_model("efficientnet_lite1", pretrained=True),
     "gernet": create_model("gernet_m", pretrained=True),
@@ -56,10 +55,8 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     img_sizes = [224, 384, 448, 512]
     for batch_size in opts["batch_size"]:
         for img_size in img_sizes:
-            if model_name in ["convit", "vit32"]:
-                ckpt = (
-                    "convit_base" if model_name == "convit" else "vit_base_patch32_224"
-                )
+            if model_name in "vit32":
+                ckpt = "vit_base_patch32_224"
                 model = create_model(ckpt, pretrained=True, img_size=img_size)
                 model.requires_grad_(opts["requires_grad"])
                 if not opts["requires_grad"]:
