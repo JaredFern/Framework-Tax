@@ -1,0 +1,144 @@
+Loading vit32 model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.14613851645262912
+Total Runtime: 4.929926872253418
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.31778361824690365
+Total Runtime: 7.110423564910889
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.4158168693538755
+Total Runtime: 9.15612506866455
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.5351846442965325
+Total Runtime: 11.770428895950317
+Loading efficientnet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.22933163089910522
+Total Runtime: 6.928529500961304
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.6116378088481724
+Total Runtime: 13.47781229019165
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.7778619883989449
+Total Runtime: 17.141160011291504
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 1.0730239285505376
+Total Runtime: 23.136412858963013
+Loading efficientnet_lite model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.020306042802985758
+Total Runtime: 2.318713665008545
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.05956395514658652
+Total Runtime: 1.6248009204864502
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.0723885361046996
+Total Runtime: 1.9684760570526123
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.1025961164967157
+Total Runtime: 2.646087169647217
+Loading gernet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.050455783301731574
+Total Runtime: 2.9393017292022705
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.11755715729668736
+Total Runtime: 2.874695301055908
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.16158275875495748
+Total Runtime: 3.865562677383423
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.21329679049667902
+Total Runtime: 5.018341779708862
+Loading resnet18 model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.0338374107494019
+Total Runtime: 2.5262198448181152
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.08697533230297268
+Total Runtime: 2.127974033355713
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.11591750480001792
+Total Runtime: 2.7653067111968994
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.149599007650977
+Total Runtime: 3.540557861328125
+Loading alexnet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.027065569849219172
+Total Runtime: 2.3996036052703857
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.04621286565088667
+Total Runtime: 1.2822506427764893
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.05544123990111984
+Total Runtime: 1.4915790557861328
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.06744753539678641
+Total Runtime: 1.7726073265075684
+Loading squeezenet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.025216104899300262
+Total Runtime: 2.3545243740081787
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.07787840225500986
+Total Runtime: 1.9149963855743408
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.10554814644856378
+Total Runtime: 2.609713077545166
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.15089111370034516
+Total Runtime: 3.5804319381713867
+Loading vgg16 model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.22614786624908448
+Total Runtime: 6.683462858200073
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.6132498390506953
+Total Runtime: 13.425431489944458
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.8648425038496498
+Total Runtime: 18.823450326919556
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 1.1482724806002806
+Total Runtime: 24.89449119567871
+Loading densenet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.14114511635270902
+Total Runtime: 5.143347978591919
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.3667747840518132
+Total Runtime: 8.501223802566528
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.5055582168512046
+Total Runtime: 11.280881643295288
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.6648907741007861
+Total Runtime: 14.713904857635498
+Loading inception model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.06930769389728084
+Total Runtime: 3.40263295173645
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.19151756139472126
+Total Runtime: 4.512416124343872
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.25592106684925964
+Total Runtime: 5.932122468948364
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.3354997930990066
+Total Runtime: 7.701175689697266
+Loading googlenet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.05355413715005852
+Total Runtime: 2.9923880100250244
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.1407585002016276
+Total Runtime: 3.373009443283081
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.18945973925292492
+Total Runtime: 4.451115608215332
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.25504345265217127
+Total Runtime: 5.866430997848511
+Loading shufflenet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.011205033451551572
+Total Runtime: 2.0730385780334473
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.025064791651675477
+Total Runtime: 0.8293097019195557
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.03270013135042973
+Total Runtime: 1.0078058242797852
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.047864877653773875
+Total Runtime: 1.3617889881134033
+Loading mobilenet_v2 model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.01392016650061123
+Total Runtime: 2.1075570583343506
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.03708761839661747
+Total Runtime: 1.1022312641143799
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.051265710452571514
+Total Runtime: 1.4939591884613037
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.08991714364965446
+Total Runtime: 2.290194034576416
+Loading resnext50_32x4d model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.0777323558460921
+Total Runtime: 3.524095058441162
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.2001730915508233
+Total Runtime: 4.696545839309692
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.26838647515396585
+Total Runtime: 6.206884860992432
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.38353812479763294
+Total Runtime: 8.69970154762268
+Loading wide_resnet50_2 model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.20530310634640045
+Total Runtime: 6.340431213378906
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.46948372389888393
+Total Runtime: 10.46080756187439
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.5916976348496974
+Total Runtime: 13.129616260528564
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.7894038508995436
+Total Runtime: 17.148667573928833
+Loading mnasnet model
+Input Shape: torch.Size([1, 3, 224, 224]) - Time: 0.013813235552515835
+Total Runtime: 2.1542809009552
+Input Shape: torch.Size([1, 3, 384, 384]) - Time: 0.03717533344752155
+Total Runtime: 1.095395803451538
+Input Shape: torch.Size([1, 3, 448, 448]) - Time: 0.0456582635466475
+Total Runtime: 1.306126356124878
+Input Shape: torch.Size([1, 3, 512, 512]) - Time: 0.07095582580077461
+Total Runtime: 1.9256951808929443
