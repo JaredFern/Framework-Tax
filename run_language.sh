@@ -10,7 +10,7 @@ declare -a MODELS=(
 
 
 for model in ${MODELS[@]}; do
-  python3 main.py \
+  python3 main_language.py \
     --config_file $CONFIG_FILE --results_dir $EXP_DIR \
     --device $DEVICE --model $model;
 done;
