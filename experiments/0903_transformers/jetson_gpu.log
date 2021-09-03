@@ -128,3 +128,52 @@ Input Shape: torch.Size([1, 256]) - Time: 0.3518838676499854
 Total Runtime: 8.285658121109009
 Input Shape: torch.Size([1, 512]) - Time: 0.7945165259499845
 Total Runtime: 18.699552536010742
+Loading mobile_bert model.
+Input Shape: torch.Size([1, 1]) - Time: 0.2473471694499949
+Total Runtime: 8.743689775466919
+Input Shape: torch.Size([1, 2]) - Time: 0.2359371495999767
+Total Runtime: 5.972078084945679
+Input Shape: torch.Size([1, 4]) - Time: 0.24360557169998173
+Total Runtime: 6.176866769790649
+Input Shape: torch.Size([1, 8]) - Time: 0.2228463574499983
+Total Runtime: 5.704807758331299
+Input Shape: torch.Size([1, 16]) - Time: 0.22915700889998333
+Total Runtime: 5.827671527862549
+Input Shape: torch.Size([1, 32]) - Time: 0.274675132450011
+Total Runtime: 6.876040935516357
+Input Shape: torch.Size([1, 64]) - Time: 0.2682026014000257
+Total Runtime: 6.75857138633728
+Input Shape: torch.Size([1, 128]) - Time: 0.22519987884998044
+Total Runtime: 5.802671432495117
+Input Shape: torch.Size([1, 256]) - Time: 0.22596651890003158
+Total Runtime: 5.791114568710327
+Input Shape: torch.Size([1, 512]) - Time: 0.31411117160000684
+Total Runtime: 7.7369115352630615
+Loading squeeze_bert model.
+Input Shape: torch.Size([1, 1]) - Time: 0.08414849595001214
+Total Runtime: 16.461819171905518
+Loading squeeze_bert model.
+Input Shape: torch.Size([1, 1]) - Time: 0.07812218899998698
+Total Runtime: 16.520799160003662
+Loading squeeze_bert model.
+Loading squeeze_bert model.
+Input Shape: torch.Size([1, 1]) - Time: 0.07176399049999986
+Total Runtime: 15.911877870559692
+Input Shape: torch.Size([1, 2]) - Time: 0.21900141705000067
+Total Runtime: 5.3186564445495605
+Input Shape: torch.Size([1, 4]) - Time: 0.21938012800000023
+Total Runtime: 5.422914505004883
+Input Shape: torch.Size([1, 8]) - Time: 0.2209919832499992
+Total Runtime: 5.470911026000977
+Input Shape: torch.Size([1, 16]) - Time: 0.2243321081500028
+Total Runtime: 5.521589517593384
+Input Shape: torch.Size([1, 32]) - Time: 0.2306306740999986
+Total Runtime: 5.682391166687012
+Input Shape: torch.Size([1, 64]) - Time: 0.3071900492499992
+Total Runtime: 7.464266538619995
+Input Shape: torch.Size([1, 128]) - Time: 0.4724739477000014
+Total Runtime: 11.431363821029663
+Input Shape: torch.Size([1, 256]) - Time: 0.8142988916500002
+Total Runtime: 18.81137228012085
+Input Shape: torch.Size([1, 512]) - Time: 3.1224675265000004
+Total Runtime: 72.12222003936768
