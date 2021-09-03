@@ -21,6 +21,8 @@ def gather_metrics(opts, model, input_constructor, metrics, logger, iters=100):
     if "memory" in metrics:
         if opts["use_cuda"] and importlib.util.find_spec("py3nvml"):
             # TODO: Fix nvml import on jetson
+            from py3nvml import py3nvml as nvml
+
             nvml.nvmlInit()
             _ = model(input_constructor())
             handle = nvml.nvmlDeviceGetHandleByIndex(opts["device_idx"])
@@ -38,12 +40,13 @@ def gather_metrics(opts, model, input_constructor, metrics, logger, iters=100):
         macs, _ = thop_profile(model, (input_constructor(),), verbose=False)
         data["macs"] = macs
     if "wallclock" in metrics:
-        wallclock_results = []
         timer = benchmark.Timer(
-            stmt='model(input_tensor)', setup='input_tensor=input_constructor()',
-            num_threads=opts['num_threads'],
-            globals={'model': model, 'input_constructor': input_constructor})
-        data["mean"] = timer.timeit(opts['iters']).mean
+            stmt="model(input_tensor)",
+            setup="input_tensor=input_constructor()",
+            num_threads=opts["num_threads"],
+            globals={"model": model, "input_constructor": input_constructor},
+        )
+        data["mean"] = timer.timeit(opts["iters"]).mean
         logger.info(f"Input Shape: {input_constructor().shape} - Time: {data['mean']}")
     if not metrics:
         raise ValueError("No metrics specified.")

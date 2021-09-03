@@ -1,10 +1,10 @@
 import argparse
 import os
+from functools import partial
 
 import pandas as pd
 import torch
 import yaml
-from functools import partial
 from torchvision import datasets, models
 from torchvision import transforms as T
 
@@ -39,7 +39,7 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     logger.info(f"Loading {model_name} model")
     model = NAME2MODEL[model_name](pretrained=True)
     model.requires_grad_(opts["requires_grad"])
-    if not opts['requires_grad']:
+    if not opts["requires_grad"]:
         model.eval()
 
     # Set CUDA Devices
@@ -49,21 +49,21 @@ def main(opts, device, model_name, metrics, results_dir, logger):
     else:
         device = torch.device("cpu")
 
-
-    img_sizes = [224, 384]
-    for batch_size in opts['batch_size']:
+    img_sizes = [224, 384, 448, 512]
+    for batch_size in opts["batch_size"]:
         for img_size in img_sizes:
             data = {
                 "device": device,
                 "model": model_name,
                 "accelerator": opts["use_cuda"],
-                "requires_grad": opts['requires_grad'],
+                "requires_grad": opts["requires_grad"],
                 "batch_size": batch_size,
-                "img_size": img_size
+                "img_size": img_size,
             }
 
-            img_constructor = partial(torch.rand, device=device,
-                                      size=(batch_size, 3, img_size, img_size))
+            img_constructor = partial(
+                torch.rand, device=device, size=(batch_size, 3, img_size, img_size)
+            )
             results = gather_metrics(opts, model, img_constructor, metrics, logger)
 
             # Combine the run params with the observed metrics
@@ -81,8 +81,10 @@ if __name__ == "__main__":
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
     parser.add_argument(
-        "--metrics", choices=["wallclock", "flops", "memory", "params"], nargs="+",
-        default=["wallclock", "flops", "memory", "params"]
+        "--metrics",
+        choices=["wallclock", "flops", "memory", "params"],
+        nargs="+",
+        default=["wallclock", "flops", "memory", "params"],
     )
     args = parser.parse_args()
     logger = _get_logger(args.results_dir, args.device)
