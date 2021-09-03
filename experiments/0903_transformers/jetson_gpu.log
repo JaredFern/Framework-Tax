@@ -113,3 +113,18 @@ Total Runtime: 7.8145081996917725
 Loading squeeze_bert model.
 Input Shape: torch.Size([1, 1]) - Time: 0.08930041215003257
 Total Runtime: 18.277031898498535
+Loading funnel_transformer model.
+Input Shape: torch.Size([1, 8]) - Time: 0.14070722885001033
+Total Runtime: 9.437686920166016
+Input Shape: torch.Size([1, 16]) - Time: 0.12430024884999966
+Total Runtime: 3.522571325302124
+Input Shape: torch.Size([1, 32]) - Time: 0.13380740294999213
+Total Runtime: 3.6700897216796875
+Input Shape: torch.Size([1, 64]) - Time: 0.13440205705001063
+Total Runtime: 3.659926414489746
+Input Shape: torch.Size([1, 128]) - Time: 0.1726587536499892
+Total Runtime: 4.473558187484741
+Input Shape: torch.Size([1, 256]) - Time: 0.3518838676499854
+Total Runtime: 8.285658121109009
+Input Shape: torch.Size([1, 512]) - Time: 0.7945165259499845
+Total Runtime: 18.699552536010742
