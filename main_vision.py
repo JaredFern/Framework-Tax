@@ -13,22 +13,22 @@ from metrics import gather_metrics
 from utils import _get_logger
 
 NAME2MODEL = {
-    "vit32": create_model("vit_base_patch32_224", pretrained=True),
-    "efficientnet": create_model("efficientnetv2_m", pretrained=True),
-    "efficientnet_lite": create_model("efficientnet_lite1", pretrained=True),
-    "gernet": create_model("gernet_m", pretrained=True),
-    "resnet18": models.resnet18(pretrained=True),
-    "alexnet": models.alexnet(pretrained=True),
-    "squeezenet": models.squeezenet1_0(pretrained=True),
-    "vgg16": models.vgg16(pretrained=True),
-    "densenet": models.densenet161(pretrained=True),
-    "inception": models.inception_v3(pretrained=True),
-    "googlenet": models.googlenet(pretrained=True),
-    "shufflenet": models.shufflenet_v2_x1_0(pretrained=True),
-    "mobilenet_v2": models.mobilenet_v2(pretrained=True),
-    "resnext50_32x4d": models.resnext50_32x4d(pretrained=True),
-    "wide_resnet50_2": models.wide_resnet50_2(pretrained=True),
-    "mnasnet": models.mnasnet1_0(pretrained=True),
+    "vit32": partial(create_model, "vit_base_patch32_224"),
+    "efficientnet": partial(create_model, "efficientnetv2_m"),
+    "efficientnet_lite": partial(create_model, "efficientnet_lite1"),
+    "gernet": partial(create_model, "gernet_m"),
+    "resnet18": models.resnet18,
+    "alexnet": models.alexnet,
+    "squeezenet": models.squeezenet1_0,
+    "vgg16": models.vgg16,
+    "densenet": models.densenet161,
+    "inception": models.inception_v3,
+    "googlenet": models.googlenet,
+    "shufflenet": models.shufflenet_v2_x1_0,
+    "mobilenet_v2": models.mobilenet_v2,
+    "resnext50_32x4d": models.resnext50_32x4d,
+    "wide_resnet50_2": models.wide_resnet50_2,
+    "mnasnet": models.mnasnet1_0,
 }
 
 
@@ -40,7 +40,7 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
 
     # Load model and inputs
     logger.info(f"Loading {model_name} model")
-    model = NAME2MODEL[model_name]
+    model = NAME2MODEL[model_name](pretrained=True)
     model.requires_grad_(opts["requires_grad"])
     if not opts["requires_grad"]:
         model.eval()
@@ -56,8 +56,7 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
     for batch_size in opts["batch_size"]:
         for img_size in img_sizes:
             if model_name in "vit32":
-                ckpt = "vit_base_patch32_224"
-                model = create_model(ckpt, pretrained=True, img_size=img_size)
+                model = NAME2MODEL[model_name](pretrained=True, img_size=img_size)
                 model.requires_grad_(opts["requires_grad"])
                 if not opts["requires_grad"]:
                     model.eval()
