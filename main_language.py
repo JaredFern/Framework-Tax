@@ -4,12 +4,13 @@ import time
 import timeit
 from functools import partial
 
+import numpy as np
 import pandas as pd
 import torch
 import transformers  # Requires sentencepiece
 import yaml
 
-from metrics import gather_metrics
+from metrics import Benchmark
 from utils import _get_logger
 
 NAME2MODEL = {
@@ -102,6 +103,7 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
                 "model": model_name,
                 "accelerator": opts["use_cuda"],
                 "requires_grad": opts["requires_grad"],
+                "use_torchscript": opts["use_jit"],
                 "batch_size": batch_size,
                 "sequence_length": seq_len,
             }
@@ -114,10 +116,22 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
                 device=device,
             )
 
-            results = gather_metrics(opts, model, id_constructor, metrics, logger)
+            benchmarker = Benchmark(
+                model,
+                id_constructor,
+                opts["num_threads"],
+                opts["use_cuda"],
+                device_idx=opts["device_idx"],
+            )
+            memory_usage = benchmarker.get_memory()
+            data["avg_memory"] = np.mean(memory_usage)
+            data["max_memory"] = np.max(memory_usage)
+            data["macs"] = benchmarker.get_flops_count()
+            data["total_params"] = benchmarker.get_param_count(False)
+            data["trainable_params"] = benchmarker.get_param_count(True)
+            data["mean"] = benchmarker.get_wallclock(opts["use_jit"], opts["iters"])
 
             # Combine the run params with the observed metrics
-            data.update(results)
             dataframe = dataframe.append(data, ignore_index=True)
             dataframe.to_csv(results_fname, index=False)
 

@@ -7,46 +7,49 @@ from memory_profiler import memory_usage
 from thop import profile as thop_profile
 from torch.utils import benchmark
 
-from utils import _get_parameter_count
 
+class Benchmark(object):
+    def __init__(
+        self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0
+    ):
+        self.model = model
+        self.input_constructor = input_constructor
 
-def gather_metrics(opts, model, input_constructor, metrics, logger, iters=100):
-    data = {}
-    init_time = time.time()
+        self.num_threads = num_threads
+        self.use_cuda = use_cuda
+        self.device_idx = device_idx
 
-    # TODO: Get Checkpoint Size
-    if "memory" in metrics:
-        if opts["use_cuda"] and importlib.util.find_spec("py3nvml"):
-            # TODO: Fix nvml import on jetson
-            from py3nvml import py3nvml as nvml
-
-            nvml.nvmlInit()
-            _ = model(input_constructor())
-            handle = nvml.nvmlDeviceGetHandleByIndex(opts["device_idx"])
-            meminfo = nvml.nvmlDeviceGetMemoryInfo(handle)
-            memory_bytes = meminfo.used
-        else:
-            # NOTE: memory_usage grabs RAM snapshots from the process every 0.2s
-            memory_bytes = memory_usage((model, input_constructor().unsqueeze(0)))
-        data["max_memory"] = np.max(memory_bytes)
-        data["avg_memory"] = np.mean(memory_bytes)
-    if "params" in metrics:
-        data["trainable_params"] = _get_parameter_count(model, trainable_only=True)
-        data["total_params"] = _get_parameter_count(model, trainable_only=False)
-    if "flops" in metrics:
-        macs, _ = thop_profile(model, (input_constructor(),), verbose=False)
-        data["macs"] = macs
-    if "wallclock" in metrics:
+    def get_wallclock(self, use_torchscript=False, iters=100):
         timer = benchmark.Timer(
             stmt="model(input_tensor)",
             setup="input_tensor=input_constructor()",
-            num_threads=opts["num_threads"],
-            globals={"model": model, "input_constructor": input_constructor},
+            num_threads=self.num_threads,
+            globals={"model": self.model, "input_constructor": self.input_constructor},
         )
-        data["mean"] = timer.timeit(opts["iters"]).mean
-        logger.info(f"Input Shape: {input_constructor().shape} - Time: {data['mean']}")
-    if not metrics:
-        raise ValueError("No metrics specified.")
+        wallclock_mean = timer.timeit(iters).mean
+        return wallclock_mean
 
-    logger.info(f"Total Runtime: {time.time() - init_time}")
-    return data
+    def get_memory(self):
+        if self.use_cuda and importlib.util.find_spec("py3nvml"):
+            from py3nvml import py3nvml as nvml
+
+            nvml.nvmlInit()
+            _ = self.model(self.input_constructor())
+            handle = nvml.nvmlDeviceGetHandleByIndex(self.device_idx)
+            meminfo = nvml.nvmlDeviceGetMemoryInfo(handle)
+            memory_bytes = meminfo.used
+        else:
+            memory_bytes = memory_usage(
+                (self.model, self.input_constructor().unsqueeze(0))
+            )
+        return memory_bytes
+
+    def get_flops_count(self):
+        macs, _ = thop_profile(self.model, (self.input_constructor(),), verbose=False)
+        return macs
+
+    def get_param_count(self, trainable_only=False):
+        if trainable_only:
+            return sum(p.numel() for p in self.model.parameters() if p.requires_grad)
+        else:
+            return sum(p.numel() for p in self.model.parameters())

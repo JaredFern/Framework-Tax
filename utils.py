@@ -13,19 +13,3 @@ def _get_logger(results_dir, device):
     logger.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
     return logger
-
-
-def _get_parameter_count(model, trainable_only=True):
-    if trainable_only:
-        return sum(p.numel() for p in model.parameters() if p.requires_grad)
-    else:
-        return sum(p.numel() for p in model.parameters())
-
-
-def _get_input_ids(tokenizer, batch_size, seq_len):
-    if model == "google/reformer-enwik8":
-        input_ids = torch.randint(128, size=(batch_size, seq_len,))  # Two-Byte Utf-8 Characters
-    elif random_ids:
-        input_ids = torch.randint(tokenizer.vocab_size, size=(batch_size,seq_len,))
-    input_ids = input_ids.unsqueeze(0)
-    return input_ids
