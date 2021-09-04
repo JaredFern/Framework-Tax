@@ -1,9 +1,0 @@
-batch_size: [1]
-iters: 20
-num_threads: 1
-randomized_text: True
-requires_grad: False
-use_jit: True
-use_cuda: True
-device: "cuda"
-device_idx: 0
