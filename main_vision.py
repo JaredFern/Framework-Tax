@@ -46,9 +46,8 @@ def main(opts, device_name, model_name, results_dir):
     model = NAME2MODEL[model_name](pretrained=True)
     model = prepare_model(model, device, opts["requires_grad"])
 
-    img_sizes = [224, 384, 448, 512]
     for batch_size in opts["batch_size"]:
-        for img_size in img_sizes:
+        for img_size in opts["img_sizes"]:
             if model_name in "vit32":
                 model = NAME2MODEL[model_name](pretrained=True, img_size=img_size)
                 model = prepare_model(model, device, opts["requires_grad"])

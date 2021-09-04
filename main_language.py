@@ -86,10 +86,10 @@ def main(opts, device_name, model_name, results_dir):
     model = model_fn.from_pretrained(checkpoint)
     model = prepare_model(model, device, opts["requires_grad"])
 
-    min_len = 3 if model_name == "funnel_transformer" else 0  # Min Length: 1
-    seq_lengths = [2 ** seq for seq in range(min_len, 10)]  # Eval lengths from 1 to 512
     for batch_size in opts["batch_size"]:
-        for seq_len in seq_lengths:
+        for seq_len in opts["sequence_lengths"]:
+            if model_name == "funnel_transformer" and seq_len < 8:
+                continue
             data = {
                 "device": device_name,
                 "model": model_name,
