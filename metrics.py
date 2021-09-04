@@ -19,7 +19,7 @@ class Benchmark(object):
         self.use_cuda = use_cuda
         self.device_idx = device_idx
 
-    def get_wallclock(self, use_torchscript=False, iters=100):
+    def get_wallclock(self, iters=100):
         timer = benchmark.Timer(
             stmt="model(input_tensor)",
             setup="input_tensor=input_constructor()",

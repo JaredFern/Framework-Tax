@@ -1,7 +1,6 @@
 import argparse
+import logging
 import os
-import time
-import timeit
 from functools import partial
 
 import numpy as np
@@ -11,7 +10,7 @@ import transformers  # Requires sentencepiece
 import yaml
 
 from metrics import Benchmark
-from utils import _get_logger
+from utils import prepare_model, setup_logger
 
 NAME2MODEL = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
@@ -68,34 +67,27 @@ NAME2MODEL = {
 }
 
 
-def main(opts, device_name, model_name, metrics, results_dir, logger):
-    results_fname = f"{results_dir}/{device_name}.csv"
+def main(opts, device_name, model_name, results_dir):
+    logger = logging.getLogger(device_name)
+    logger.info(f"Loading {model_name} model.")
+    results_file = f"{results_dir}/{device_name}.csv"
     dataframe = (
-        pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
+        pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
     )
 
-    # Load Model & Tokenizer
-    logger.info(f"Loading {model_name} model.")
+    # Set Device and Get Appropriate Model Functions
+    device = torch.device(opts["device"])
     model_fn, tokenizer_fn, checkpoint = NAME2MODEL[model_name]
-    tkr = tokenizer_fn.from_pretrained(checkpoint)
+
+    # Load Tokenizer to get Vocab Size
+    tokenizer = tokenizer_fn.from_pretrained(checkpoint)
+
+    # Load Model and Set CUDA Device
     model = model_fn.from_pretrained(checkpoint)
-    model.requires_grad_(opts["requires_grad"])
-    if not opts["requires_grad"]:
-        model.eval()
+    model = prepare_model(model, device, opts["requires_grad"])
 
-    # Set CUDA Devices
-    if opts["use_cuda"]:
-        model.to("cuda")
-        device = torch.device(f"{opts['device']}:{opts['device_idx']}")
-    else:
-        device = torch.device("cpu")
-
-    MIN_LENGTH = 3 if model_name == "funnel_transformer" else 0  # Min Length: 1
-    MAX_LENGTH = 10  # Max Length: 512
-
-    seq_lengths = [
-        2 ** seq for seq in range(MIN_LENGTH, MAX_LENGTH)
-    ]  # Eval lengths from 1 to 512
+    min_len = 3 if model_name == "funnel_transformer" else 0  # Min Length: 1
+    seq_lengths = [2 ** seq for seq in range(min_len, 10)]  # Eval lengths from 1 to 512
     for batch_size in opts["batch_size"]:
         for seq_len in seq_lengths:
             data = {
@@ -111,13 +103,17 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
             id_constructor = partial(
                 torch.randint,
                 low=0,
-                high=tkr.vocab_size,
+                high=tokenizer.vocab_size,
                 size=(batch_size, seq_len),
                 device=device,
             )
+            if opts["use_jit"]:
+                eval_model = torch.jit.trace(model, id_constructor())
+            else:
+                eval_model = model
 
             benchmarker = Benchmark(
-                model,
+                eval_model,
                 id_constructor,
                 opts["num_threads"],
                 opts["use_cuda"],
@@ -126,15 +122,17 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
             memory_usage = benchmarker.get_memory()
             data["avg_memory"] = np.mean(memory_usage)
             data["max_memory"] = np.max(memory_usage)
-            data["macs"] = benchmarker.get_flops_count()
-            data["total_params"] = benchmarker.get_param_count(False)
-            data["trainable_params"] = benchmarker.get_param_count(True)
-            data["mean"] = benchmarker.get_wallclock(opts["use_jit"], opts["iters"])
+            data["latency"] = benchmarker.get_wallclock(opts["iters"])
+            if not opts["use_jit"]:
+                data["macs"] = benchmarker.get_flops_count()
+                data["total_params"] = benchmarker.get_param_count(False)
+                data["trainable_params"] = benchmarker.get_param_count(True)
 
             # Combine the run params with the observed metrics
             dataframe = dataframe.append(data, ignore_index=True)
-            dataframe.to_csv(results_fname, index=False)
+            dataframe.to_csv(results_file, index=False)
 
+    # Teardown model to (hopefully) avoid OOM on next run
     del model
     if opts["use_cuda"]:
         torch.cuda.synchronize()
@@ -147,17 +145,11 @@ if __name__ == "__main__":
     parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
-    parser.add_argument(
-        "--metrics",
-        choices=["wallclock", "flops", "memory", "params"],
-        nargs="+",
-        default=["wallclock", "flops", "memory", "params"],
-    )
     args = parser.parse_args()
-    logger = _get_logger(args.results_dir, args.device)
 
     # Load config
     with open(args.config_file, "r") as config_file:
         params = yaml.safe_load(config_file)
 
-    main(params, args.device, args.model, args.metrics, args.results_dir, logger)
+    setup_logger(args.results_dir, args.device)
+    main(params, args.device, args.model, args.results_dir)

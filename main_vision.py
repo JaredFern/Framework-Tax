@@ -1,4 +1,5 @@
 import argparse
+import logging
 import os
 from functools import partial
 
@@ -7,11 +8,10 @@ import pandas as pd
 import torch
 import yaml
 from timm import create_model
-from torchvision import datasets, models
-from torchvision import transforms as T
+from torchvision import models
 
 from metrics import Benchmark
-from utils import _get_logger
+from utils import prepare_model, setup_logger
 
 NAME2MODEL = {
     "vit32": partial(create_model, "vit_base_patch32_224"),
@@ -33,36 +33,25 @@ NAME2MODEL = {
 }
 
 
-def main(opts, device_name, model_name, metrics, results_dir, logger):
-    results_fname = f"{results_dir}/{device_name}.csv"
+def main(opts, device_name, model_name, results_dir):
+    logger = logging.getLogger(device_name)
+    results_file = f"{results_dir}/{device_name}.csv"
     dataframe = (
-        pd.read_csv(results_fname) if os.path.exists(results_fname) else pd.DataFrame()
+        pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
     )
 
     # Load model and inputs
     logger.info(f"Loading {model_name} model")
+    device = torch.device(opts["device"])
     model = NAME2MODEL[model_name](pretrained=True)
-    model.requires_grad_(opts["requires_grad"])
-    if not opts["requires_grad"]:
-        model.eval()
-
-    # Set CUDA Devices
-    if opts["use_cuda"]:
-        model.to("cuda")
-        device = torch.device(f"{opts['device']}:{opts['device_idx']}")
-    else:
-        device = torch.device("cpu")
+    model = prepare_model(model, device, opts["requires_grad"])
 
     img_sizes = [224, 384, 448, 512]
     for batch_size in opts["batch_size"]:
         for img_size in img_sizes:
             if model_name in "vit32":
                 model = NAME2MODEL[model_name](pretrained=True, img_size=img_size)
-                model.requires_grad_(opts["requires_grad"])
-                if not opts["requires_grad"]:
-                    model.eval()
-                if opts["use_cuda"]:
-                    model.to("cuda")
+                model = prepare_model(model, device, opts["requires_grad"])
 
             data = {
                 "device": device_name,
@@ -70,6 +59,7 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
                 "accelerator": opts["use_cuda"],
                 "requires_grad": opts["requires_grad"],
                 "use_torchscript": opts["use_jit"],
+                "num_threads": opts["num_threads"],
                 "batch_size": batch_size,
                 "img_size": img_size,
             }
@@ -78,8 +68,13 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
                 torch.rand, device=device, size=(batch_size, 3, img_size, img_size)
             )
 
+            if opts["use_jit"]:
+                eval_model = torch.jit.trace(model, img_constructor())
+            else:
+                eval_model = model
+
             benchmarker = Benchmark(
-                model,
+                eval_model,
                 img_constructor,
                 opts["num_threads"],
                 opts["use_cuda"],
@@ -88,16 +83,17 @@ def main(opts, device_name, model_name, metrics, results_dir, logger):
             memory_usage = benchmarker.get_memory()
             data["avg_memory"] = np.mean(memory_usage)
             data["max_memory"] = np.max(memory_usage)
-            data["macs"] = benchmarker.get_flops_count()
-            data["total_params"] = benchmarker.get_param_count(False)
-            data["trainable_params"] = benchmarker.get_param_count(True)
-            data["mean"] = benchmarker.get_wallclock(opts["use_jit"], opts["iters"])
+            data["latency"] = benchmarker.get_wallclock(opts["iters"])
+            if not opts["use_jit"]:
+                data["macs"] = benchmarker.get_flops_count()
+                data["total_params"] = benchmarker.get_param_count(False)
+                data["trainable_params"] = benchmarker.get_param_count(True)
 
             # Combine the run params with the observed metrics
             dataframe = dataframe.append(data, ignore_index=True)
-            dataframe.to_csv(results_fname, index=False)
+            dataframe.to_csv(results_file, index=False)
 
-    # Model teardown
+    # Teardown model to (hopefully) avoid OOM on next run
     del model
     if opts["use_cuda"]:
         torch.cuda.synchronize()
@@ -110,17 +106,11 @@ if __name__ == "__main__":
     parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     parser.add_argument("--device", type=str)
     parser.add_argument("--model", type=str)
-    parser.add_argument(
-        "--metrics",
-        choices=["wallclock", "flops", "memory", "params"],
-        nargs="+",
-        default=["wallclock", "flops", "memory", "params"],
-    )
     args = parser.parse_args()
-    logger = _get_logger(args.results_dir, args.device)
 
     # Load config
     with open(args.config_file, "r") as config_file:
         params = yaml.safe_load(config_file)
 
-    main(params, args.device, args.model, args.metrics, args.results_dir, logger)
+    setup_logger(args.results_dir, args.device)
+    main(params, args.device, args.model, args.results_dir)
