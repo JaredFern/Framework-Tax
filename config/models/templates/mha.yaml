@@ -6,6 +6,7 @@ act_fn: "relu"
 iters: 10
 num_threads: 1
 requires_grad: False
+use_dynamic_quant: False
 dropout: null
 use_jit: False
 use_cuda: False
