@@ -83,7 +83,7 @@ def main(opts, device_name, model_name, results_dir):
     tokenizer = tokenizer_fn.from_pretrained(checkpoint)
 
     # Load Model and Set CUDA Device
-    model = model_fn.from_pretrained(checkpoint)
+    model = model_fn.from_pretrained(checkpoint, torchscript=opts["use_jit"])
     model = prepare_model(model, device, opts["requires_grad"])
 
     for batch_size in opts["batch_size"]:
