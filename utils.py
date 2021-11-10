@@ -18,9 +18,13 @@ def setup_logger(results_dir, device):
     logger.addHandler(stream_handler)
 
 
-def prepare_model(model, device, requires_grad):
+def prepare_model(model, device, requires_grad, use_dynamic_quant):
     model = model.to(device)
     if not requires_grad:
         model.requires_grad_(requires_grad)
         model.eval()
+    if use_dynamic_quant:
+        torch.backends.quantized.engine = 'qnnpack'
+        model = torch.quantization.quantize_dynamic(
+            model, {torch.nn.Linear}, dtype=torch.qint8)
     return model

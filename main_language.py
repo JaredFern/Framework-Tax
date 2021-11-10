@@ -84,7 +84,9 @@ def main(opts, device_name, model_name, results_dir):
 
     # Load Model and Set CUDA Device
     model = model_fn.from_pretrained(checkpoint, torchscript=opts["use_jit"])
-    model = prepare_model(model, device, opts["requires_grad"])
+    model = prepare_model(
+        model, device, opts["requires_grad"], opts["use_dynamic_quant"]
+    )
 
     for batch_size in opts["batch_size"]:
         for seq_len in opts["sequence_lengths"]:
@@ -119,9 +121,10 @@ def main(opts, device_name, model_name, results_dir):
                 opts["use_cuda"],
                 device_idx=opts["device_idx"],
             )
-            memory_usage = benchmarker.get_memory()
-            data["avg_memory"] = np.mean(memory_usage)
-            data["max_memory"] = np.max(memory_usage)
+            if not opts["use_dynamic_quant"]:
+                memory_usage = benchmarker.get_memory()
+                data["avg_memory"] = np.mean(memory_usage)
+                data["max_memory"] = np.max(memory_usage)
             data["latency"] = benchmarker.get_wallclock(opts["iters"])
             if not opts["use_jit"]:
                 data["macs"] = benchmarker.get_flops_count()
