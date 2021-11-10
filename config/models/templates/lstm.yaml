@@ -1,0 +1,14 @@
+batch_size: [1]
+hidden_size: [1, 2, 4, 8, 16, 32, 64, 256, 512, 1024, 2048 ]
+seq_lens: [1, 2, 4, 8, 16, 32, 64, 128]
+bidirectional: False
+act_fn: "relu"
+iters: 10
+num_threads: 1
+requires_grad: False
+use_dynamic_quant: False
+dropout: 0
+use_jit: False
+use_cuda: False
+device: "cpu"
+device_idx: null

@@ -26,7 +26,7 @@ NAME2MODEL = {
     "inception": models.inception_v3,
     "googlenet": models.googlenet,
     "shufflenet": models.shufflenet_v2_x1_0,
-    "mobilenet_v2": models.mobilenet_v2,
+    "mobilenet_v2": models.quantization.mobilenet_v2,
     "resnext50_32x4d": models.resnext50_32x4d,
     "wide_resnet50_2": models.wide_resnet50_2,
     "mnasnet": models.mnasnet1_0,
@@ -43,8 +43,12 @@ def main(opts, device_name, model_name, results_dir):
     # Load model and inputs
     logger.info(f"Loading {model_name} model")
     device = torch.device(opts["device"])
-    model = NAME2MODEL[model_name](pretrained=True)
-    model = prepare_model(model, device, opts["requires_grad"])
+    # Lazy loading of MobileNet as quantized bc it is the only one impled with QNNPack:
+    if model_name == "mobilenet_v2":
+        model = NAME2MODEL[model_name](pretrained=True, quantize=opts['use_dynamic_quant'])
+    else:
+        model = NAME2MODEL[model_name](pretrained=True)
+    model = prepare_model(model, device, opts["requires_grad"], opts['use_dynamic_quant'])
 
     for batch_size in opts["batch_size"]:
         for img_size in opts["img_sizes"]:
@@ -68,21 +72,21 @@ def main(opts, device_name, model_name, results_dir):
             )
 
             if opts["use_jit"]:
-                eval_model = torch.jit.trace(model, img_constructor())
-            else:
-                eval_model = model
+                model = torch.jit.trace(model, img_constructor())
 
             benchmarker = Benchmark(
-                eval_model,
+                model,
                 img_constructor,
                 opts["num_threads"],
                 opts["use_cuda"],
                 device_idx=opts["device_idx"],
             )
-            memory_usage = benchmarker.get_memory()
-            data["avg_memory"] = np.mean(memory_usage)
-            data["max_memory"] = np.max(memory_usage)
-            data["latency"] = benchmarker.get_wallclock(opts["iters"])
+            # Not sure why but dquant causes OOM when doing memory profiling
+            if not opts["use_dynamic_quant"]:
+                memory_usage = benchmarker.get_memory()
+                data["avg_memory"] = np.mean(memory_usage)
+                data["max_memory"] = np.max(memory_usage)
+                data["latency"] = benchmarker.get_wallclock(opts["iters"])
             if not opts["use_jit"]:
                 data["macs"] = benchmarker.get_flops_count()
                 data["total_params"] = benchmarker.get_param_count(False)
