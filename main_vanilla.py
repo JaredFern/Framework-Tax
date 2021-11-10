@@ -15,7 +15,6 @@ from model_generator import (  # Conv1DModel,; Conv2DdModel,; TransformerModel,
     LstmModel,
     MultiheadAttentionModel,
     RnnModel,
-    generate_inputs,
 )
 from utils import prepare_model, setup_logger
 
@@ -69,7 +68,9 @@ def run_linear_model(opts, device, dataframe):
             data.update(_fill_metadata(opts, data, device))
 
             model = FeedForwardModel(2 * [hidden_dim], opts["act_fn"])
-            model = prepare_model(model, device, opts["requires_grad"])
+            model = prepare_model(
+                model, device, opts["requires_grad"], opts["use_dynamic_quant"]
+            )
             input_constructor = partial(
                 torch.randn,
                 size=(batch_size, hidden_dim),
@@ -100,7 +101,6 @@ def run_rnn_model(opts, device, dataframe):
                     "bidirectional": opts["bidirectional"],
                 }
                 data.update(_fill_metadata(opts, data, device))
-                print(data)
 
                 model = RnnModel(
                     2 * [hidden_dim],
@@ -108,7 +108,9 @@ def run_rnn_model(opts, device, dataframe):
                     bidirectional=opts["bidirectional"],
                     activation_function=opts["act_fn"],
                 )
-                model = prepare_model(model, device, opts["requires_grad"])
+                model = prepare_model(
+                    model, device, opts["requires_grad"], opts["use_dynamic_quant"]
+                )
                 input_constructor = partial(
                     torch.randn,
                     size=(batch_size, seq_len, hidden_dim),
@@ -147,7 +149,9 @@ def run_lstm_model(opts, device, dataframe):
                     bidirectional=opts["bidirectional"],
                     activation_function=opts["act_fn"],
                 )
-                model = prepare_model(model, device, opts["requires_grad"])
+                model = prepare_model(
+                    model, device, opts["requires_grad"], opts["use_dynamic_quant"]
+                )
                 input_constructor = partial(
                     torch.randn,
                     size=(batch_size, seq_len, hidden_dim),
@@ -233,7 +237,9 @@ def run_mha_model(opts, device, dataframe):
                         num_heads,
                     )
 
-                    model = prepare_model(model, device, opts["requires_grad"])
+                    model = prepare_model(
+                        model, device, opts["requires_grad"], opts["use_dynamic_quant"]
+                    )
                     input_constructor = partial(
                         torch.randn,
                         size=(batch_size, seq_len, hidden_dim),
