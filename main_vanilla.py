@@ -284,7 +284,7 @@ def main(opts, device_name, model_name, results_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--device__config", type=str)
+    parser.add_argument("--device_config", type=str)
     parser.add_argument("--model_config", type=str)
     parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     parser.add_argument("--device", type=str)
@@ -293,7 +293,13 @@ if __name__ == "__main__":
 
     # Load config
     with open(args.model_config, "r") as model_config:
-        params = yaml.safe_load(model_config)
+        model_params = yaml.safe_load(model_config)
+
+    with open(args.device_config, "r") as device_config:
+        device_params = yaml.safe_load(device_config)
+
+    all_params = {**model_params, **device_params}
+    print(all_params)
 
     setup_logger(args.results_dir, args.device)
-    main(params, args.device, args.model, args.results_dir)
+    main(all_params, args.device, args.model, args.results_dir)

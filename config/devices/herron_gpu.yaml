@@ -12,3 +12,9 @@ MemoryFrequency: 2.67e9
 MemoryBandwidth: 19.9e9
 Ram: 128
 Vram: 48
+
+num_threads: 1
+requires_grad: False
+use_dynamic_quant: False
+use_jit: False
+use_cuda: True
