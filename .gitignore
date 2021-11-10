@@ -1,4 +1,7 @@
-*.
+.*
 __pycache__
 log/*.log
 .ipynb_checkpoints/
+.idea/
+.isort.cfg
+.swp
