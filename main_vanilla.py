@@ -97,6 +97,7 @@ def run_rnn_model(opts, device, dataframe):
                 data = {
                     "model": "rnn",
                     "batch_size": batch_size,
+                    "seq_len": seq_len,
                     "hidden_dim": hidden_dim,
                     "bidirectional": opts["bidirectional"],
                 }
@@ -135,9 +136,10 @@ def run_lstm_model(opts, device, dataframe):
         for hidden_dim in opts["hidden_size"]:
             for seq_len in opts["seq_lens"]:
                 data = {
-                    "model": "rnn",
+                    "model": "lstm",
                     "batch_size": batch_size,
                     "hidden_dim": hidden_dim,
+                    "seq_len": seq_len,
                     "bidirectional": opts["bidirectional"],
                 }
                 data.update(_fill_metadata(opts, data, device))
