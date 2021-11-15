@@ -1,6 +1,4 @@
-# Device Params
-device: laptop
-accelerator: cpu
+device_name: laptop
 MaxPowerUsage: 45
 OS: ubuntu2104
 ISA: x86
@@ -15,9 +13,3 @@ MemorySpeed: 2.13e9
 MemoryBandwidth: 11.36e9
 Ram: 16
 Vram: null
-
-num_threads: 1
-requires_grad: False
-use_dynamic_quant: False
-use_jit: False
-use_cuda: False
