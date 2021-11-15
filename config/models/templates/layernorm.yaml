@@ -1,0 +1,5 @@
+model: layernorm
+batch_size: [1]
+iters: 10
+dropout: null
+device_idx: null
