@@ -7,6 +7,9 @@ from memory_profiler import memory_usage
 from thop import profile as thop_profile
 from torch.utils import benchmark
 
+if importlib.util.find_spec("py3nvml"):
+    from py3nvml import py3nvml as nvml
+
 
 class Benchmark(object):
     def __init__(self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0):
@@ -28,9 +31,7 @@ class Benchmark(object):
         return wallclock_mean
 
     def get_memory(self):
-        if self.use_cuda and importlib.util.find_spec("py3nvml"):
-            from py3nvml import py3nvml as nvml
-
+        if self.use_cuda:
             nvml.nvmlInit()
             _ = self.model(self.input_constructor())
             handle = nvml.nvmlDeviceGetHandleByIndex(self.device_idx)
