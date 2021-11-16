@@ -9,8 +9,9 @@ declare -a MODELS=(
 )
 
 
-for model in ${MODELS[@]}; do
+for MODEL in ${MODELS[@]}; do
   python3 main_language.py \
-    --config_file $CONFIG_FILE --results_dir $EXP_DIR \
-    --device $DEVICE --model $model;
+    --model $MODEL --model_config config/models/transformers.yaml \
+    --device $DEVICE --device_config $CONFIG_FILE \
+    --results_dir $EXP_DIR ;
 done;

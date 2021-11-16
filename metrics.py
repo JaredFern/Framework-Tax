@@ -9,9 +9,7 @@ from torch.utils import benchmark
 
 
 class Benchmark(object):
-    def __init__(
-        self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0
-    ):
+    def __init__(self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0):
         self.model = model
         self.input_constructor = input_constructor
 
@@ -39,9 +37,7 @@ class Benchmark(object):
             meminfo = nvml.nvmlDeviceGetMemoryInfo(handle)
             memory_bytes = meminfo.used
         else:
-            memory_bytes = memory_usage(
-                (self.model, self.input_constructor().unsqueeze(0))
-            )
+            memory_bytes = memory_usage((self.model, self.input_constructor().unsqueeze(0)))
         return memory_bytes
 
     def get_flops_count(self):
@@ -53,3 +49,17 @@ class Benchmark(object):
             return sum(p.numel() for p in self.model.parameters() if p.requires_grad)
         else:
             return sum(p.numel() for p in self.model.parameters())
+
+    def aggregate_metrics(self, use_dquant, use_jit, iters=100):
+        data = {}
+        data["latency"] = self.get_wallclock()
+        if not use_dquant:
+            memory_usage = self.get_memory()
+            data["avg_memory"] = np.mean(memory_usage)
+            data["max_memory"] = np.max(memory_usage)
+            data["latency"] = self.get_wallclock(iters)
+        if not use_jit:
+            data["macs"] = self.get_flops_count()
+            data["total_params"] = self.get_param_count(False)
+            data["trainable_params"] = self.get_param_count(True)
+        return data

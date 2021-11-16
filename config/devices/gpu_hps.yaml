@@ -3,7 +3,7 @@ num_threads: 1
 randomized_text: True
 requires_grad: False
 use_jit: False
-use_dynamic_quant: True
+use_dynamic_quant: False
 use_cuda: True
 device: "cuda"
 device_idx: 0

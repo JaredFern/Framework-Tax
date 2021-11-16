@@ -1,0 +1,4 @@
+batch_size: [1]
+img_sizes: [224, 384, 512]
+act_fn: "relu"
+dropout: null
