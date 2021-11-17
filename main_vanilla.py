@@ -11,10 +11,9 @@ import yaml
 
 from metrics import Benchmark
 from model_generator import Conv1DModel  # ; Conv2DdModel,; TransformerModel,
-from model_generator import (
+from model_generator import (  # MultiheadAttentionModel,
     FeedForwardModel,
     LstmModel,
-    MultiheadAttentionModel,
     RnnModel,
 )
 from utils import fill_metadata, prepare_model, setup_logger
