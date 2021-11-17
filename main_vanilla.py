@@ -28,14 +28,8 @@ def run_metrics(opts, data, model, input_constructor):
         opts["use_cuda"],
         device_idx=opts["device_idx"],
     )
-    memory_usage = benchmarker.get_memory()
-    data["avg_memory"] = np.mean(memory_usage)
-    data["max_memory"] = np.max(memory_usage)
-    data["latency"] = benchmarker.get_wallclock(opts["iters"])
-    if not opts["use_jit"]:
-        data["macs"] = benchmarker.get_flops_count()
-        data["total_params"] = benchmarker.get_param_count(False)
-        data["trainable_params"] = benchmarker.get_param_count(True)
+    results = benchmarker.aggregate_metrics(opts["use_dquant"], opts["use_jit"], opts["iters"])
+    data = {**data, **results}
 
     del model
     if opts["use_cuda"]:
