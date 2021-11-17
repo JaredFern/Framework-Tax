@@ -109,7 +109,7 @@ def run_lstm_model(opts, dataframe):
                 }
 
                 input_shape = (batch_size, seq_len, hidden_dim)
-                input_constructor = partial(torch.randn, size=input_shape, device=device)
+                input_constructor = partial(torch.randn, size=input_shape, device=opts['device'])
                 model = LstmModel(
                     2 * [hidden_dim],
                     dropout=opts["dropout"],
