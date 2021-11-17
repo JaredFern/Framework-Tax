@@ -95,7 +95,7 @@ def run_rnn_model(opts, dataframe):
     return dataframe
 
 
-def run_lstm_model(opts, device, dataframe):
+def run_lstm_model(opts, dataframe):
     for batch_size in opts["batch_size"]:
         for hidden_dim in opts["hidden_size"]:
             for seq_len in opts["seq_lens"]:
