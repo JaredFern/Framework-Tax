@@ -24,6 +24,7 @@ def fill_metadata(opts):
         "accelerator": opts["use_cuda"],
         "requires_grad": opts["requires_grad"],
         "use_torchscript": opts["use_jit"],
+        "use_dquant": opts["use_dquant"],
         "dropout": opts["dropout"],
         "act_fn": opts["act_fn"],
     }
