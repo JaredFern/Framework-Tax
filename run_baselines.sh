@@ -4,7 +4,8 @@ EXP_DIR=$2
 DEVICE=$3
 
 declare -a MODELS=(
-    "feedforward" "rnn" "lstm"
+    "feedforward"
+    # "rnn" "lstm"
     # "conv1d" "conv2d" "mha" "layernorm"
 )
 
