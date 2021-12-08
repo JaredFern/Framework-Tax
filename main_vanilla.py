@@ -38,13 +38,14 @@ def run_metrics(opts, data, model, input_constructor):
     return data
 
 
-def run_sequence_model(opts, model_name, dataframe):
+def run_sequence_model(opts, model_name, device_name, dataframe):
     for batch_size in opts["batch_size"]:
         for num_layers in opts["num_layers"]:
             for seq_len in opts["seq_lens"]:
                 for hidden_dim in opts["hidden_size"]:
                     data = {
                         "model": model_name,
+                        "device": device_name,
                         "batch_size": batch_size,
                         "hidden_dim": hidden_dim,
                         "seq_len": seq_len,
@@ -97,7 +98,7 @@ def main(opts, model_name, device_name, results_dir):
     dataframe = pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
 
     if model_name in ["feedforward", "rnn", "lstm"]:
-        dataframe = run_sequence_model(opts, model_name, dataframe)
+        dataframe = run_sequence_model(opts, model_name, device_name, dataframe)
 
     dataframe.to_csv(results_file, index=False)
 

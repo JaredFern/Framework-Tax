@@ -20,7 +20,6 @@ def setup_logger(results_dir, device):
 
 def fill_metadata(opts):
     return {
-        "device": opts["device"],
         "accelerator": opts["use_cuda"],
         "requires_grad": opts["requires_grad"],
         "use_torchscript": opts["use_jit"],
