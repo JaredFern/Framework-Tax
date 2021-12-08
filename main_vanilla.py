@@ -40,50 +40,53 @@ def run_metrics(opts, data, model, input_constructor):
 
 def run_sequence_model(opts, model_name, dataframe):
     for batch_size in opts["batch_size"]:
-        for seq_len in opts["seq_lens"]:
-            for hidden_dim in opts["hidden_size"]:
-                data = {
-                    "model": model_name,
-                    "batch_size": batch_size,
-                    "hidden_dim": hidden_dim,
-                    "seq_len": seq_len,
-                    **fill_metadata(opts),
-                }
+        for num_layers in opts["num_layers"]:
+            for seq_len in opts["seq_lens"]:
+                for hidden_dim in opts["hidden_size"]:
+                    data = {
+                        "model": model_name,
+                        "batch_size": batch_size,
+                        "hidden_dim": hidden_dim,
+                        "seq_len": seq_len,
+                        **fill_metadata(opts),
+                    }
 
-                input_shape = (batch_size, seq_len, hidden_dim)
-                input_constructor = partial(torch.randn, size=input_shape, device=opts["device"])
-                if model_name == "feedforward":
-                    model = FeedForwardModel(2 * [hidden_dim], opts["act_fn"])
-                elif model_name == "rnn":
-                    model = RnnModel(
-                        2 * [hidden_dim],
-                        dropout=opts["dropout"],
-                        bidirectional=opts["bidirectional"],
-                        activation_function=opts["act_fn"],
+                    input_shape = (batch_size, seq_len, hidden_dim)
+                    input_constructor = partial(
+                        torch.randn, size=input_shape, device=opts["device"]
                     )
-                elif model_name == "lstm":
-                    model = LstmModel(
-                        2 * [hidden_dim],
-                        dropout=opts["dropout"],
-                        bidirectional=opts["bidirectional"],
-                        activation_function=opts["act_fn"],
-                    )
-                elif model_name == "conv1d":
-                    model = Conv1DModel(
-                        num_channels=opts["num_channels"],
-                        kernel_sizes=opts["kernel_sizes"],
-                        strides=opts["strides"],
-                        paddings=opts["paddings"],
-                        groups=opts["groups"],
-                    )
-                elif model_name == "self_attn":
-                    pass
+                    if model_name == "feedforward":
+                        model = FeedForwardModel(num_layers * [hidden_dim], opts["act_fn"])
+                    elif model_name == "rnn":
+                        model = RnnModel(
+                            num_layers * [hidden_dim],
+                            dropout=opts["dropout"],
+                            bidirectional=opts["bidirectional"],
+                            activation_function=opts["act_fn"],
+                        )
+                    elif model_name == "lstm":
+                        model = LstmModel(
+                            num_layers * [hidden_dim],
+                            dropout=opts["dropout"],
+                            bidirectional=opts["bidirectional"],
+                            activation_function=opts["act_fn"],
+                        )
+                    elif model_name == "conv1d":
+                        model = Conv1DModel(
+                            num_channels=opts["num_channels"],
+                            kernel_sizes=opts["kernel_sizes"],
+                            strides=opts["strides"],
+                            paddings=opts["paddings"],
+                            groups=opts["groups"],
+                        )
+                    elif model_name == "self_attn":
+                        pass
 
-                model = prepare_model(model, input_constructor(), opts)
-                data = run_metrics(opts, data, model, input_constructor)
+                    model = prepare_model(model, input_constructor(), opts)
+                    data = run_metrics(opts, data, model, input_constructor)
 
-                # Combine the run params with the observed metrics
-                dataframe = dataframe.append(data, ignore_index=True)
+                    # Combine the run params with the observed metrics
+                    dataframe = dataframe.append(data, ignore_index=True)
     return dataframe
 
 
