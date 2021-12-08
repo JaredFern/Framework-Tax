@@ -1,0 +1,9 @@
+model: feedforward
+batch_size: [1]
+seq_lens: [256]
+num_layers: [2,4,6,8,12,16]
+hidden_size: [2048]
+act_fn: relu
+iters: 10
+dropout: null
+device_idx: null
