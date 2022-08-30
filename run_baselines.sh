@@ -12,7 +12,7 @@ declare -a MODELS=(
 
 for MODEL in ${MODELS[@]}; do
   python3 main_vanilla.py \
-    --model $MODEL --model_config config/models/templates/${MODEL}.yaml \
+    --model $MODEL --model_config config/models/templates/${MODEL}_seqlen.yaml \
     --device $DEVICE --device_config $CONFIG_FILE \
     --results_dir $EXP_DIR ;
 done;
