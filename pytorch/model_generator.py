@@ -79,7 +79,7 @@ class Conv1DModel(nn.Module):
         num_channels,
         kernel_sizes,
         strides,
-        padding,
+        paddings,
         dilations,
         groups,
         activation_function=None,

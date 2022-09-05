@@ -1,13 +1,13 @@
+import datetime
 import logging
-from pathlib import Path
+import os
 
 import torch
 
 
-def setup_logger(results_dir, device):
-    Path(results_dir).mkdir(parents=True, exist_ok=True)
-    logger = logging.getLogger(device)
-    log_fname = f"{results_dir}/{device}.log"
+def setup_logger(results_dir, platform_name):
+    logger = logging.getLogger(platform_name)
+    log_fname = f"{results_dir}/{platform_name}.log"
 
     # Add File
     stream_handler = logging.StreamHandler()
@@ -16,6 +16,7 @@ def setup_logger(results_dir, device):
     logger.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
     logger.addHandler(stream_handler)
+    return logger
 
 
 def fill_metadata(opts):

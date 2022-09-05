@@ -8,8 +8,7 @@ import pandas as pd
 import torch
 import transformers  # Requires sentencepiece
 import yaml
-
-from metrics import Benchmark
+from benchmark import PyTorchBenchmark
 from model_generator import Conv1DModel  # ; Conv2DdModel,; TransformerModel,
 from model_generator import (  # MultiheadAttentionModel,
     FeedForwardModel,
@@ -21,7 +20,7 @@ from utils import fill_metadata, prepare_model, setup_logger
 
 # TODO: Implement self-attention, norm, conv layer modeling
 def run_metrics(opts, data, model, input_constructor):
-    benchmarker = Benchmark(
+    benchmarker = PyTorchBenchmark(
         model,
         input_constructor,
         opts["num_threads"],
@@ -38,7 +37,7 @@ def run_metrics(opts, data, model, input_constructor):
     return data
 
 
-def run_sequence_model(opts, model_name, device_name, dataframe):
+def run_model(opts, model_name, device_name, dataframe):
     for batch_size in opts["batch_size"]:
         for num_layers in opts["num_layers"]:
             for seq_len in opts["seq_lens"]:
@@ -98,20 +97,36 @@ def main(opts, model_name, device_name, results_dir):
     dataframe = pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
 
     if model_name in ["feedforward", "rnn", "lstm"]:
-        dataframe = run_sequence_model(opts, model_name, device_name, dataframe)
+        dataframe = run_model(opts, model_name, device_name, dataframe)
 
     dataframe.to_csv(results_file, index=False)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, required=True)
-    parser.add_argument("--device", type=str, required=True)
+    # Base Configs
+    parser.add_argument("--model", type=str)
+    parser.add_argument("--platform", type=str)
+    parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument("--device_idx", type=int, default=0)
+    parser.add_argument("--num_threads", type=int, default=1)
+    parser.add_argument("--iters", type=int, default=10)
+    parser.add_argument("--use_cuda", type=bool, default=False)
+    parser.add_argument("--use_jit", type=bool, default=False)
+    parser.add_argument("--use_dquant", type=bool, default=False)
+    # Input and Operator Configs
+    parser.add_argument("--batch_size", type=list, default=[1])
+    parser.add_argument("--hidden_size", type=int, default=16)
+    parser.add_argument("--seq_len", type=list, default=[128])
+    parser.add_argument("--num_channels", type=list, default=[])
+    parser.add_argument("--kernel_size", type=list, default=[])
+    parser.add_argument("--stride", type=list, default=[1])
+    parser.add_argument("--act_fn", type=str, default=None)
+    # Load from Config Files
     parser.add_argument("--model_config", type=str)
     parser.add_argument("--device_config", type=str)
     parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     args = parser.parse_args()
-
     # Load config
     with open(args.model_config, "r") as model_config:
         model_params = yaml.safe_load(model_config)

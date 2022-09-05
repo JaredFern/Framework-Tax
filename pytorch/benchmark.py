@@ -1,26 +1,36 @@
 import importlib
+import pickle
 import time
 import timeit
 
 import numpy as np
+import torch
 from memory_profiler import memory_usage
 from thop import profile as thop_profile
+from torch.profiler import ProfilerActivity, profile, record_function
 from torch.utils import benchmark
 
 if importlib.util.find_spec("py3nvml"):
     from py3nvml import py3nvml as nvml
 
 
-class Benchmark(object):
-    def __init__(self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0):
+class PyTorchBenchmark(object):
+    def __init__(
+        self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0, logdir=""
+    ):
         self.model = model
+        self.logdir = logdir
         self.input_constructor = input_constructor
-
         self.num_threads = num_threads
         self.use_cuda = use_cuda
         self.device_idx = device_idx
 
-    def get_wallclock(self, iters=100):
+        if use_cuda:
+            self.profile_activities = [ProfilerActivity.CPU, ProfilerActivity.GPU]
+        else:
+            self.profile_activities = [ProfilerActivity.CPU]
+
+    def get_wallclock(self, iters=10):
         timer = benchmark.Timer(
             stmt="model(input_tensor)",
             setup="input_tensor=input_constructor()",
@@ -29,6 +39,32 @@ class Benchmark(object):
         )
         wallclock_mean = timer.timeit(iters).mean
         return wallclock_mean
+
+    def get_profile(self, iters=10, logdir="."):
+        input_tensor = self.input_constructor()
+        with profile(
+            activities=self.profile_activities,
+            on_trace_ready=torch.profiler.tensorboard_trace_handler(logdir),
+            schedule=torch.profiler.schedule(
+                skip_first=1, wait=0, warmup=1, active=iters, repeat=0
+            ),
+            record_shapes=True,
+            profile_memory=True,
+            with_flops=True,
+            with_stack=True,
+        ) as prof:
+            with record_function("model_inference"):
+                for _ in range(iters + 2):  # Skip the first two steps
+                    self.model(input_tensor)
+                    prof.step()
+        pickle.dump(
+            prof.key_averages(group_by_input_shape=True),
+            open(f"{logdir}/groupbyshapes_profiler.p", "wb"),
+        )
+        pickle.dump(
+            prof.key_averages(group_by_stack_n=True),
+            open(f"{logdir}/groupbystack_profiler.p", "wb"),
+        )
 
     def get_memory(self):
         if self.use_cuda:
