@@ -11,10 +11,8 @@ class FeedForwardModel(nn.Module):
                 "hidden_layer_" + str(i),
                 nn.Linear(hidden_dims[i], hidden_dims[i]),
             )
-            # if activation_function is not None:
-            #     self.model.add_module(
-            #         "hidden_layer_activation_" + str(i), activation_function
-            #     )
+            if activation_function is not None:
+                self.model.add_module("hidden_layer_activation_" + str(i), nn.ReLU())
 
     def forward(self, x):
         return self.model(x)

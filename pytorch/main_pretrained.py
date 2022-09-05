@@ -11,8 +11,6 @@ import torch
 import yaml
 from benchmark import PyTorchBenchmark
 from config import NAME2MODEL_LANGUAGE, NAME2MODEL_VISION
-from timm import create_model
-from torchvision import models
 from utils import fill_metadata, prepare_model, setup_logger
 
 

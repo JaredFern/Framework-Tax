@@ -46,7 +46,7 @@ class PyTorchBenchmark(object):
             activities=self.profile_activities,
             on_trace_ready=torch.profiler.tensorboard_trace_handler(logdir),
             schedule=torch.profiler.schedule(
-                skip_first=1, wait=0, warmup=1, active=iters, repeat=0
+                skip_first=4, wait=0, warmup=2, active=iters, repeat=0
             ),
             record_shapes=True,
             profile_memory=True,
@@ -54,7 +54,7 @@ class PyTorchBenchmark(object):
             with_stack=True,
         ) as prof:
             with record_function("model_inference"):
-                for _ in range(iters + 2):  # Skip the first two steps
+                for _ in range(iters + 6):
                     self.model(input_tensor)
                     prof.step()
         pickle.dump(
