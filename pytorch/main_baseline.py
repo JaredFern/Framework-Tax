@@ -9,15 +9,19 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
+import torch.nn as nn
 import transformers  # Requires sentencepiece
 import yaml
 from benchmark import PyTorchBenchmark
-from model_generator import Conv1DModel  # ; Conv2DdModel,; TransformerModel,
 from model_generator import (  # MultiheadAttentionModel,
+    Conv1DModel,
+    Conv2DModel,
     FeedForwardModel,
+    LayerNormModel,
     LstmModel,
     RnnModel,
 )
+from tqdm import tqdm
 from utils import fill_metadata, prepare_model, setup_logger
 
 
@@ -31,7 +35,7 @@ def run_metrics(opts, data, model, input_constructor, results_dir):
         device_idx=opts["device_idx"],
     )
     results = benchmarker.aggregate_metrics(opts["use_dquant"], opts["use_jit"], opts["iters"])
-    benchmarker.get_profile(opts["iters"], results_dir)
+    # benchmarker.get_profile(opts["iters"], results_dir)
     data = {**data, **results}
 
     del model
@@ -44,6 +48,13 @@ def run_metrics(opts, data, model, input_constructor, results_dir):
 def run_model(opts, model_name, input_shape, dataframe, results_dir):
     hidden_dim = input_shape[-1]
     for num_layers in opts["num_layers"]:
+        metadata = {
+            "model": model_name,
+            "num_layers": num_layers,
+            "input_format": opts["input_format"],
+            "input_size": input_shape,
+            **fill_metadata(opts),
+        }
         input_constructor = partial(torch.randn, size=input_shape, device=opts["device"])
         if model_name == "feedforward":
             model = FeedForwardModel(num_layers * [hidden_dim], opts["act_fn"])
@@ -69,19 +80,25 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
                 paddings=opts["paddings"],
                 groups=opts["groups"],
             )
+        elif model_name == "conv2d":
+            input_constructor = partial(
+                torch.randn, size=(input_shape[0], input_shape[1], input_shape[-1], input_shape[-1])
+            )
+            metadata = {
+                "input_size": input_constructor().shape,
+                "in_channel": input_shape[1],
+                "out_channel": input_shape[2],
+                "kernel_size": input_shape[3],
+                "stride": input_shape[4],
+                "img_size": input_shape[5],
+            }
+            model = Conv2DModel(input_shape[1], input_shape[2], input_shape[3], input_shape[4])
         elif model_name == "self_attn":
             pass
+        elif model_name == "layer_norm":
+            model = LayerNormModel(num_layers * [hidden_dim])
 
         model = prepare_model(model, input_constructor(), opts)
-        metadata = {
-            "model": model_name,
-            "device": opts["device"],
-            "platform": opts["platform"],
-            "input_format": opts["input_format"],
-            "num_layers": num_layers,
-            "input_size": input_shape,
-            **fill_metadata(opts),
-        }
         data = run_metrics(opts, dataframe, model, input_constructor, results_dir)
         results = {**data, **metadata}
 
@@ -105,10 +122,15 @@ def main(opts, model_name, device_name, results_dir):
         input_sizes = product(opts["batch_size"], opts["seq_len"], opts["hidden_size"])
     elif opts["input_format"] == "bchw":
         input_sizes = product(
-            opts["batch_size"], opts["num_channels"], opts["img_size"], opts["img_size"]
+            opts["batch_size"],
+            opts["in_channels"],
+            opts["out_channels"],
+            opts["kernel_size"],
+            opts["stride"],
+            opts["img_size"],
         )
 
-    for input_size in input_sizes:
+    for input_size in tqdm(input_sizes):
         dataframe = run_model(opts, model_name, input_size, dataframe, results_dir)
 
     dataframe.to_csv(results_file, index=False)
@@ -151,5 +173,9 @@ if __name__ == "__main__":
         with open(args.device_config, "r") as device_config:
             device_params = yaml.safe_load(device_config)
 
-    all_params = {**model_params, **device_params, **vars(args)}
+    all_params = {
+        **vars(args),
+        **model_params,
+        **device_params,
+    }
     main(all_params, args.model, args.device, args.results_dir)

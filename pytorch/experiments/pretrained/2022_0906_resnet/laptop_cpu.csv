@@ -1,0 +1,4 @@
+<class 'torch.nn.modules.activation.ReLU'>_macs,<class 'torch.nn.modules.batchnorm.BatchNorm2d'>_macs,<class 'torch.nn.modules.conv.Conv2d'>_macs,<class 'torch.nn.modules.linear.Linear'>_macs,<class 'torch.nn.modules.pooling.AdaptiveAvgPool2d'>_macs,<class 'torch.nn.modules.pooling.MaxPool2d'>_macs,accelerator,act_fn,avg_memory,batch_size,dropout,input_size,latency,macs,max_memory,model,requires_grad,total_params,trainable_params,use_dquant,use_torchscript
+0.0,9934848.0,1813561344.0,512000.0,25600.0,0.0,0.0,relu,708.1490885416666,1.0,,224.0,0.05487266549898777,1824033792.0,708.28515625,resnet18,0.0,11689512.0,0.0,0.0,0.0
+0.0,29196288.0,5329649664.0,512000.0,74240.0,0.0,0.0,relu,729.9342447916666,1.0,,384.0,0.16096209269890097,5359432192.0,741.4375,resnet18,0.0,11689512.0,0.0,0.0,0.0
+0.0,51904512.0,9474932736.0,512000.0,131584.0,0.0,0.0,relu,771.4705729166667,1.0,,512.0,0.2302591948013287,9527480832.0,771.4765625,resnet18,0.0,11689512.0,0.0,0.0,0.0

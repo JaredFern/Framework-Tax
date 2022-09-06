@@ -1,5 +1,7 @@
 model: layernorm
 batch_size: [1]
+seq_len: [128]
+hidden_size: [1,2,4,8,16,32,64,128,256,512,1024,2048,4096, 8192]
 iters: 10
 dropout: null
 device_idx: null

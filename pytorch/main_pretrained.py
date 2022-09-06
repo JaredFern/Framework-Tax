@@ -138,5 +138,9 @@ if __name__ == "__main__":
     with open(args.device_config, "r") as device_config:
         device_params = yaml.safe_load(device_config)
 
-    all_params = {**model_params, **device_params, **vars(args)}
+    all_params = {
+        **vars(args),
+        **model_params,
+        **device_params,
+    }
     main(all_params)

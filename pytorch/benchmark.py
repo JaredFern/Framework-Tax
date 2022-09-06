@@ -78,8 +78,10 @@ class PyTorchBenchmark(object):
         return memory_bytes
 
     def get_flops_count(self):
-        macs, _ = thop_profile(self.model, (self.input_constructor(),), verbose=False)
-        return macs
+        macs, _, macs_by_op = thop_profile(
+            self.model, (self.input_constructor(),), verbose=False, ret_layer_info=False
+        )
+        return macs, macs_by_op
 
     def get_param_count(self, trainable_only=False):
         if trainable_only:
@@ -94,9 +96,11 @@ class PyTorchBenchmark(object):
             memory_usage = self.get_memory()
             data["avg_memory"] = np.mean(memory_usage)
             data["max_memory"] = np.max(memory_usage)
-            data["latency"] = self.get_wallclock(iters)
         if not use_jit:
-            data["macs"] = self.get_flops_count()
+            macs, macs_by_op = self.get_flops_count()
+            data["macs"] = macs
+            for op, macs in macs_by_op.items():
+                data[f"{op}_macs"] = macs
             data["total_params"] = self.get_param_count(False)
             data["trainable_params"] = self.get_param_count(True)
         return data

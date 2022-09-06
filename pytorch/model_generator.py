@@ -101,32 +101,20 @@ class Conv1DModel(nn.Module):
         return self.model(x)
 
 
-class Conv2DdModel(nn.Module):
-    def __init__(
-        self,
-        num_channels,
-        kernel_sizes,
-        strides,
-        paddings,
-        dilations,
-        groups,
-        activation_function,
-    ):
+class Conv2DModel(nn.Module):
+    def __init__(self, in_channel, out_channel, kernel_size, stride):
+        super(Conv2DModel, self).__init__()
+        self.conv = nn.Conv2d(in_channel, out_channel, kernel_size, stride)
+
+    def forward(self, x):
+        return self.conv(x)
+
+
+class LayerNormModel(nn.Module):
+    def __init__(self, hidden_dim):
         self.model = nn.Sequential()
-        for i in range(len(self.num_channels) - 1):
-            self.model.add_module(
-                "hidden_layer_" + str(i),
-                nn.Conv2d(
-                    num_channels[i],
-                    num_channels[i + 1],
-                    kernel_sizes[i],
-                    strides[i],
-                    paddings[i],
-                    dilations[i],
-                    groups[i],
-                ),
-            )
-            self.model.add_module("hidden_layer_activation_" + str(i), activation_function)
+        for i in range(len(hidden_dims) - 1):
+            self.model.add_module(nn.LayerNorm(hidden_dims))
 
     def forward(self, x):
         return self.model(x)
