@@ -123,18 +123,19 @@ if __name__ == "__main__":
     parser.add_argument("--device_idx", type=int, default=0)
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=10)
+    parser.add_argument("--requires_grad", type=bool, default=False)
     parser.add_argument("--use_cuda", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
     # Input and Operator Configs
     parser.add_argument("--input_format", type=str)
-    parser.add_argument("--batch_size", type=list, default=[1])
-    parser.add_argument("--hidden_size", type=int, default=[256])
-    parser.add_argument("--seq_len", type=list, default=[128])
-    parser.add_argument("--num_channels", type=list, default=[])
-    parser.add_argument("--kernel_size", type=list, default=[])
-    parser.add_argument("--stride", type=list, default=[1])
-    parser.add_argument("--act_fn", type=str, default=None)
+    parser.add_argument("--batch_size", type=list)
+    parser.add_argument("--hidden_size", type=int)
+    parser.add_argument("--seq_len", type=list)
+    parser.add_argument("--num_channels", type=list)
+    parser.add_argument("--kernel_size", type=list)
+    parser.add_argument("--stride", type=list)
+    parser.add_argument("--act_fn", type=str)
     # Load from Config Files
     parser.add_argument("--model_config", type=str)
     parser.add_argument("--device_config", type=str)
@@ -142,11 +143,13 @@ if __name__ == "__main__":
     parser.add_argument("--exp_name", type=str)
     args = parser.parse_args()
     # Load config
-    with open(args.model_config, "r") as model_config:
-        model_params = yaml.safe_load(model_config)
+    if args.model_config is not None:
+        with open(args.model_config, "r") as model_config:
+            model_params = yaml.safe_load(model_config)
 
-    with open(args.device_config, "r") as device_config:
-        device_params = yaml.safe_load(device_config)
+    if args.device_config is not None:
+        with open(args.device_config, "r") as device_config:
+            device_params = yaml.safe_load(device_config)
 
-    all_params = {**vars(args), **model_params, **device_params}
+    all_params = {**model_params, **device_params, **vars(args)}
     main(all_params, args.model, args.device, args.results_dir)
