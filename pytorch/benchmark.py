@@ -26,7 +26,7 @@ class PyTorchBenchmark(object):
         self.device_idx = device_idx
 
         if use_cuda:
-            self.profile_activities = [ProfilerActivity.CPU, ProfilerActivity.GPU]
+            self.profile_activities = [ProfilerActivity.CPU, ProfilerActivity.CUDA]
         else:
             self.profile_activities = [ProfilerActivity.CPU]
 
