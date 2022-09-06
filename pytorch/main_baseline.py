@@ -42,51 +42,51 @@ def run_metrics(opts, data, model, input_constructor, results_dir):
 
 
 def run_model(opts, model_name, input_shape, dataframe, results_dir):
-    for hidden_dim in opts["hidden_size"]:
-        for num_layers in opts["num_layers"]:
-            input_constructor = partial(torch.randn, size=input_shape, device=opts["device"])
-            if model_name == "feedforward":
-                model = FeedForwardModel(num_layers * [hidden_dim], opts["act_fn"])
-            elif model_name == "rnn":
-                model = RnnModel(
-                    num_layers * [hidden_dim],
-                    dropout=opts["dropout"],
-                    bidirectional=opts["bidirectional"],
-                    activation_function=opts["act_fn"],
-                )
-            elif model_name == "lstm":
-                model = LstmModel(
-                    num_layers * [hidden_dim],
-                    dropout=opts["dropout"],
-                    bidirectional=opts["bidirectional"],
-                    activation_function=opts["act_fn"],
-                )
-            elif model_name == "conv1d":
-                model = Conv1DModel(
-                    num_channels=opts["num_channels"],
-                    kernel_sizes=opts["kernel_sizes"],
-                    strides=opts["strides"],
-                    paddings=opts["paddings"],
-                    groups=opts["groups"],
-                )
-            elif model_name == "self_attn":
-                pass
+    hidden_dim = input_shape[-1]
+    for num_layers in opts["num_layers"]:
+        input_constructor = partial(torch.randn, size=input_shape, device=opts["device"])
+        if model_name == "feedforward":
+            model = FeedForwardModel(num_layers * [hidden_dim], opts["act_fn"])
+        elif model_name == "rnn":
+            model = RnnModel(
+                num_layers * [hidden_dim],
+                dropout=opts["dropout"],
+                bidirectional=opts["bidirectional"],
+                activation_function=opts["act_fn"],
+            )
+        elif model_name == "lstm":
+            model = LstmModel(
+                num_layers * [hidden_dim],
+                dropout=opts["dropout"],
+                bidirectional=opts["bidirectional"],
+                activation_function=opts["act_fn"],
+            )
+        elif model_name == "conv1d":
+            model = Conv1DModel(
+                num_channels=opts["num_channels"],
+                kernel_sizes=opts["kernel_sizes"],
+                strides=opts["strides"],
+                paddings=opts["paddings"],
+                groups=opts["groups"],
+            )
+        elif model_name == "self_attn":
+            pass
 
-            model = prepare_model(model, input_constructor(), opts)
-            metadata = {
-                "model": model_name,
-                "device": opts["device"],
-                "platform": opts["platform"],
-                "input_format": opts["input_format"],
-                "num_layers": num_layers,
-                "input_size": input_shape,
-                **fill_metadata(opts),
-            }
-            data = run_metrics(opts, dataframe, model, input_constructor, results_dir)
-            results = {**data, **metadata}
+        model = prepare_model(model, input_constructor(), opts)
+        metadata = {
+            "model": model_name,
+            "device": opts["device"],
+            "platform": opts["platform"],
+            "input_format": opts["input_format"],
+            "num_layers": num_layers,
+            "input_size": input_shape,
+            **fill_metadata(opts),
+        }
+        data = run_metrics(opts, dataframe, model, input_constructor, results_dir)
+        results = {**data, **metadata}
 
-            # Combine the run params with the observed metrics
-            dataframe = dataframe.append(results, ignore_index=True)
+        # Combine the run params with the observed metrics
+        dataframe = dataframe.append(results, ignore_index=True)
     return dataframe
 
 
@@ -148,5 +148,5 @@ if __name__ == "__main__":
     with open(args.device_config, "r") as device_config:
         device_params = yaml.safe_load(device_config)
 
-    all_params = {**model_params, **device_params, **vars(args)}
+    all_params = {**vars(args), **model_params, **device_params}
     main(all_params, args.model, args.device, args.results_dir)
