@@ -1,0 +1,2 @@
+latency,avg_memory,max_memory,macs,total_params,trainable_params,model,device,platform,input_format,num_layers,input_size,accelerator,requires_grad,use_torchscript,use_dquant,dropout,act_fn
+7.06840306520462e-05,4689.5234375,4689.5234375,8388608.0,65792.0,65792.0,feedforward,cuda:1,herron_gpu,bsh,1.0,"(1, 128, 256)",0.0,1.0,0.0,0.0,,relu
