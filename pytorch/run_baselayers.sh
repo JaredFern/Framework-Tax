@@ -3,7 +3,7 @@ EXP_NAME=$1
 PLATFORM=$2
 DEVICE=$3
 
-declare -a LAYER_MODELS=("feedforward" "conv1d" "conv2d" "rnn" "lstm")
+declare -a LAYER_MODELS=("feedforward" "conv2d")
 
 
 for MODEL in ${LAYER_MODELS[@]}; do
@@ -12,4 +12,3 @@ for MODEL in ${LAYER_MODELS[@]}; do
     --platform $PLATFORM --device $DEVICE --device_config config/devices/${DEVICE}.yaml \
     --results_dir experiments/templates --exp_name $EXP_NAME ;
 done;
-

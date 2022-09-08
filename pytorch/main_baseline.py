@@ -130,7 +130,7 @@ def main(opts, model_name, device_name, results_dir):
             opts["img_size"],
         )
 
-    for input_size in tqdm(input_sizes):
+    for input_size in tqdm(list(input_sizes)):
         dataframe = run_model(opts, model_name, input_size, dataframe, results_dir)
 
     dataframe.to_csv(results_file, index=False)
