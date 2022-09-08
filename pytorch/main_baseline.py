@@ -82,7 +82,9 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
             )
         elif model_name == "conv2d":
             input_constructor = partial(
-                torch.randn, size=(input_shape[0], input_shape[1], input_shape[-1], input_shape[-1])
+                torch.randn,
+                size=(input_shape[0], input_shape[1], input_shape[-1], input_shape[-1]),
+                device=opts["device"],
             )
             metadata = {
                 "input_size": input_constructor().shape,
