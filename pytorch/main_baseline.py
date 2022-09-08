@@ -53,6 +53,7 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
             "num_layers": num_layers,
             "input_format": opts["input_format"],
             "input_size": input_shape,
+            "batch_size": input_shape[0],
             **fill_metadata(opts),
         }
         input_constructor = partial(torch.randn, size=input_shape, device=opts["device"])
@@ -135,7 +136,7 @@ def main(opts, model_name, device_name, results_dir):
     for input_size in tqdm(list(input_sizes)):
         dataframe = run_model(opts, model_name, input_size, dataframe, results_dir)
 
-    dataframe.to_csv(results_file, index=False)
+    dataframe.to_csv(results_file, mode="a", index=False)
 
 
 if __name__ == "__main__":
