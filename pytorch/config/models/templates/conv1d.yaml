@@ -1,5 +1,5 @@
 model: conv1d
-batch_size: [1]
+batch_size: [1, 2, 4, 8, 16, 32]
 num_channels: [1, 3, 5]
 kernel_size: [3, 5, 7, 9]
 
