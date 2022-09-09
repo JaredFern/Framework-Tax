@@ -34,7 +34,7 @@ def _build_language_input(model_name, batch_size, seq_len, device=None):
     _, tokenizer_fn, model_name = NAME2MODEL_LANGUAGE[model_name]
     tokenizer = tokenizer_fn.from_pretrained(model_name)
     id_constructor = partial(
-        torch.randint,
+        torch.empty,
         low=0,
         high=tokenizer.vocab_size,
         size=(batch_size, seq_len),
@@ -43,8 +43,13 @@ def _build_language_input(model_name, batch_size, seq_len, device=None):
     return id_constructor
 
 
-def _build_vision_input(batch_size, img_size, device=None):
-    return partial(torch.rand, device=device, size=(batch_size, 3, img_size, img_size))
+def _build_vision_input(batch_size, img_size, device=None, memory_format=torch.channels_last):
+    return partial(
+        torch.empty,
+        device=device,
+        size=(batch_size, 3, img_size, img_size),
+        memory_format=memory_format,
+    )
 
 
 def main(opts):
@@ -82,7 +87,14 @@ def main(opts):
                 )
                 model = _build_language_model(model_name, opts["use_jit"])
             if model_name in NAME2MODEL_VISION:
-                input_constructor = _build_vision_input(batch_size, input_size, device)
+                if opts["use_channels_last"]:
+                    memory_format = torch.channels_last
+                else:
+                    memory_format = torch.contiguous_format
+
+                input_constructor = _build_vision_input(
+                    batch_size, input_size, device, memory_format
+                )
                 model = _build_vision_model(model_name, input_size)
 
             model = prepare_model(model, input_constructor(), opts)
@@ -119,6 +131,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=10)
     parser.add_argument("--use_cuda", type=bool, default=False)
+    parser.add_argument("--use_channels_last", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
     # Input Configs
