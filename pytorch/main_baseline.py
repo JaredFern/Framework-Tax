@@ -53,10 +53,11 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
             "num_layers": num_layers,
             "input_format": opts["input_format"],
             "input_size": input_shape,
+            "hidden_size": hidden_dim,
             "batch_size": input_shape[0],
             **fill_metadata(opts),
         }
-        input_constructor = partial(torch.randn, size=input_shape, device=opts["device"])
+        input_constructor = partial(torch.empty, size=input_shape, device=opts["device"])
         if model_name == "feedforward":
             model = FeedForwardModel(num_layers * [hidden_dim], opts["act_fn"])
         elif model_name == "rnn":
@@ -82,11 +83,18 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
                 groups=opts["groups"],
             )
         elif model_name == "conv2d":
+            if opts["use_channels_last"]:
+                memory_format = torch.channels_last
+            else:
+                memory_format = torch.contiguous_format
+
             input_constructor = partial(
-                torch.randn,
+                torch.empty,
                 size=(input_shape[0], input_shape[1], input_shape[-1], input_shape[-1]),
                 device=opts["device"],
+                memory_format=memory_format,
             )
+
             metadata = {
                 "input_size": input_constructor().shape,
                 "in_channel": input_shape[1],
@@ -149,6 +157,7 @@ if __name__ == "__main__":
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=10)
     parser.add_argument("--requires_grad", type=bool, default=False)
+    parser.add_argument("--channel_last", type=bool, default=False)
     parser.add_argument("--use_cuda", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
