@@ -133,6 +133,7 @@ if __name__ == "__main__":
     parser.add_argument("--use_cuda", type=bool, default=False)
     parser.add_argument("--use_channels_last", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
+    parser.add_argument("--use_intel_exts", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
     # Input Configs
     parser.add_argument("--batch_size", type=list)

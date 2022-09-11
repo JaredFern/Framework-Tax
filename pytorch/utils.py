@@ -2,6 +2,7 @@ import datetime
 import logging
 import os
 
+import intel_extension_for_pytorch as ipex
 import torch
 
 
@@ -34,12 +35,10 @@ def prepare_model(model, input_example, opts):
     model = model.to(torch.device(opts["device"]))
     input_example = input_example.to(opts["device"])
 
+    if opts["use_intel_exts"]:
+        model = ipex.optimize(model)
     if opts["use_jit"]:
-        jit_model = torch.jit.trace(model, input_example)
-
-        # Replace model with jit_model
-        del model
-        model = jit_model
+        model = torch.jit.trace(model, input_example)
 
     if not opts["requires_grad"]:
         model.requires_grad_(False)

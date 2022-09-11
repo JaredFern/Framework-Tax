@@ -160,6 +160,7 @@ if __name__ == "__main__":
     parser.add_argument("--channel_last", type=bool, default=False)
     parser.add_argument("--use_cuda", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
+    parser.add_argument("--use_intel_exts", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
     # Input and Operator Configs
     parser.add_argument("--input_format", type=str)
