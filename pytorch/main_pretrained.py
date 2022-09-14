@@ -34,7 +34,7 @@ def _build_language_input(model_name, batch_size, seq_len, device=None):
     _, tokenizer_fn, model_name = NAME2MODEL_LANGUAGE[model_name]
     tokenizer = tokenizer_fn.from_pretrained(model_name)
     id_constructor = partial(
-        torch.empty,
+        torch.randint,
         low=0,
         high=tokenizer.vocab_size,
         size=(batch_size, seq_len),
@@ -106,8 +106,8 @@ def main(opts):
                 device_idx=opts["device_idx"],
             )
             data = benchmarker.aggregate_metrics(opts["use_dquant"], opts["use_jit"], opts["iters"])
-            logger.info(f"Profile to {results_dir}")
-            benchmarker.get_profile(opts["iters"], results_dir)
+            # logger.info(f"Profile to {results_dir}")
+            # benchmarker.get_profile(opts["iters"], results_dir)
             results = {**data, **metadata}
 
             # Combine the run params with the observed metrics

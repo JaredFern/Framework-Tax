@@ -1,2 +1,0 @@
-<class 'torch.nn.modules.dropout.Dropout'>_macs,<class 'torch.nn.modules.linear.Linear'>_macs,<class 'torch.nn.modules.normalization.LayerNorm'>_macs,accelerator,act_fn,avg_memory,batch_size,dropout,input_size,latency,macs,max_memory,model,requires_grad,total_params,trainable_params,use_dquant,use_torchscript
-0.0,10872225792.0,9830400.0,0.0,relu,1507.80078125,1.0,,128.0,0.30147540920006577,10882056192.0,1507.80078125,bert,0.0,109482240.0,0.0,0.0,0.0
