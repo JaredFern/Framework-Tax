@@ -211,6 +211,7 @@ def profile(
         model(*inputs)
 
     macs_by_op = defaultdict(int)
+    op_count = defaultdict(int)
 
     def dfs_count(module: nn.Module, prefix="\t") -> (int, int):
         total_ops, total_params = module.total_ops.item(), 0
@@ -224,6 +225,7 @@ def profile(
             if m in handler_collection and not isinstance(m, (nn.Sequential, nn.ModuleList)):
                 m_ops, m_params = m.total_ops.item(), m.total_params.item()
                 macs_by_op[type(m)] += m_ops
+                op_count[type(m)] += 1
             else:
                 m_ops, m_params, next_dict = dfs_count(m, prefix=prefix + "\t")
             ret_dict[n] = (m_ops, m_params, next_dict)
@@ -242,5 +244,5 @@ def profile(
         m._buffers.pop("total_params")
 
     if ret_layer_info:
-        return total_ops, total_params, ret_dict, macs_by_op
-    return total_ops, total_params, macs_by_op
+        return total_ops, total_params, ret_dict, macs_by_op, op_count
+    return total_ops, total_params, macs_by_op, op_count
