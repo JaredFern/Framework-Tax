@@ -30,7 +30,7 @@ def _build_vision_model(model_name, img_size=224, use_dquant=False, pretrained=F
     return model
 
 
-def _build_language_input(model_name, batch_size, seq_len, device=None):
+def _build_language_input(model_name, batch_size, seq_len, device=None, dtype=torch.float32):
     _, tokenizer_fn, model_name = NAME2MODEL_LANGUAGE[model_name]
     tokenizer = tokenizer_fn.from_pretrained(model_name)
     id_constructor = partial(
@@ -39,13 +39,16 @@ def _build_language_input(model_name, batch_size, seq_len, device=None):
         high=tokenizer.vocab_size,
         size=(batch_size, seq_len),
         device=device,
+        dtype=dtype,
     )
     return id_constructor
 
 
-def _build_vision_input(batch_size, img_size, device=None, memory_format=torch.channels_last):
+def _build_vision_input(
+    batch_size, img_size, device=None, dtype=torch.float32, memory_format=torch.channels_last
+):
     return partial(
-        torch.empty,
+        torch.randn,
         device=device,
         size=(batch_size, 3, img_size, img_size),
         memory_format=memory_format,
@@ -81,9 +84,10 @@ def main(opts):
                 **fill_metadata(opts),
             }
 
+            dtype = torch.float16 if opts["use_fp16"] else torch.float32
             if model_name in NAME2MODEL_LANGUAGE:
                 input_constructor = _build_language_input(
-                    model_name, batch_size, input_size, device
+                    model_name, batch_size, input_size, device, dtype
                 )
                 model = _build_language_model(model_name, opts["use_jit"])
             if model_name in NAME2MODEL_VISION:
@@ -93,7 +97,7 @@ def main(opts):
                     memory_format = torch.contiguous_format
 
                 input_constructor = _build_vision_input(
-                    batch_size, input_size, device, memory_format
+                    batch_size, input_size, device, dtype, memory_format
                 )
                 model = _build_vision_model(model_name, input_size)
 
@@ -132,6 +136,7 @@ if __name__ == "__main__":
     parser.add_argument("--iters", type=int, default=10)
     parser.add_argument("--use_cuda", type=bool, default=False)
     parser.add_argument("--use_channels_last", type=bool, default=False)
+    parser.add_argument("--use_fp16", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
     parser.add_argument("--use_intel_exts", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
