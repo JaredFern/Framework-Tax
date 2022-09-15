@@ -32,6 +32,7 @@ def fill_metadata(opts):
 
 
 def prepare_model(model, input_example, opts):
+    model = model.to(torch.device(opts["device"]))
     if not opts["requires_grad"]:
         model.requires_grad_(False)
         model.eval()
@@ -39,12 +40,13 @@ def prepare_model(model, input_example, opts):
         model = ipex.optimize(model)
     if opts["use_fp16"]:
         model = model.half()
-    if opts["use_jit"]:
-        model = torch.jit.trace(model, input_example)
     if opts["use_dquant"]:
         torch.backends.quantized.engine = "qnnpack"
         model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
+    if opts["use_jit"]:
+        jit_model = torch.jit.trace(model, input_example)
+        del model
+        torch.cuda.empty_cache()
+        return jit_model
 
-    model = model.to(torch.device(opts["device"]))
-    input_example = input_example.to(opts["device"])
     return model
