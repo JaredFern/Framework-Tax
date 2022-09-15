@@ -51,8 +51,7 @@ def _build_vision_input(
         torch.randn,
         device=device,
         size=(batch_size, 3, img_size, img_size),
-        memory_format=memory_format,
-    )
+    ).to(memory_format=memory_format)
 
 
 def main(opts):
