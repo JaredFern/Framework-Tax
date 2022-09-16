@@ -14,19 +14,19 @@ from config import NAME2MODEL_LANGUAGE, NAME2MODEL_VISION
 from utils import setup_logger
 
 
-def _build_language_model(model_name, use_jit):
+def _build_language_model(model_name, device, use_jit):
     model_fn, _, checkpoint = NAME2MODEL_LANGUAGE[model_name]
-    model = model_fn.from_pretrained(checkpoint, torchscript=use_jit)
+    model = model_fn.from_pretrained(checkpoint, torchscript=use_jit).to(device)
     return model
 
 
-def _build_vision_model(model_name, img_size=224, use_dquant=False, pretrained=False):
+def _build_vision_model(model_name, device, img_size=224, use_dquant=False, pretrained=False):
     if model_name in "vit32":
-        model = NAME2MODEL_VISION[model_name](pretrained=pretrained, img_size=img_size)
+        model = NAME2MODEL_VISION[model_name](pretrained=pretrained, img_size=img_size).to(device)
     elif model_name == "mobilenet_v2":
-        model = NAME2MODEL_VISION[model_name](pretrained=pretrained, quantize=use_dquant)
+        model = NAME2MODEL_VISION[model_name](pretrained=pretrained, quantize=use_dquant).to(device)
     else:
-        model = NAME2MODEL_VISION[model_name](pretrained=pretrained)
+        model = NAME2MODEL_VISION[model_name](pretrained=pretrained).to(device)
     return model
 
 
@@ -82,7 +82,7 @@ def main(opts):
                 input_constructor = _build_language_input(
                     model_name, batch_size, input_size, device
                 )
-                model = _build_language_model(model_name, opts.use_jit)
+                model = _build_language_model(model_name, opts.device, opts.use_jit)
             if model_name in NAME2MODEL_VISION:
                 if opts.use_channels_last:
                     memory_format = torch.channels_last
@@ -91,7 +91,7 @@ def main(opts):
                 input_constructor = _build_vision_input(
                     batch_size, input_size, device, dtype, memory_format
                 )
-                model = _build_vision_model(model_name, input_size)
+                model = _build_vision_model(model_name, device, input_size)
 
             benchmarker = PyTorchBenchmark(model, input_constructor, opts)
             data = benchmarker.aggregate_metrics()
@@ -103,7 +103,7 @@ def main(opts):
 
     # Teardown model to (hopefully) avoid OOM on next run
     del model
-    if opts["use_cuda"]:
+    if opts.use_cuda:
         torch.cuda.synchronize()
         torch.cuda.empty_cache()
 

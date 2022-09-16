@@ -29,7 +29,6 @@ class PyTorchBenchmark(object):
             self.profile_activities = [ProfilerActivity.CPU]
 
     def _prepare_model(self):
-        print(self.config)
         precisions = {torch.float}
         self.model = self.model.to(torch.device(self.config.device))
         if not self.config.requires_grad:
