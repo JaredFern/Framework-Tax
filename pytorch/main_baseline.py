@@ -22,68 +22,59 @@ from model_generator import (  # MultiheadAttentionModel,
     RnnModel,
 )
 from tqdm import tqdm
-from utils import fill_metadata, prepare_model, setup_logger
+from utils import setup_logger
 
 
-# TODO: Implement self-attention, norm, conv layer modeling
 def run_metrics(opts, data, model, input_constructor, results_dir):
-    benchmarker = PyTorchBenchmark(
-        model,
-        input_constructor,
-        opts["num_threads"],
-        opts["use_cuda"],
-        device_idx=opts["device_idx"],
-    )
-    results = benchmarker.aggregate_metrics(opts["use_dquant"], opts["use_jit"], opts["iters"])
-    # benchmarker.get_profile(opts["iters"], results_dir)
+    benchmarker = PyTorchBenchmark(model, input_constructor, opts)
+    results = benchmarker.aggregate_metrics(opts.iters)
     data = {**data, **results}
 
     del model
-    if opts["use_cuda"]:
+    if opts.use_cuda:
         torch.cuda.synchronize()
         torch.cuda.empty_cache()
     return data
 
 
-def run_model(opts, model_name, input_shape, dataframe, results_dir):
+def run_model(opts, input_shape, dataframe, results_dir):
     hidden_dim = input_shape[-1]
-    for num_layers in opts["num_layers"]:
+    for num_layers in opts.num_layers:
         metadata = {
-            "model": model_name,
+            "model": opts.model,
             "num_layers": num_layers,
-            "input_format": opts["input_format"],
+            "input_format": opts.input_format,
             "input_size": input_shape,
             "hidden_size": hidden_dim,
             "batch_size": input_shape[0],
-            **fill_metadata(opts),
         }
-        input_constructor = partial(torch.empty, size=input_shape, device=opts["device"])
-        if model_name == "feedforward":
-            model = FeedForwardModel(num_layers * [hidden_dim], opts["act_fn"])
-        elif model_name == "rnn":
+        input_constructor = partial(torch.randn, size=input_shape, device=opts.device)
+        if opts.model == "feedforward":
+            model = FeedForwardModel(num_layers * [hidden_dim], opts.act_fn)
+        elif opts.model == "rnn":
             model = RnnModel(
                 num_layers * [hidden_dim],
-                dropout=opts["dropout"],
-                bidirectional=opts["bidirectional"],
-                activation_function=opts["act_fn"],
+                dropout=opts.dropout,
+                bidirectional=opts.bidirectional,
+                activation_function=opts.act_fn,
             )
-        elif model_name == "lstm":
+        elif opts.model == "lstm":
             model = LstmModel(
                 num_layers * [hidden_dim],
-                dropout=opts["dropout"],
-                bidirectional=opts["bidirectional"],
-                activation_function=opts["act_fn"],
+                dropout=opts.dropout,
+                bidirectional=opts.bidirectional,
+                activation_function=opts.act_fn,
             )
-        elif model_name == "conv1d":
+        elif opts.model == "conv1d":
             model = Conv1DModel(
-                num_channels=opts["num_channels"],
-                kernel_sizes=opts["kernel_sizes"],
-                strides=opts["strides"],
-                paddings=opts["paddings"],
-                groups=opts["groups"],
+                num_channels=opts.num_channels,
+                kernel_sizes=opts.kernel_sizes,
+                strides=opts.strides,
+                paddings=opts.paddings,
+                groups=opts.groups,
             )
-        elif model_name == "conv2d":
-            if opts["use_channels_last"]:
+        elif opts.model == "conv2d":
+            if opts.use_channels_last:
                 memory_format = torch.channels_last
             else:
                 memory_format = torch.contiguous_format
@@ -91,7 +82,7 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
             input_constructor = partial(
                 torch.empty,
                 size=(input_shape[0], input_shape[1], input_shape[-1], input_shape[-1]),
-                device=opts["device"],
+                device=opts.device,
                 memory_format=memory_format,
             )
 
@@ -104,51 +95,58 @@ def run_model(opts, model_name, input_shape, dataframe, results_dir):
                 "img_size": input_shape[5],
             }
             model = Conv2DModel(input_shape[1], input_shape[2], input_shape[3], input_shape[4])
-        elif model_name == "self_attn":
+        elif opts.model == "self_attn":
             pass
-        elif model_name == "layer_norm":
+        elif opts.model == "layer_norm":
             model = LayerNormModel(num_layers * [hidden_dim])
 
-        model = prepare_model(model, input_constructor(), opts)
         data = run_metrics(opts, dataframe, model, input_constructor, results_dir)
-        results = {**data, **metadata}
+        results = {**data, **metadata, **vars(opts)}
 
         # Combine the run params with the observed metrics
         dataframe = dataframe.append(results, ignore_index=True)
     return dataframe
 
 
-def main(opts, model_name, device_name, results_dir):
-    platform_name = opts["platform"]
+def main(opts):
+    platform_name = opts.platform
     results_dir = os.path.join(
-        opts["results_dir"], f"{datetime.datetime.now().strftime('%Y_%m%d')}_{opts['exp_name']}"
+        opts.results_dir, f"{datetime.datetime.now().strftime('%Y_%m%d')}_{opts.exp_name}"
     )
     Path(results_dir).mkdir(parents=True, exist_ok=True)
     results_file = f"{results_dir}/{platform_name}.csv"
     dataframe = pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
 
-    if opts["input_format"] == "bh":
-        input_sizes = product(opts["batch_size"], opts["hidden_size"])
-    if opts["input_format"] == "bsh":
-        input_sizes = product(opts["batch_size"], opts["seq_len"], opts["hidden_size"])
-    elif opts["input_format"] == "bchw":
+    if opts.input_format == "bh":
+        input_sizes = product(opts.batch_size, opts.hidden_size)
+    if opts.input_format == "bsh":
+        input_sizes = product(opts.batch_size, opts.seq_len, opts.hidden_size)
+    elif opts.input_format == "bchw":
         input_sizes = product(
-            opts["batch_size"],
-            opts["in_channels"],
-            opts["out_channels"],
-            opts["kernel_size"],
-            opts["stride"],
-            opts["img_size"],
+            opts.batch_size,
+            opts.in_channels,
+            opts.out_channels,
+            opts.kernel_size,
+            opts.stride,
+            opts.img_size,
         )
 
     for input_size in tqdm(list(input_sizes)):
-        dataframe = run_model(opts, model_name, input_size, dataframe, results_dir)
+        dataframe = run_model(opts, input_size, dataframe, results_dir)
 
     dataframe.to_csv(results_file, mode="a", index=False)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--model_config", type=str)
+    parser.add_argument("--device_config", type=str)
+    args, remain_args = parser.parse_known_args()
+    with open(args.model_config, "r") as model_config:
+        parser.set_defaults(**yaml.safe_load(model_config))
+
+    with open(args.device_config, "r") as device_config:
+        parser.set_defaults(**yaml.safe_load(device_config))
     # Base Configs
     parser.add_argument("--model", type=str)
     parser.add_argument("--platform", type=str)
@@ -157,10 +155,13 @@ if __name__ == "__main__":
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=10)
     parser.add_argument("--requires_grad", type=bool, default=False)
-    parser.add_argument("--channel_last", type=bool, default=False)
+    # Optimization Params
     parser.add_argument("--use_cuda", type=bool, default=False)
+    parser.add_argument("--use_channel_last", type=bool, default=False)
+    parser.add_argument("--use_fp16", type=bool, default=False)
     parser.add_argument("--use_jit", type=bool, default=False)
-    parser.add_argument("--use_intel_exts", type=bool, default=False)
+    parser.add_argument("--use_tensorrt", type=bool, default=False)
+    parser.add_argument("--use_ipex", type=bool, default=False)
     parser.add_argument("--use_dquant", type=bool, default=False)
     # Input and Operator Configs
     parser.add_argument("--input_format", type=str)
@@ -171,24 +172,9 @@ if __name__ == "__main__":
     parser.add_argument("--kernel_size", type=list)
     parser.add_argument("--stride", type=list)
     parser.add_argument("--act_fn", type=str)
-    # Load from Config Files
-    parser.add_argument("--model_config", type=str)
-    parser.add_argument("--device_config", type=str)
+    # Logging Configs
     parser.add_argument("--results_dir", type=str)  # experiments/MMDDYY_name/
     parser.add_argument("--exp_name", type=str)
     args = parser.parse_args()
-    # Load config
-    if args.model_config is not None:
-        with open(args.model_config, "r") as model_config:
-            model_params = yaml.safe_load(model_config)
 
-    if args.device_config is not None:
-        with open(args.device_config, "r") as device_config:
-            device_params = yaml.safe_load(device_config)
-
-    all_params = {
-        **vars(args),
-        **model_params,
-        **device_params,
-    }
-    main(all_params, args.model, args.device, args.results_dir)
+    main(args)

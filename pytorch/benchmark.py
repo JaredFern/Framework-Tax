@@ -3,8 +3,10 @@ import pickle
 import time
 import timeit
 
+import intel_extension_for_pytorch as ipex
 import numpy as np
 import torch
+import torch_tensorrt
 from memory_profiler import memory_usage
 from thop import profile as thop_profile
 from torch.profiler import ProfilerActivity, profile, record_function
@@ -15,27 +17,76 @@ if importlib.util.find_spec("py3nvml"):
 
 
 class PyTorchBenchmark(object):
-    def __init__(
-        self, model, input_constructor, num_threads=1, use_cuda=False, device_idx=0, logdir=""
-    ):
+    def __init__(self, model, input_constructor, config, logdir=""):
         self.model = model
         self.logdir = logdir
         self.input_constructor = input_constructor
-        self.num_threads = num_threads
-        self.use_cuda = use_cuda
-        self.device_idx = device_idx
+        self.config = config
 
-        if use_cuda:
+        if self.config.use_cuda:
             self.profile_activities = [ProfilerActivity.CPU, ProfilerActivity.CUDA]
         else:
             self.profile_activities = [ProfilerActivity.CPU]
 
+    def _prepare_model(self):
+        print(self.config)
+        precisions = {torch.float}
+        self.model = self.model.to(torch.device(self.config.device))
+        if not self.config.requires_grad:
+            self.model.requires_grad_(False)
+            self.model.eval()
+        if self.config.use_ipex:
+            self.model = ipex.optimize(self.model)
+        if self.config.use_fp16:
+            precisions = {torch.float, torch.half}
+            self.model = self.model.half()
+        if self.config.use_dquant:
+            torch.backends.quantized.engine = "qnnpack"
+            self.model = torch.quantization.quantize_dynamic(
+                self.model, {torch.nn.Linear}, dtype=torch.qint8
+            )
+        if self.config.use_fp16:
+            input_example = self.input_constructor()
+            jit_model = torch.jit.trace(self.model, input_example)
+            del self.model
+            self.model = jit_model
+        if self.config.use_tensorrt:
+            input_example = self.input_constructor()
+            jit_model = torch.jit.trace(self.model, (input_example,))
+            trt_model = torch_tensorrt.compile(
+                jit_model, inputs=[input_example], enabled_precisions=precisions
+            )
+            del self.model, jit_model
+            torch.cuda.empty_cache()
+            self.model = trt_model
+
     def get_wallclock(self, iters=10):
+        """Compute mean runtime for model execution averaged over iter runs
+
+        Args:
+            iters (int, optional): Number of model excecutions. Defaults to 10.
+
+        Returns:
+            wallclock_mean: Average runtime
+        """
+        # Warmup Run Just in Case
+        out = self.model(self.input_constructor())
+        del out
+
+        if self.config.use_cuda:
+            exec_stmt = "model(input_tensor); torch.cuda.synchronize();"
+        else:
+            exec_stmt = "model(input_tensor);"
+
         timer = benchmark.Timer(
-            stmt="model(input_tensor)",
+            stmt="exec_stmt",
             setup="input_tensor=input_constructor()",
-            num_threads=self.num_threads,
-            globals={"model": self.model, "input_constructor": self.input_constructor},
+            num_threads=self.config.num_threads,
+            globals={
+                "model": self.model,
+                "input_constructor": self.input_constructor,
+                "exec_stmt": exec_stmt,
+            },
         )
         wallclock_mean = timer.timeit(iters).mean
         return wallclock_mean
@@ -67,10 +118,10 @@ class PyTorchBenchmark(object):
         )
 
     def get_memory(self):
-        if self.use_cuda:
+        if "cuda" in self.config.device:
             nvml.nvmlInit()
             _ = self.model(self.input_constructor())
-            handle = nvml.nvmlDeviceGetHandleByIndex(self.device_idx)
+            handle = nvml.nvmlDeviceGetHandleByIndex(self.config.device_idx)
             meminfo = nvml.nvmlDeviceGetMemoryInfo(handle)
             memory_bytes = meminfo.used
         else:
@@ -89,23 +140,26 @@ class PyTorchBenchmark(object):
         else:
             return sum(p.numel() for p in self.model.parameters())
 
-    def aggregate_metrics(self, use_dquant, use_jit, iters=100):
+    def aggregate_metrics(self, iters=10):
         data = {}
-        data["latency"] = self.get_wallclock()
-        if not use_dquant:
+        # Model Architecture Metrics
+        macs, macs_by_op, op_count = self.get_flops_count()
+        data["macs"] = macs
+        for op, macs in macs_by_op.items():
+            data[f"{op}_macs"] = macs
+
+        data["total_nn_calls"] = 0
+        for op, count in op_count.items():
+            data[f"{op}_calls"] = count
+            data["total_nn_calls"] += count
+        data["total_params"] = self.get_param_count(False)
+        data["trainable_params"] = self.get_param_count(True)
+
+        # Model Execution Metrics
+        self._prepare_model()
+        data["latency"] = self.get_wallclock(iters)
+        if not self.config.use_dquant:
             memory_usage = self.get_memory()
             data["avg_memory"] = np.mean(memory_usage)
             data["max_memory"] = np.max(memory_usage)
-        if not use_jit:
-            macs, macs_by_op, op_count = self.get_flops_count()
-            data["macs"] = macs
-            for op, macs in macs_by_op.items():
-                data[f"{op}_macs"] = macs
-
-            data["total_nn_calls"] = 0
-            for op, count in op_count.items():
-                data[f"{op}_calls"] = count
-                data["total_nn_calls"] += count
-            data["total_params"] = self.get_param_count(False)
-            data["trainable_params"] = self.get_param_count(True)
         return data
