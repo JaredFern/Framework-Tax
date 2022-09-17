@@ -1,4 +1,6 @@
-Loading vit32 model
+Loading resnet18 model
+Loading vgg16 model
+Loading alexnet model
 Loading vit32 model
 Loading efficientnet model
 Loading efficientnet_lite model
