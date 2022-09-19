@@ -71,11 +71,14 @@ def main(opts):
 
     # Load model and inputs
     logger.info(f"Loading {model_name} model")
+    logger.info(f"Run Parameters: {opts}")
     device = torch.device(device_name)
 
     for batch_size in opts.batch_size:
         for input_size in opts.input_size:
-            metadata = {"batch_size": batch_size, "input_size": input_size}
+            metadata = vars(opts)
+            metadata["batch_size"] = batch_size
+            metadata["input_size"] = input_size
 
             dtype = torch.float16 if opts.use_fp16 else torch.float32
             if model_name in NAME2MODEL_LANGUAGE:
@@ -95,7 +98,7 @@ def main(opts):
 
             benchmarker = PyTorchBenchmark(model, input_constructor, opts)
             data = benchmarker.aggregate_metrics()
-            results = {**data, **metadata, **vars(opts)}
+            results = {**data, **metadata}
 
             # Combine the run params with the observed metrics
             dataframe = dataframe.append(results, ignore_index=True)
@@ -127,13 +130,14 @@ if __name__ == "__main__":
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=10)
     # Optimization Params
-    parser.add_argument("--use_cuda", type=bool, default=False)
-    parser.add_argument("--use_channels_last", type=bool, default=False)
-    parser.add_argument("--use_fp16", type=bool, default=False)  # Not Supported for all platforms
-    parser.add_argument("--use_jit", type=bool, default=False)
-    parser.add_argument("--use_tensorrt", type=bool, default=False)
-    parser.add_argument("--use_ipex", type=bool, default=False)
-    parser.add_argument("--use_dquant", type=bool, default=False)
+    parser.add_argument("--requires_grad", action="store_true")
+    parser.add_argument("--use_cuda", action="store_true")
+    parser.add_argument("--use_channels_last", action="store_true")
+    parser.add_argument("--use_fp16", action="store_true")  # Not Supported for all platforms
+    parser.add_argument("--use_jit", action="store_true")
+    parser.add_argument("--use_tensorrt", action="store_true")
+    parser.add_argument("--use_ipex", action="store_true")
+    parser.add_argument("--use_dquant", action="store_true")
     # Load from Config Files
     parser.add_argument("--results_dir", type=str, default="experiments/")
     parser.add_argument("--exp_name", type=str)

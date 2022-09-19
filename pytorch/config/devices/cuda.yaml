@@ -5,5 +5,5 @@ requires_grad: False
 use_jit: False
 use_dquant: False
 use_cuda: True
-device: "cuda:1"
-device_idx: 1
+device: "cuda:0"
+device_idx: 0
