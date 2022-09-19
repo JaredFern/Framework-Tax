@@ -1,16 +1,16 @@
 #!/usr/bin/bash
-#SBATCH --job-name bm-2080Ti
+#SBATCH --job-name bm-rtx8000
+#SBATCH --out slurm_out/rtx8000_%a.out
 #SBATCH --time 1-00:00:00
 #SBATCH --partition CLUSTER
 #SBATCH --mem 32GB
-#SBATCH --gres gpu:2080Ti:1
-#SBATCH --out slurm_out/2080Ti_%a.out
+#SBATCH --gres gpu:RTX_8000:1
 #SBATCH --array 0-3
 
 # Load Virtual Env
 source activate device_benchmarking;
 
-PLATFORM="2080Ti"
+PLATFORM="RTX-8000"
 DEVICE="cuda"
 
 EXP_TAG=("fp32" "fp16" "torchscript" "trt")

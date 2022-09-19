@@ -1,19 +1,21 @@
 #!/usr/bin/bash
 #SBATCH --job-name bm-3090
-#SBATCH --out slurm_out/3090.out
+#SBATCH --out slurm_out/3090_%a.out
 #SBATCH --time 1-00:00:00
 #SBATCH --partition CLUSTER
 #SBATCH --mem 32GB
 #SBATCH --gres gpu:3090:1
-#SBATCH --array 1-4
+#SBATCH --array 0-3
 
 # Load Virtual Env
 source activate device_benchmarking;
 
 PLATFORM="3090"
 DEVICE="cuda"
+
 EXP_TAG=("fp32" "fp16" "torchscript" "trt")
 EXP_FLAG=(" " "--use_fp16" "--use_jit" "--use_tensorrt")
+
 EXP_NAME="pretrained-"${EXP_TAG[$SLURM_ARRAY_TASK_ID]}
 
 # Pretrained Vision Models
@@ -27,7 +29,7 @@ for MODEL in ${VISION_MODELS[@]}; do
   python3 pytorch/main_pretrained.py \
     --model $MODEL --model_config pytorch/config/models/vision.yaml ${EXP_FLAG[$SLURM_ARRAY_TASK_ID]} \
     --platform $PLATFORM --device $DEVICE --device_config pytorch/config/devices/${DEVICE}.yaml \
-    --results_dir pytorch/experiments/pretrained --exp_name $EXP_NAME ;
+    --results_dir pytorch/experiments/pretrained --exp_name $EXP_NAME;
 done;
 
 # Pretrained Language Models
@@ -38,5 +40,5 @@ for MODEL in ${LANG_MODELS[@]}; do
   python3 pytorch/main_pretrained.py \
     --model $MODEL --model_config pytorch/config/models/transformers.yaml ${EXP_FLAG[$SLURM_ARRAY_TASK_ID]}\
     --platform $PLATFORM --device $DEVICE --device_config pytorch/config/devices/${DEVICE}.yaml \
-    --results_dir pytorch/experiments/pretrained --exp_name $EXP_NAME ;
+    --results_dir pytorch/experiments/pretrained --exp_name $EXP_NAME;
 done;

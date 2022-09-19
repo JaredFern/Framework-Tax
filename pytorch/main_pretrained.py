@@ -55,47 +55,48 @@ def _build_vision_input(
     )
 
 
+def build_model(opts, batch_size, input_size, dtype, device):
+    if opts.model in NAME2MODEL_LANGUAGE:
+        input_constructor = _build_language_input(opts.model, batch_size, input_size, device)
+        model = _build_language_model(opts.model, opts.device, opts.use_jit)
+    if opts.model in NAME2MODEL_VISION:
+        if opts.use_channels_last:
+            memory_format = torch.channels_last
+        else:
+            memory_format = torch.contiguous_format
+        input_constructor = _build_vision_input(
+            batch_size, input_size, device, dtype, memory_format
+        )
+        model = _build_vision_model(opts.model, device, input_size)
+    return model, input_constructor
+
+
 def main(opts):
-    device_name = opts.device
-    model_name = opts.model
-    platform_name = opts.platform
+    device = torch.device(opts.device)
+    dtype = torch.float16 if opts.use_fp16 else torch.float32
 
     # Setup Logging
     results_dir = os.path.join(
         opts.results_dir, f"{datetime.datetime.now().strftime('%Y_%m%d')}_{opts.exp_name}"
     )
     Path(results_dir).mkdir(parents=True, exist_ok=True)
-    logger = setup_logger(results_dir, platform_name)
-    results_file = f"{results_dir}/{platform_name}.csv"
+    logger = setup_logger(results_dir, opts.platform)
+    results_file = f"{results_dir}/{opts.platform}.csv"
     dataframe = pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
 
     # Load model and inputs
-    logger.info(f"Loading {model_name} model")
-    logger.info(f"Run Parameters: {opts}")
-    device = torch.device(device_name)
+    logger.info(f"Loading {opts.model} model")
 
     for batch_size in opts.batch_size:
+        logger.info(f"Run Parameters: {opts}")
         for input_size in opts.input_size:
-            metadata = vars(opts)
+            logger.info(f"Benchmarking {opts.model} -- Batch: {batch_size}; Input: {input_size}")
+            metadata = {}
+            metadata["model"] = opts.model
             metadata["batch_size"] = batch_size
             metadata["input_size"] = input_size
 
-            dtype = torch.float16 if opts.use_fp16 else torch.float32
-            if model_name in NAME2MODEL_LANGUAGE:
-                input_constructor = _build_language_input(
-                    model_name, batch_size, input_size, device
-                )
-                model = _build_language_model(model_name, opts.device, opts.use_jit)
-            if model_name in NAME2MODEL_VISION:
-                if opts.use_channels_last:
-                    memory_format = torch.channels_last
-                else:
-                    memory_format = torch.contiguous_format
-                input_constructor = _build_vision_input(
-                    batch_size, input_size, device, dtype, memory_format
-                )
-                model = _build_vision_model(model_name, device, input_size)
-
+            model, input_constructor = build_model(opts, batch_size, input_size, dtype, device)
             benchmarker = PyTorchBenchmark(model, input_constructor, opts)
             data = benchmarker.aggregate_metrics()
             results = {**data, **metadata}

@@ -39,12 +39,14 @@ class PyTorchBenchmark(object):
         if self.config.use_fp16:
             precisions = {torch.float, torch.half}
             self.model = self.model.half()
+
+    def _optimize_model(self):
         if self.config.use_dquant:
             torch.backends.quantized.engine = "qnnpack"
             self.model = torch.quantization.quantize_dynamic(
                 self.model, {torch.nn.Linear}, dtype=torch.qint8
             )
-        if self.config.use_fp16:
+        if self.config.use_jit:
             input_example = self.input_constructor()
             jit_model = torch.jit.trace(self.model, input_example)
             del self.model
@@ -142,6 +144,7 @@ class PyTorchBenchmark(object):
     def aggregate_metrics(self, iters=10):
         data = {}
         # Model Architecture Metrics
+        self._prepare_model()
         macs, macs_by_op, op_count = self.get_flops_count()
         data["macs"] = macs
         for op, macs in macs_by_op.items():
@@ -155,7 +158,7 @@ class PyTorchBenchmark(object):
         data["trainable_params"] = self.get_param_count(True)
 
         # Model Execution Metrics
-        self._prepare_model()
+        self._optimize_model()
         data["latency"] = self.get_wallclock(iters)
         if not self.config.use_dquant:
             memory_usage = self.get_memory()
