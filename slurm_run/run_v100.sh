@@ -3,9 +3,9 @@
 #SBATCH --out slurm_out/v100_%a.out
 #SBATCH --time 1-00:00:00
 #SBATCH --partition CLUSTER
-#SBATCH --mem 32GB
+#SBATCH --mem 16GB
 #SBATCH --gres gpu:v100:1
-#SBATCH --array 0-3
+#SBATCH --array 0-5
 
 # Load Virtual Env
 source activate device_benchmarking;
@@ -13,9 +13,8 @@ source activate device_benchmarking;
 PLATFORM="v100"
 DEVICE="cuda"
 
-EXP_TAG=("fp32" "fp16" "torchscript" "trt")
-EXP_FLAG=(" " "--use_fp16" "--use_jit" "--use_tensorrt")
-
+EXP_TAG=("fp32" "fp16" "torchscript" "torchscript-fp16" "trt" "trt-fp16")
+EXP_FLAG=(" " "--use_fp16" "--use_jit" "--use_jit --use_fp16" "--use_tensorrt" "--use_tensorrt --use_fp16")
 EXP_NAME="pretrained-"${EXP_TAG[$SLURM_ARRAY_TASK_ID]}
 
 # Pretrained Vision Models
