@@ -3,10 +3,10 @@ import pickle
 import time
 import timeit
 
-import intel_extension_for_pytorch as ipex
+# import intel_extension_for_pytorch as ipex
 import numpy as np
 import torch
-import torch_tensorrt
+# import torch_tensorrt
 from memory_profiler import memory_usage
 from thop import profile as thop_profile
 from torch.profiler import ProfilerActivity, profile, record_function
@@ -74,19 +74,14 @@ class PyTorchBenchmark(object):
         out = self.model(self.input_constructor())
         del out
 
-        if self.config.use_cuda:
-            exec_stmt = "model(input_tensor); torch.cuda.synchronize();"
-        else:
-            exec_stmt = "model(input_tensor);"
 
         timer = benchmark.Timer(
-            stmt="exec_stmt",
-            setup="input_tensor=input_constructor()",
+            stmt="model(input_tensor)",
+            setup="input_tensor=input_constructor(); model(input_tensor)",
             num_threads=self.config.num_threads,
             globals={
                 "model": self.model,
                 "input_constructor": self.input_constructor,
-                "exec_stmt": exec_stmt,
             },
         )
         wallclock_mean = timer.timeit(iters).mean

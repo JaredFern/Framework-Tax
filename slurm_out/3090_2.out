@@ -1,0 +1,7 @@
+Loading vit32 model
+INFO:A6000:Loading vit32 model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-torchscript', input_size=[224], iters=10, model='vit32', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='A6000', randomized_text=True, requires_grad=False, results_dir='pytorch/experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=True, use_tensorrt=False)
+INFO:A6000:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-torchscript', input_size=[224], iters=10, model='vit32', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='A6000', randomized_text=True, requires_grad=False, results_dir='pytorch/experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=True, use_tensorrt=False)
+Benchmarking vit32 -- Batch: 1; Input: 224
+INFO:A6000:Benchmarking vit32 -- Batch: 1; Input: 224
+slurmstepd: error: *** JOB 564204 ON tir-0-9 CANCELLED AT 2022-10-25T02:23:42 ***

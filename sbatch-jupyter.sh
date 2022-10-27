@@ -1,9 +1,11 @@
 #!/bin/bash
+#SBATCH --time=5-00:00:00
 #SBATCH --job-name=remote-access
 #SBATCH --out slurm_out/jupyter.out
+#SBATCH --err slurm_out/jupyter-err.out
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
-#SBATCH --mem=8GB
+#SBATCH --gres=gpu:2080Ti:1
+#SBATCH --mem=32GB
 #SBATCH --exclude tir-0-[32,36],tir-1-[32,36]
 
 source activate device_benchmarking;

@@ -1,0 +1,518 @@
+Loading vit32 model
+INFO:a100:Loading vit32 model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='vit32', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='vit32', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking vit32 -- Batch: 1; Input: 224
+INFO:a100:Benchmarking vit32 -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/timm/models/layers/patch_embed.py:33: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert H == self.img_size[0] and W == self.img_size[1], \
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/timm/models/vision_transformer.py:186: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  qkv = self.qkv(x).reshape(B, N, 3, self.num_heads, C // self.num_heads).permute(2, 0, 3, 1, 4)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading efficientnet model
+INFO:a100:Loading efficientnet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='efficientnet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='efficientnet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking efficientnet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking efficientnet -- Batch: 1; Input: 224
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading efficientnet_lite model
+INFO:a100:Loading efficientnet_lite model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='efficientnet_lite', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='efficientnet_lite', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking efficientnet_lite -- Batch: 1; Input: 224
+INFO:a100:Benchmarking efficientnet_lite -- Batch: 1; Input: 224
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading gernet model
+INFO:a100:Loading gernet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='gernet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='gernet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking gernet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking gernet -- Batch: 1; Input: 224
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading resnet18 model
+INFO:a100:Loading resnet18 model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='resnet18', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='resnet18', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking resnet18 -- Batch: 1; Input: 224
+INFO:a100:Benchmarking resnet18 -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading alexnet model
+INFO:a100:Loading alexnet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='alexnet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='alexnet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking alexnet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking alexnet -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading squeezenet model
+INFO:a100:Loading squeezenet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='squeezenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='squeezenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking squeezenet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking squeezenet -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading vgg16 model
+INFO:a100:Loading vgg16 model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='vgg16', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='vgg16', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking vgg16 -- Batch: 1; Input: 224
+INFO:a100:Benchmarking vgg16 -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading densenet model
+INFO:a100:Loading densenet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='densenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='densenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking densenet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking densenet -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading inception model
+INFO:a100:Loading inception model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='inception', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='inception', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking inception -- Batch: 1; Input: 224
+INFO:a100:Benchmarking inception -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/inception.py:43: FutureWarning: The default weight initialization of inception_v3 will be changed in future releases of torchvision. If you wish to keep the old behavior (which leads to long initialization times due to scipy/scipy#11299), please set init_weights=True.
+  warnings.warn(
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading googlenet model
+INFO:a100:Loading googlenet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='googlenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='googlenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking googlenet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking googlenet -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/googlenet.py:47: FutureWarning: The default weight initialization of GoogleNet will be changed in future releases of torchvision. If you wish to keep the old behavior (which leads to long initialization times due to scipy/scipy#11299), please set init_weights=True.
+  warnings.warn(
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading shufflenet model
+INFO:a100:Loading shufflenet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='shufflenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='shufflenet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking shufflenet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking shufflenet -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/shufflenetv2.py:30: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  channels_per_group = num_channels // groups
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading mobilenet_v2 model
+INFO:a100:Loading mobilenet_v2 model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='mobilenet_v2', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='mobilenet_v2', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking mobilenet_v2 -- Batch: 1; Input: 224
+INFO:a100:Benchmarking mobilenet_v2 -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading resnext50_32x4d model
+INFO:a100:Loading resnext50_32x4d model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='resnext50_32x4d', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='resnext50_32x4d', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking resnext50_32x4d -- Batch: 1; Input: 224
+INFO:a100:Benchmarking resnext50_32x4d -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading wide_resnet50_2 model
+INFO:a100:Loading wide_resnet50_2 model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='wide_resnet50_2', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='wide_resnet50_2', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking wide_resnet50_2 -- Batch: 1; Input: 224
+INFO:a100:Benchmarking wide_resnet50_2 -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading mnasnet model
+INFO:a100:Loading mnasnet model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='mnasnet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32, 64, 128], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[224], iters=10, model='mnasnet', model_config='pytorch/config/models/vision.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking mnasnet -- Batch: 1; Input: 224
+INFO:a100:Benchmarking mnasnet -- Batch: 1; Input: 224
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and will be removed in 0.15, please use 'weights' instead.
+  warnings.warn(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and will be removed in 0.15. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 58, in _optimize_model
+    jit_model, inputs=[input_example], enabled_precisions=precisions
+NameError: name 'precisions' is not defined
+Loading bert model
+INFO:a100:Loading bert model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='bert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='bert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking bert -- Batch: 1; Input: 128
+INFO:a100:Benchmarking bert -- Batch: 1; Input: 128
+Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/modeling_utils.py:2154: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert all(
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.
+Loading distilbert model
+INFO:a100:Loading distilbert model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='distilbert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='distilbert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking distilbert -- Batch: 1; Input: 128
+INFO:a100:Benchmarking distilbert -- Batch: 1; Input: 128
+Some weights of the model checkpoint at distilbert-base-uncased were not used when initializing DistilBertModel: ['vocab_transform.weight', 'vocab_layer_norm.weight', 'vocab_projector.bias', 'vocab_layer_norm.bias', 'vocab_projector.weight', 'vocab_transform.bias']
+- This IS expected if you are initializing DistilBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DistilBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/modeling_utils.py:2154: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert all(
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.
+Loading funnel_transformer model
+INFO:a100:Loading funnel_transformer model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='funnel_transformer', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='funnel_transformer', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking funnel_transformer -- Batch: 1; Input: 128
+INFO:a100:Benchmarking funnel_transformer -- Batch: 1; Input: 128
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/funnel/modeling_funnel.py:314: TracerWarning: Using len to get tensor shape might cause the trace to be incorrect. Recommended usage would be tensor.shape[0]. Passing a tensor of different shape might lead to errors or silently give incorrect results.
+  num_remove = shift * len(pooled_pos)
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/funnel/modeling_funnel.py:638: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  pooling_flag = pooling_flag and block_index > 0
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/funnel/modeling_funnel.py:481: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  shift = 2 if q_head.shape[1] != context_len else 1
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.
+Loading albert model
+INFO:a100:Loading albert model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='albert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='albert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking albert -- Batch: 1; Input: 128
+INFO:a100:Benchmarking albert -- Batch: 1; Input: 128
+Some weights of the model checkpoint at albert-base-v2 were not used when initializing AlbertModel: ['predictions.LayerNorm.bias', 'predictions.dense.bias', 'predictions.decoder.bias', 'predictions.bias', 'predictions.LayerNorm.weight', 'predictions.dense.weight', 'predictions.decoder.weight']
+- This IS expected if you are initializing AlbertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing AlbertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/modeling_utils.py:2154: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert all(
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.
+Loading longformer model
+INFO:a100:Loading longformer model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='longformer', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='longformer', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking longformer -- Batch: 1; Input: 128
+INFO:a100:Benchmarking longformer -- Batch: 1; Input: 128
+Some weights of the model checkpoint at allenai/longformer-base-4096 were not used when initializing LongformerModel: ['lm_head.decoder.weight', 'lm_head.layer_norm.bias', 'lm_head.dense.weight', 'lm_head.dense.bias', 'lm_head.layer_norm.weight', 'lm_head.bias']
+- This IS expected if you are initializing LongformerModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing LongformerModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:1544: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if padding_len > 0:
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:1247: TracerWarning: Converting a tensor to a Python number might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_global_attn = is_index_global_attn.flatten().any().item()
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:580: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert (
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:801: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert (
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:804: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert query.size() == key.size()
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:806: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  chunks_count = seq_len // window_overlap - 1
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:769: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  hidden_states.size(1) // (window_overlap * 2),
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:609: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert list(attn_scores.size()) == [
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:869: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert seq_len % (window_overlap * 2) == 0
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:870: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert attn_probs.size()[:3] == value.size()[:3]
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:871: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert attn_probs.size(3) == 2 * window_overlap + 1
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:872: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  chunks_count = seq_len // window_overlap - 1
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:876: UserWarning: __floordiv__ is deprecated, and its behavior will change in a future version of pytorch. It currently rounds toward 0 (like the 'trunc' function NOT 'floor'). This results in incorrect rounding for negative values. To keep the current behavior, use torch.div(a, b, rounding_mode='trunc'), or for actual floor division, use torch.div(a, b, rounding_mode='floor').
+  batch_size * num_heads, seq_len // window_overlap, window_overlap, 2 * window_overlap + 1
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:680: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert attn_output.size() == (batch_size, seq_len, self.num_heads, self.head_dim), "Unexpected size"
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/modeling_utils.py:2154: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  assert all(
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/longformer/modeling_longformer.py:1681: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if padding_len > 0:
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.
+Loading mobile_bert model
+INFO:a100:Loading mobile_bert model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='mobile_bert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='mobile_bert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking mobile_bert -- Batch: 1; Input: 128
+INFO:a100:Benchmarking mobile_bert -- Batch: 1; Input: 128
+Some weights of the model checkpoint at google/mobilebert-uncased were not used when initializing MobileBertModel: ['cls.predictions.transform.LayerNorm.bias', 'cls.predictions.bias', 'cls.predictions.decoder.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.decoder.weight', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.dense.weight']
+- This IS expected if you are initializing MobileBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing MobileBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/transformers/models/mobilebert/modeling_mobilebert.py:522: TracerWarning: torch.tensor results are registered as constants in the trace. You can safely ignore this warning if you use this function to create tensors out of constant variables that would be the same every time you call this function. In any other case, this might cause the trace to be incorrect.
+  torch.tensor(1000),
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.
+Loading squeeze_bert model
+INFO:a100:Loading squeeze_bert model
+Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='squeeze_bert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+INFO:a100:Run Parameters: Namespace(act_fn='relu', batch_size=[1, 2, 4, 8, 16, 32], device='cuda', device_config='pytorch/config/devices/cuda.yaml', device_idx=0, dropout=None, exp_name='pretrained-trt', input_size=[128], iters=10, model='squeeze_bert', model_config='pytorch/config/models/transformers.yaml', num_threads=1, platform='a100', randomized_text=True, requires_grad=False, results_dir='experiments/pretrained', use_channels_last=False, use_cuda=True, use_dquant=False, use_fp16=False, use_ipex=False, use_jit=False, use_tensorrt=True)
+Benchmarking squeeze_bert -- Batch: 1; Input: 128
+INFO:a100:Benchmarking squeeze_bert -- Batch: 1; Input: 128
+Some weights of the model checkpoint at squeezebert/squeezebert-uncased were not used when initializing SqueezeBertModel: ['cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.bias', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.decoder.weight']
+- This IS expected if you are initializing SqueezeBertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing SqueezeBertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Traceback (most recent call last):
+  File "pytorch/main_pretrained.py", line 147, in <module>
+    main(args)
+  File "pytorch/main_pretrained.py", line 101, in main
+    data = benchmarker.aggregate_metrics()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 156, in aggregate_metrics
+    self._optimize_model()
+  File "/home/jaredfer/Projects/DeviceBenchmarking/pytorch/benchmark.py", line 56, in _optimize_model
+    jit_model = torch.jit.trace(self.model, (input_example,))
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 750, in trace
+    return trace_module(
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/torch/jit/_trace.py", line 967, in trace_module
+    module._c._create_method_from_trace(
+RuntimeError: Encountering a dict at the output of the tracer might cause the trace to be incorrect, this is only valid if the container structure does not change based on the module's inputs. Consider using a constant container instead (e.g. for `list`, use a `tuple` instead. for `dict`, use a `NamedTuple` instead). If you absolutely need this and know the side effects, pass strict=False to trace() to allow this behavior.

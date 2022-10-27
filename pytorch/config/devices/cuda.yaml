@@ -1,4 +1,4 @@
-iters: 20
+iters: 100
 num_threads: 1
 randomized_text: True
 requires_grad: False

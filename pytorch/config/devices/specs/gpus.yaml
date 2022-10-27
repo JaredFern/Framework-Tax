@@ -1,0 +1,89 @@
+TitanX:
+  Name:                 TitanX
+  MaxPowerUsage:        250
+  CudaArchitecture:     Pascal
+  TensorArchitecture:   0
+  CudaCores:            3584
+  TensorCores:          0
+  ClockSpeed:           1.417e9
+  MemoryFrequency:      1.251e9
+  MemoryBandwidth:      480.4e9
+  MemoryBus:            384
+  VramSize:             12e9
+  L1:                   48e3
+  L2:                   3e6
+
+v100:
+  Name:                 V100
+  MaxPowerUsage:        250
+  CudaArchitecture:     Volta
+  TensorArchitecture:   1
+  CudaCores:             5120
+  TensorCores:          640
+  ClockSpeed:           1.23e9
+  MemoryFrequency:      876e6
+  MemoryBandwidth:      897e9
+  MemorySize:           32e9
+  MemoryBus:            4096
+  L1:                   128e3
+  L2:                   6e6
+
+2080Ti:
+  Name:                 2080Ti
+  MaxPowerUsage:        250
+  CudaArchitecture:     Turing
+  TensorArchitecture:   2
+  CudaCores:             3584
+  TensorCores:          544
+  ClockSpeed:           1.35e9
+  MemoryFrequency:      1.75e9
+  MemoryBandwidth:      616e9
+  MemorySize:           11e9
+  MemoryBus:            352
+  L1:                   64e3
+  L2:                   5.5e6
+
+RTX-8000:
+  Name:                 RTX-8000
+  MaxPowerUsage:        260
+  CudaArchitecture:     Turing
+  TensorArchitecture:   2
+  CudaCores:            4608
+  TensorCores:          576
+  ClockSpeed:           1.395e9
+  MemoryFrequency:      1.75e9
+  MemoryBandwidth:      672e9
+  MemoryBus:            384
+  VramSize:             48e9
+  L1:                   64e3
+  L2:                   6e6
+
+"3090":
+  Name:                 3090
+  MaxPowerUsage:        350
+  CudaArchitecture:     Ampere
+  TensorArchitecture:   3
+  CudaCores:            10496
+  TensorCores:          328
+  ClockSpeed:           1.35e9
+  MemoryFrequency:      1.75e9
+  MemoryBandwidth:      936.2e9
+  MemoryBus:            384
+  VramSize:             24e9
+  L1:                   128e3
+  L2:                   6e6
+
+A6000:
+  Name:                 A6000
+  MaxPowerUsage:        300
+  CudaArchitecture:     Ampere
+  TensorArchitecture:   3
+  CudaCores:            10752
+  TensorCores:          336
+  ClockSpeed:           1.41e9
+  MemoryFrequency:      2e9
+  MemoryBandwidth:      768e9
+  MemoryBus:            384
+  VramSize:             48e9
+  L1:                   128e3
+  L2:                   6e6

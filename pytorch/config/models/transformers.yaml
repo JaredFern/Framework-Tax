@@ -1,4 +1,4 @@
-batch_size: [1, 2, 4, 8, 16, 32]
+batch_size: [1,2,4,8,16,32,64, 128,]
 input_size: [128]
 act_fn: "relu"
 dropout: null
