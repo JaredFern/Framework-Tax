@@ -1,8 +1,11 @@
-# On-Device Benchmarking of Neural Network Models
+# On the Inefficiency of Efficiency Metrics for Machine Learning Inference
 
-Support for measurements of: MACS (flops), Memory Usage, Wallclock Time, Parameter Counts.
-Experiments performed on:
-* Raspberry Pi 4
-* Nvidia Jetson (4 GB)
-* Laptop with Intel i7-8550U
-* Server with Intel Xeon W-2295 and RTX-8000
+This repo contains code for benchmarking common neural network models in NLP and Computer Vision across various deep learning frameworks and runtime environments (PyTorch, TorchScript).
+
+TODO
+
+- Refactor thop as a git submodule
+- Cleanup visualizations notebook
+- Remove old experiments
+- Refactor requirements.txt to minimal list of dependencies.
+- Add support for PyTorch Dynamo, TensorFlow 2, TF-Lite, Jax
