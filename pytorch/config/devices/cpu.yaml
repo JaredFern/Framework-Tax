@@ -1,0 +1,9 @@
+iters: 20
+num_threads: 1
+randomized_text: True
+requires_grad: False
+use_jit: False
+use_dquant: False
+use_cuda: False
+device: "cpu"
+device_idx: null

@@ -1,0 +1,7 @@
+model: "multihead-attention"
+batch_size: [1]
+hidden_size: [16, 32, 64, 128, 256]
+num_heads: [1, 2, 4, 8, 16]
+seq_lens: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+act_fn: "relu"
+dropout: null

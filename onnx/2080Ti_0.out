@@ -1,0 +1,207 @@
+/var/spool/slurmd/job563822/slurm_script: line 10: module: command not found
+/var/spool/slurmd/job563822/slurm_script: line 11: module: command not found
+/var/spool/slurmd/job563822/slurm_script: line 12: module: command not found
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "run_onnx.py", line 8, in <module>
+    import onnxruntime as ort
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/__init__.py", line 24, in <module>
+    from onnxruntime.capi._pybind_state import get_all_providers, get_available_providers, get_device, set_seed, \
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_pybind_state.py", line 9, in <module>
+    import onnxruntime.capi._ld_preload  # noqa: F401
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/site-packages/onnxruntime/capi/_ld_preload.py", line 13, in <module>
+    _libcudnn = CDLL("libcudnn.so.8", mode=RTLD_GLOBAL)
+  File "/home/jaredfer/anaconda3/envs/device_benchmarking/lib/python3.8/ctypes/__init__.py", line 373, in __init__
+    self._handle = _dlopen(self._name, mode)
+OSError: libcudnn.so.8: cannot open shared object file: No such file or directory

@@ -1,0 +1,10 @@
+Model,Checkpoint,Params,Layers,Heads,Hidden,GLUE
+bert,bert-base-uncased,1.09E+08,12,12,7.68E+02,79.6
+roberta,roberta-base,1.25E+08,12,12,7.68E+02, 86.35
+distilbert,distilbert-base-uncased,6.50E+07,6,12,7.68E+02, 77.0
+squeeze_bert,squeezebert/squeezebert-uncased,5.10E+07,12,12,768,78.1
+mobile_bert,google/mobilebert-uncased,2.50E+07,24,4,128, 77.7
+longformer,allenai/longformer-base-4096,1.49E+08,12,12,768
+deberta,microsoft/deberta-base,1.40E+08,12,12,7.68E+02
+ibert,kssteven/ibert-roberta-base,1.25E+08,12,12,768
+reformer,reformer-enwik8,3.00E+06,12,8,1024

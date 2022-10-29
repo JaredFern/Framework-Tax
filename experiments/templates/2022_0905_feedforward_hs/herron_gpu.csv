@@ -1,0 +1,15 @@
+latency,avg_memory,max_memory,macs,total_params,trainable_params,model,device,platform,input_format,num_layers,input_size,accelerator,requires_grad,use_torchscript,use_dquant,dropout,act_fn
+9.962748736143112e-05,12437946368.0,12437946368.0,1.0,2.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 1)",True,False,False,False,,relu
+5.0912611186504364e-05,12446334976.0,12446334976.0,4.0,6.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 2)",True,False,False,False,,relu
+5.045607686042786e-05,12446334976.0,12446334976.0,16.0,20.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 4)",True,False,False,False,,relu
+5.074199289083481e-05,12446334976.0,12446334976.0,64.0,72.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 8)",True,False,False,False,,relu
+5.391780287027359e-05,12446334976.0,12446334976.0,256.0,272.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 16)",True,False,False,False,,relu
+4.5058131217956546e-05,12446334976.0,12446334976.0,1024.0,1056.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 32)",True,False,False,False,,relu
+4.435665905475616e-05,12446334976.0,12446334976.0,4096.0,4160.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 64)",True,False,False,False,,relu
+4.526525735855102e-05,12446334976.0,12446334976.0,16384.0,16512.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 128)",True,False,False,False,,relu
+4.447270184755325e-05,12446334976.0,12446334976.0,65536.0,65792.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 256)",True,False,False,False,,relu
+4.4061616063117984e-05,12446334976.0,12446334976.0,262144.0,262656.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 512)",True,False,False,False,,relu
+4.4308975338935853e-05,12467306496.0,12467306496.0,1048576.0,1049600.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 1024)",True,False,False,False,,relu
+5.7874061167240146e-05,12467306496.0,12467306496.0,4194304.0,4196352.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 2048)",True,False,False,False,,relu
+0.00012366026639938356,12534415360.0,12534415360.0,16777216.0,16781312.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 4096)",True,False,False,False,,relu
+0.00046037137508392334,12781879296.0,12781879296.0,67108864.0,67117056.0,0.0,feedforward,cuda,herron_gpu,bsh,1.0,"(1, 1, 8192)",True,False,False,False,,relu
