@@ -4,6 +4,7 @@ log/*.log
 .ipynb_checkpoints/
 onnx/onnx_models
 experiments/
+slurm_out/
 .idea/
 .isort.cfg
 .swp
