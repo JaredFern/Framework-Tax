@@ -10,7 +10,7 @@ import pandas as pd
 import torch
 import yaml
 from benchmark import PyTorchBenchmark
-from config import NAME2MODEL_LANGUAGE, NAME2MODEL_VISION
+from config import NAME2MODEL_LANGUAGE, NAME2MODEL_SPEECH, NAME2MODEL_VISION
 from utils import setup_logger
 
 
@@ -30,6 +30,12 @@ def _build_vision_model(model_name, device, img_size=224, use_dquant=False, pret
     return model
 
 
+def _build_speech_model(model_name, device, use_jit):
+    model_fn, _, model_name = NAME2MODEL_SPEECH[model_name]
+    model = model_fn.from_pretrained(model_name, torchscript=use_jit).to(device)
+    return model
+
+
 def _build_language_input(model_name, batch_size, seq_len, device=None):
     _, tokenizer_fn, model_name = NAME2MODEL_LANGUAGE[model_name]
     tokenizer = tokenizer_fn.from_pretrained(model_name)
@@ -42,6 +48,15 @@ def _build_language_input(model_name, batch_size, seq_len, device=None):
     )
     return id_constructor
 
+
+def _build_speech_input(model_name, batch_size, input_size, sampling_rate=16e3, device=None, dtype=torch.float32):
+    # Assume 2 second utterances sampled at 16kHz
+        return partial(
+            torch.rand,
+            device=device,
+            dtype=dtype,
+            size=(batch_size, int(input_size * sampling_rate))
+        )
 
 def _build_vision_input(
     batch_size, img_size, device=None, dtype=torch.float32, memory_format=torch.channels_last
@@ -56,10 +71,13 @@ def _build_vision_input(
 
 
 def build_model(opts, batch_size, input_size, dtype, device):
-    if opts.model in NAME2MODEL_LANGUAGE:
-        input_constructor = _build_language_input(opts.model, batch_size, input_size, device)
-        model = _build_language_model(opts.model, opts.device, opts.use_jit)
-    if opts.model in NAME2MODEL_VISION:
+    if opts.model_name in NAME2MODEL_LANGUAGE:
+        input_constructor = _build_language_input(opts.model_name, batch_size, input_size, device)
+        model = _build_language_model(opts.model_name, opts.device, opts.use_jit)
+    elif opts.model_name in NAME2MODEL_SPEECH:
+        input_constructor = _build_speech_input(opts.model_name, batch_size, device=device, dtype=dtype)
+        model = _build_speech_model(opts.model_name, opts.device, opts.use_jit)
+    elif opts.model_name in NAME2MODEL_VISION:
         if opts.use_channels_last:
             memory_format = torch.channels_last
         else:
@@ -67,7 +85,9 @@ def build_model(opts, batch_size, input_size, dtype, device):
         input_constructor = _build_vision_input(
             batch_size, input_size, device, dtype, memory_format
         )
-        model = _build_vision_model(opts.model, device, input_size)
+        model = _build_vision_model(opts.model_name, device, input_size)
+    else:
+        raise ValueError(f"Model {opts.model_name} not supported.")
     return model, input_constructor
 
 
@@ -85,14 +105,14 @@ def main(opts):
     dataframe = pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
 
     # Load model and inputs
-    logger.info(f"Loading {opts.model} model")
+    logger.info(f"Loading {opts.model_name} model")
 
     for batch_size in opts.batch_size:
         logger.info(f"Run Parameters: {opts}")
         for input_size in opts.input_size:
-            logger.info(f"Benchmarking {opts.model} -- Batch: {batch_size}; Input: {input_size}")
+            logger.info(f"Benchmarking {opts.model_name} -- Batch: {batch_size}; Input: {input_size}")
             metadata = {}
-            metadata["model"] = opts.model
+            metadata["model"] = opts.model_name
             metadata["batch_size"] = batch_size
             metadata["input_size"] = input_size
 
@@ -124,9 +144,9 @@ if __name__ == "__main__":
         parser.set_defaults(**yaml.safe_load(device_config))
 
     # Base Configs
-    parser.add_argument("--model", type=str)
+    parser.add_argument("--model_name", type=str)
     parser.add_argument("--platform", type=str)
-    parser.add_argument("--device", type=str, default="cpu")
+    parser.add_argument("--device", type=str)
     parser.add_argument("--device_idx", type=int, default=0)
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=10)
