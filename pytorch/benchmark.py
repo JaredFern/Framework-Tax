@@ -3,12 +3,12 @@ import pickle
 import time
 import timeit
 
-# import intel_extension_for_pytorch as ipex
 import numpy as np
-import torch
-# import torch_tensorrt
 from memory_profiler import memory_usage
+from optimum.bettertransformer import BetterTransformer
 from thop import profile as thop_profile
+
+import torch
 from torch.profiler import ProfilerActivity, profile, record_function
 from torch.utils import benchmark
 
@@ -46,6 +46,8 @@ class PyTorchBenchmark(object):
             self.model = torch.quantization.quantize_dynamic(
                 self.model, {torch.nn.Linear}, dtype=torch.qint8
             )
+        if self.config.use_better_tf:
+            self.model = BetterTransformer(self.model)
         if self.config.use_jit:
             input_example = self.input_constructor()
             jit_model = torch.jit.trace(self.model, input_example)

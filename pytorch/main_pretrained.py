@@ -150,6 +150,7 @@ if __name__ == "__main__":
     parser.add_argument("--device_idx", type=int, default=0)
     parser.add_argument("--num_threads", type=int, default=1)
     parser.add_argument("--iters", type=int, default=100)
+
     # Optimization Params
     parser.add_argument("--requires_grad", action="store_true")
     parser.add_argument("--use_cuda", action="store_true")
@@ -157,6 +158,7 @@ if __name__ == "__main__":
     parser.add_argument("--use_fp16", action="store_true")  # Not Supported for all platforms
     parser.add_argument("--use_jit", action="store_true")
     parser.add_argument("--use_tensorrt", action="store_true")
+    parser.add_argument("--use_better_tf", action="store_true")
     parser.add_argument("--use_ipex", action="store_true")
     parser.add_argument("--use_dquant", action="store_true")
     # Load from Config Files
