@@ -59,6 +59,29 @@ NAME2MODEL_LANGUAGE = {
     ],
 }
 
+NAME2MODEL_SPEECH = {
+    "speecht5": [
+        transformers.SpeechT5ForSpeechToText,
+        transformers.SpeechT5Processor,
+        "microsoft/speecht5_asr"
+    ],
+     "hubert": [
+        transformers.HubertForCTC,
+        transformers.Wav2Vec2Processor,
+        "facebook/hubert-large-ls960-ft"
+    ],
+    "wav2vec2": [
+        transformers.Wav2Vec2ForCTC,
+        transformers.Wav2Vec2Processor,
+        "facebook/wav2vec2-base-960h"
+    ],
+    "wavlm": [
+        transformers.WavLMForCTC,
+        transformers.Wav2Vec2FeatureExtractor,
+        "microsoft/wavlm-base"
+    ]
+}
+
 NAME2MODEL_VISION = {
     # "vit16": partial(create_model, "vit_base_patch16_224"),
     # "vit32": partial(create_model, "vit_base_patch32_224"),
