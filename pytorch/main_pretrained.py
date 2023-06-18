@@ -75,7 +75,7 @@ def build_model(opts, batch_size, input_size, dtype, device):
         input_constructor = _build_language_input(opts.model_name, batch_size, input_size, device)
         model = _build_language_model(opts.model_name, opts.device, opts.use_jit)
     elif opts.model_name in NAME2MODEL_SPEECH:
-        input_constructor = _build_speech_input(opts.model_name, batch_size, device=device, dtype=dtype)
+        input_constructor = _build_speech_input(opts.model_name, batch_size, input_size, device=device, dtype=dtype)
         model = _build_speech_model(opts.model_name, opts.device, opts.use_jit)
     elif opts.model_name in NAME2MODEL_VISION:
         if opts.use_channels_last:

@@ -47,7 +47,7 @@ class PyTorchBenchmark(object):
                 self.model, {torch.nn.Linear}, dtype=torch.qint8
             )
         if self.config.use_better_tf:
-            self.model = BetterTransformer(self.model)
+            self.model = BetterTransformer.transform(self.model)
         if self.config.use_jit:
             input_example = self.input_constructor()
             jit_model = torch.jit.trace(self.model, input_example)
