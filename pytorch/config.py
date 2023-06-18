@@ -1,11 +1,12 @@
 from functools import partial
 
 import transformers
-from timm import create_model
+# from timm import create_model
 from torchvision import models
 
 NAME2MODEL_LANGUAGE = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
+    "bert-large": [transformers.BertModel, transformers.BertTokenizer, "bert-large-uncased"],
     "roberta": [
         transformers.RobertaModel,
         transformers.RobertaTokenizer,
@@ -26,11 +27,11 @@ NAME2MODEL_LANGUAGE = {
         transformers.FunnelTokenizer,
         "funnel-transformer/small",
     ],
-    "ibert": [
-        transformers.IBertModel,
-        transformers.RobertaTokenizer,
-        "kssteven/ibert-roberta-base",
-    ],
+    # "ibert": [
+    #     transformers.IBertModel,
+    #     transformers.RobertaTokenizer,
+    #     "kssteven/ibert-roberta-base",
+    # ],
     "albert": [
         transformers.AlbertModel,
         transformers.AlbertTokenizer,
@@ -59,10 +60,13 @@ NAME2MODEL_LANGUAGE = {
 }
 
 NAME2MODEL_VISION = {
-    "vit32": partial(create_model, "vit_base_patch32_224"),
-    "efficientnet": partial(create_model, "efficientnetv2_m"),
-    "efficientnet_lite": partial(create_model, "efficientnet_lite1"),
-    "gernet": partial(create_model, "gernet_m"),
+    # "vit16": partial(create_model, "vit_base_patch16_224"),
+    # "vit32": partial(create_model, "vit_base_patch32_224"),
+    # "vitL-16": partial(create_model, "vit_large_patch16_224"),
+    # "vitL-32": partial(create_model, "vit_large_patch32_224"),
+    # "efficientnet": partial(create_model, "efficientnetv2_m"),
+    # "efficientnet_lite": partial(create_model, "efficientnet_lite1"),
+    # "gernet": partial(create_model, "gernet_m"),
     "resnet18": models.resnet18,
     "resnet50": models.resnet50,
     "resnet101": models.resnet101,

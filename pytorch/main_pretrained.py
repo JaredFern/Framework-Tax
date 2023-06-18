@@ -2,13 +2,14 @@ import argparse
 import datetime
 import logging
 import os
+import yaml
 from functools import partial
 from itertools import product
 from pathlib import Path
 
 import pandas as pd
 import torch
-import yaml
+import nvidia_dlprof_pytorch_nvtx
 from benchmark import PyTorchBenchmark
 from config import NAME2MODEL_LANGUAGE, NAME2MODEL_VISION
 from utils import setup_logger
@@ -129,16 +130,20 @@ if __name__ == "__main__":
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--device_idx", type=int, default=0)
     parser.add_argument("--num_threads", type=int, default=1)
-    parser.add_argument("--iters", type=int, default=100)
+    parser.add_argument("--iters", type=int, default=20)
+    parser.add_argument("--batch_size", type=int, nargs='+')
     # Optimization Params
     parser.add_argument("--requires_grad", action="store_true")
     parser.add_argument("--use_cuda", action="store_true")
+    parser.add_argument("--use_cuda_graphs", action="store_true")
     parser.add_argument("--use_channels_last", action="store_true")
     parser.add_argument("--use_fp16", action="store_true")  # Not Supported for all platforms
     parser.add_argument("--use_jit", action="store_true")
     parser.add_argument("--use_tensorrt", action="store_true")
     parser.add_argument("--use_ipex", action="store_true")
     parser.add_argument("--use_dquant", action="store_true")
+    parser.add_argument("--use_ptcompile", action="store_true")
+    parser.add_argument("--run_dlprof", action="store_true")
     # Load from Config Files
     parser.add_argument("--results_dir", type=str, default="experiments/")
     parser.add_argument("--exp_name", type=str)

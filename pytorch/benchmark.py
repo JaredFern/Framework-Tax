@@ -9,6 +9,7 @@ import torch
 # import torch_tensorrt
 from memory_profiler import memory_usage
 from thop import profile as thop_profile
+from torch.cuda.nvtx import range_push, range_pop
 from torch.profiler import ProfilerActivity, profile, record_function
 from torch.utils import benchmark
 
@@ -60,6 +61,23 @@ class PyTorchBenchmark(object):
             del self.model, jit_model
             torch.cuda.empty_cache()
             self.model = trt_model
+        if self.config.use_ptcompile:
+            self.model = torch.compile(self.model)
+        if self.config.use_cuda_graphs:
+            stream = torch.cuda.Stream()
+            stream.wait_stream(torch.cuda.current_stream())
+
+            with torch.cuda.stream(stream):
+                for warmup_step in range(10):
+                    _ = self.model(self.input_constructor())
+            torch.cuda.current_stream().wait_stream(stream)
+
+
+            self.cuda_graph = torch.cuda.CUDAGraph()
+            self.graph_input = self.input_constructor()
+            with torch.cuda.graph(self.cuda_graph):
+                _ = self.model(self.graph_input)
+
 
     def get_wallclock(self, iters=10):
         """Compute mean runtime for model execution averaged over iter runs
@@ -70,48 +88,60 @@ class PyTorchBenchmark(object):
         Returns:
             wallclock_mean: Average runtime
         """
-        # Warmup Run Just in Case
-        out = self.model(self.input_constructor())
-        del out
+        if self.config.use_cuda_graphs:
+            timer = benchmark.Timer(
+                stmt="""
+                    graph.replay()
+                    """,
+                setup="""
+                    graph_input.copy_(input_constructor())
+                    """,
+                num_threads=self.config.num_threads,
+                globals={
+                    "graph": self.cuda_graph,
+                    "graph_input": self.graph_input,
+                    "input_constructor": self.input_constructor,
+                },
+            )
+        else:
+            timer = benchmark.Timer(
+                stmt="""
+                model(input_tensor)
+                """,
+                setup="""
+                input_tensor=input_constructor(); model(input_tensor)
+                """,
+                num_threads=self.config.num_threads,
+                globals={
+                    "model": self.model,
+                    "input_constructor": self.input_constructor,
+                },
+            )
 
-
-        timer = benchmark.Timer(
-            stmt="model(input_tensor)",
-            setup="input_tensor=input_constructor(); model(input_tensor)",
-            num_threads=self.config.num_threads,
-            globals={
-                "model": self.model,
-                "input_constructor": self.input_constructor,
-            },
-        )
+        # with torch.autograd.profiler.emit_nvtx():
         wallclock_mean = timer.timeit(iters).mean
         return wallclock_mean
 
-    def get_profile(self, iters=10, logdir="."):
+    def get_profile(self, iters=10, warmup=10, logdir="."):
         input_tensor = self.input_constructor()
-        with profile(
-            activities=self.profile_activities,
-            on_trace_ready=torch.profiler.tensorboard_trace_handler(logdir),
-            schedule=torch.profiler.schedule(
-                skip_first=4, wait=0, warmup=2, active=iters, repeat=0
-            ),
-            record_shapes=True,
-            profile_memory=True,
-            with_flops=True,
-            with_stack=True,
-        ) as prof:
-            with record_function("model_inference"):
-                for _ in range(iters + 6):
-                    self.model(input_tensor)
-                    prof.step()
-        pickle.dump(
-            prof.key_averages(group_by_input_shape=True),
-            open(f"{logdir}/groupbyshapes_profiler.p", "wb"),
-        )
-        pickle.dump(
-            prof.key_averages(group_by_stack_n=True),
-            open(f"{logdir}/groupbystack_profiler.p", "wb"),
-        )
+        for iter in range(iters + warmup):
+            if iter == warmup:
+                torch.cuda.cudart().cudaProfilerStart()
+            if self.config.use_cuda_graphs:
+                self.graph_input.copy_(self.input_constructor())
+                range_push("forward")
+                self.cuda_graph.replay()
+                torch.cuda.synchronize()
+                range_pop()
+            else:
+               input_tensor = self.input_constructor()
+               range_push("forward")
+               _ = self.model(input_tensor)
+               torch.cuda.synchronize()
+               range_pop()
+
+
+
 
     def get_memory(self):
         if "cuda" in self.config.device:
@@ -155,6 +185,7 @@ class PyTorchBenchmark(object):
         # Model Execution Metrics
         self._optimize_model()
         data["latency"] = self.get_wallclock(iters)
+        _ = self.get_profile(iters)
         if not self.config.use_dquant:
             memory_usage = self.get_memory()
             data["avg_memory"] = np.mean(memory_usage)
