@@ -1,11 +1,3 @@
-# On the Inefficiency of Efficiency Metrics for Machine Learning Inference
+# The Framework Tax: Disparities Between Inference Efficiency in Research and Deployment (EMNLP 2023)
 
-This repo contains code for benchmarking common neural network models in NLP and Computer Vision across various deep learning frameworks and runtime environments (PyTorch, TorchScript).
-
-TODO
-
-- Refactor thop as a git submodule
-- Cleanup visualizations notebook
-- Remove old experiments
-- Refactor requirements.txt to minimal list of dependencies.
-- Add support for PyTorch Dynamo, TensorFlow 2, TF-Lite, Jax
+Benchmarking code for evaluating inference latency of NLP models across hardware platforms and deep learning frameworks.
