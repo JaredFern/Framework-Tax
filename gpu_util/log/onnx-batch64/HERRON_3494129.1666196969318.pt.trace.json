@@ -1,0 +1,5031 @@
+
+{
+  "schemaVersion": 1,
+  "deviceProperties": [
+    {
+      "id": 0, "name": "Quadro RTX 8000", "totalGlobalMem": 50962169856,
+      "computeMajor": 7, "computeMinor": 5,
+      "maxThreadsPerBlock": 1024, "maxThreadsPerMultiprocessor": 1024,
+      "regsPerBlock": 65536, "regsPerMultiprocessor": 65536, "warpSize": 32,
+      "sharedMemPerBlock": 49152, "sharedMemPerMultiprocessor": 65536,
+      "numSms": 72, "sharedMemPerBlockOptin": 65536
+    },
+    {
+      "id": 1, "name": "Quadro RTX 8000", "totalGlobalMem": 50962169856,
+      "computeMajor": 7, "computeMinor": 5,
+      "maxThreadsPerBlock": 1024, "maxThreadsPerMultiprocessor": 1024,
+      "regsPerBlock": 65536, "regsPerMultiprocessor": 65536, "warpSize": 32,
+      "sharedMemPerBlock": 49152, "sharedMemPerMultiprocessor": 65536,
+      "numSms": 72, "sharedMemPerBlockOptin": 65536
+    },
+    {
+      "id": 2, "name": "Quadro RTX 8000", "totalGlobalMem": 50962169856,
+      "computeMajor": 7, "computeMinor": 5,
+      "maxThreadsPerBlock": 1024, "maxThreadsPerMultiprocessor": 1024,
+      "regsPerBlock": 65536, "regsPerMultiprocessor": 65536, "warpSize": 32,
+      "sharedMemPerBlock": 49152, "sharedMemPerMultiprocessor": 65536,
+      "numSms": 72, "sharedMemPerBlockOptin": 65536
+    },
+    {
+      "id": 3, "name": "Quadro RTX 8000", "totalGlobalMem": 50958893056,
+      "computeMajor": 7, "computeMinor": 5,
+      "maxThreadsPerBlock": 1024, "maxThreadsPerMultiprocessor": 1024,
+      "regsPerBlock": 65536, "regsPerMultiprocessor": 65536, "warpSize": 32,
+      "sharedMemPerBlock": 49152, "sharedMemPerMultiprocessor": 65536,
+      "numSms": 72, "sharedMemPerBlockOptin": 65536
+    }
+  ],
+  "traceEvents": [
+  {
+    "ph": "i", "s": "t", "name": "[memory]",
+    "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257403,
+    "args": {
+      "Device Type": 0, "Device Id": -1, "Addr": 93997199637952, "Bytes": 4, "Total Allocated": 4, "Total Reserved": 0
+    }
+  },
+  {
+    "ph": "i", "s": "t", "name": "[memory]",
+    "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257504,
+    "args": {
+      "Device Type": 0, "Device Id": -1, "Addr": 93996670183872, "Bytes": 264, "Total Allocated": 268, "Total Reserved": 0
+    }
+  },
+  {
+    "ph": "i", "s": "t", "name": "[memory]",
+    "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257506,
+    "args": {
+      "Device Type": 0, "Device Id": -1, "Addr": 93996670183872, "Bytes": -264, "Total Allocated": 4, "Total Reserved": 0
+    }
+  },
+  {
+    "ph": "i", "s": "t", "name": "[memory]",
+    "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257519,
+    "args": {
+      "Device Type": 0, "Device Id": -1, "Addr": 93997199637952, "Bytes": -4, "Total Allocated": 0, "Total Reserved": 0
+    }
+  },
+  {
+    "ph": "X", "cat": "cpu_op", 
+    "name": "aten::zeros", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257377, "dur": 57,
+    "args": {
+      "Trace name": "PyTorch Profiler", "Trace iteration": 0,
+      "External id": 122128,
+      "Input Dims": [[], [], [], [], []], "Input type": ["", "Scalar", "", "", "Scalar"]
+    }
+  },
+  {
+    "ph": "X", "cat": "cpu_op", 
+    "name": "aten::empty", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257391, "dur": 27,
+    "args": {
+      "Trace name": "PyTorch Profiler", "Trace iteration": 0,
+      "External id": 122129,
+      "Input Dims": [[], [], [], [], [], []], "Input type": ["", "Scalar", "", "", "Scalar", ""]
+    }
+  },
+  {
+    "ph": "X", "cat": "cpu_op", 
+    "name": "aten::zero_", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257431, "dur": 2,
+    "args": {
+      "Trace name": "PyTorch Profiler", "Trace iteration": 0,
+      "External id": 122130,
+      "Input Dims": [[1]], "Input type": ["float"]
+    }
+  },
+  {
+    "ph": "X", "cat": "user_annotation", 
+    "name": "graph_inference", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257495, "dur": 55247,
+    "args": {
+      "Trace name": "PyTorch Profiler", "Trace iteration": 0,
+      "External id": 122131
+    }
+  },
+  {
+    "ph": "X", "cat": "cpu_op", 
+    "name": "aten::empty", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257501, "dur": 4,
+    "args": {
+      "Trace name": "PyTorch Profiler", "Trace iteration": 0,
+      "External id": 122132,
+      "Input Dims": [[], [], [], [], [], []], "Input type": ["", "Scalar", "", "", "", ""]
+    }
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaEventQuery", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257893, "dur": 7,
+    "args": {
+      "External id": 2260974,
+      
+      "cbid": 138, "correlation": 2260974
+    }
+  },
+  {
+    "ph": "f", "id": 2260974, "pid": 3494129, "tid": 3494129, "ts": 1666196969257893,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaMalloc", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969257957, "dur": 2966,
+    "args": {
+      "External id": 2260978,
+      
+      "cbid": 20, "correlation": 2260978
+    }
+  },
+  {
+    "ph": "f", "id": 2260978, "pid": 3494129, "tid": 3494129, "ts": 1666196969257957,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969271299, "dur": 3,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260979,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.6944444,
+      "warps per SM": 5.5555553,
+      "grid": [50, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 17
+    }
+  },
+  {
+    "ph": "f", "id": 2260979, "pid": 0, "tid": 701, "ts": 1666196969271299,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969270465, "dur": 839,
+    "args": {
+      "External id": 2260979,
+      
+      "cbid": 211, "correlation": 2260979
+    }
+  },
+  {
+    "ph": "s", "id": 2260979, "pid": 3494129, "tid": 3494129, "ts": 1666196969270465,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_xregs_large_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969271325, "dur": 1104,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260980,
+      "registers per thread": 160,
+      "shared memory": 16384,
+      "blocks per SM": 87.111115,
+      "warps per SM": 348.44446,
+      "grid": [6272, 1, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 38
+    }
+  },
+  {
+    "ph": "f", "id": 2260980, "pid": 0, "tid": 701, "ts": 1666196969271325,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271312, "dur": 15,
+    "args": {
+      "External id": 2260980,
+      
+      "cbid": 211, "correlation": 2260980
+    }
+  },
+  {
+    "ph": "s", "id": 2260980, "pid": 3494129, "tid": 3494129, "ts": 1666196969271312,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::ops::pooling_fw_4d_kernel<float, float, cudnn::maxpooling_func<float, (cudnnNanPropagation_t)1>, (cudnnPoolingMode_t)0, false>(cudnnTensorStruct, float const*, cudnnTensorStruct, float*, cudnnPoolingStruct, float, float, int, cudnn::reduced_divisor, cudnn::reduced_divisor)", "pid": 0, "tid": 701,
+    "ts": 1666196969272430, "dur": 465,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260982,
+      "registers per thread": 51,
+      "shared memory": 4080,
+      "blocks per SM": 526.2222,
+      "warps per SM": 4193.3335,
+      "grid": [37, 16, 64],
+      "block": [255, 1, 1],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "ph": "f", "id": 2260982, "pid": 0, "tid": 701, "ts": 1666196969272430,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271375, "dur": 16,
+    "args": {
+      "External id": 2260982,
+      
+      "cbid": 211, "correlation": 2260982
+    }
+  },
+  {
+    "ph": "s", "id": 2260982, "pid": 3494129, "tid": 3494129, "ts": 1666196969271375,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969272896, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260985,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2260985, "pid": 0, "tid": 701, "ts": 1666196969272896,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271513, "dur": 13,
+    "args": {
+      "External id": 2260985,
+      
+      "cbid": 211, "correlation": 2260985
+    }
+  },
+  {
+    "ph": "s", "id": 2260985, "pid": 3494129, "tid": 3494129, "ts": 1666196969271513,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_medium_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969272900, "dur": 201,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260986,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [1568, 1, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2260986, "pid": 0, "tid": 701, "ts": 1666196969272900,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271531, "dur": 11,
+    "args": {
+      "External id": 2260986,
+      
+      "cbid": 211, "correlation": 2260986
+    }
+  },
+  {
+    "ph": "s", "id": 2260986, "pid": 3494129, "tid": 3494129, "ts": 1666196969271531,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969273102, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260988,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2260988, "pid": 0, "tid": 701, "ts": 1666196969273102,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271639, "dur": 12,
+    "args": {
+      "External id": 2260988,
+      
+      "cbid": 211, "correlation": 2260988
+    }
+  },
+  {
+    "ph": "s", "id": 2260988, "pid": 3494129, "tid": 3494129, "ts": 1666196969271639,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_xregs_large_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969273105, "dur": 954,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260989,
+      "registers per thread": 160,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [1568, 1, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 38
+    }
+  },
+  {
+    "ph": "f", "id": 2260989, "pid": 0, "tid": 701, "ts": 1666196969273105,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271654, "dur": 8,
+    "args": {
+      "External id": 2260989,
+      
+      "cbid": 211, "correlation": 2260989
+    }
+  },
+  {
+    "ph": "s", "id": 2260989, "pid": 3494129, "tid": 3494129, "ts": 1666196969271654,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969274061, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260991,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2260991, "pid": 0, "tid": 701, "ts": 1666196969274061,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271756, "dur": 12,
+    "args": {
+      "External id": 2260991,
+      
+      "cbid": 211, "correlation": 2260991
+    }
+  },
+  {
+    "ph": "s", "id": 2260991, "pid": 3494129, "tid": 3494129, "ts": 1666196969271756,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969274064, "dur": 653,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260992,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 43.555557,
+      "warps per SM": 348.44446,
+      "grid": [1568, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2260992, "pid": 0, "tid": 701, "ts": 1666196969274064,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271772, "dur": 9,
+    "args": {
+      "External id": 2260992,
+      
+      "cbid": 211, "correlation": 2260992
+    }
+  },
+  {
+    "ph": "s", "id": 2260992, "pid": 3494129, "tid": 3494129, "ts": 1666196969271772,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void op_generic_tensor_kernel<4, float, float, float, 256, (cudnnGenericOp_t)0, (cudnnNanPropagation_t)0, 0>(cudnnTensorStruct, float*, cudnnTensorStruct, float const*, cudnnTensorStruct, float const*, float, float, float, cudnnActivationStruct, reducedDivisorArray, int)", "pid": 0, "tid": 701,
+    "ts": 1666196969274718, "dur": 745,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260993,
+      "registers per thread": 24,
+      "shared memory": 0,
+      "blocks per SM": 696.8889,
+      "warps per SM": 5575.1113,
+      "grid": [50176, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "ph": "f", "id": 2260993, "pid": 0, "tid": 701, "ts": 1666196969274718,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271793, "dur": 13,
+    "args": {
+      "External id": 2260993,
+      
+      "cbid": 211, "correlation": 2260993
+    }
+  },
+  {
+    "ph": "s", "id": 2260993, "pid": 3494129, "tid": 3494129, "ts": 1666196969271793,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969275464, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260996,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2260996, "pid": 0, "tid": 701, "ts": 1666196969275464,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271888, "dur": 12,
+    "args": {
+      "External id": 2260996,
+      
+      "cbid": 211, "correlation": 2260996
+    }
+  },
+  {
+    "ph": "s", "id": 2260996, "pid": 3494129, "tid": 3494129, "ts": 1666196969271888,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969275467, "dur": 968,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260997,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 43.555557,
+      "warps per SM": 348.44446,
+      "grid": [1568, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2260997, "pid": 0, "tid": 701, "ts": 1666196969275467,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271903, "dur": 7,
+    "args": {
+      "External id": 2260997,
+      
+      "cbid": 211, "correlation": 2260997
+    }
+  },
+  {
+    "ph": "s", "id": 2260997, "pid": 3494129, "tid": 3494129, "ts": 1666196969271903,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969276436, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2260999,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2260999, "pid": 0, "tid": 701, "ts": 1666196969276436,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969271999, "dur": 11,
+    "args": {
+      "External id": 2260999,
+      
+      "cbid": 211, "correlation": 2260999
+    }
+  },
+  {
+    "ph": "s", "id": 2260999, "pid": 3494129, "tid": 3494129, "ts": 1666196969271999,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969276439, "dur": 478,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261000,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [1568, 1, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261000, "pid": 0, "tid": 701, "ts": 1666196969276439,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272014, "dur": 9,
+    "args": {
+      "External id": 2261000,
+      
+      "cbid": 211, "correlation": 2261000
+    }
+  },
+  {
+    "ph": "s", "id": 2261000, "pid": 3494129, "tid": 3494129, "ts": 1666196969272014,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969276918, "dur": 3,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261002,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 0.44444445,
+      "warps per SM": 1.7777778,
+      "grid": [2, 16, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 6
+    }
+  },
+  {
+    "ph": "f", "id": 2261002, "pid": 0, "tid": 701, "ts": 1666196969276918,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272115, "dur": 15,
+    "args": {
+      "External id": 2261002,
+      
+      "cbid": 211, "correlation": 2261002
+    }
+  },
+  {
+    "ph": "s", "id": 2261002, "pid": 3494129, "tid": 3494129, "ts": 1666196969272115,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969276923, "dur": 877,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261004,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 49.77778,
+      "warps per SM": 398.22223,
+      "grid": [128, 7, 4],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261004, "pid": 0, "tid": 701, "ts": 1666196969276923,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272135, "dur": 8,
+    "args": {
+      "External id": 2261004,
+      
+      "cbid": 211, "correlation": 2261004
+    }
+  },
+  {
+    "ph": "s", "id": 2261004, "pid": 3494129, "tid": 3494129, "ts": 1666196969272135,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969277801, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261006,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2261006, "pid": 0, "tid": 701, "ts": 1666196969277801,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272243, "dur": 13,
+    "args": {
+      "External id": 2261006,
+      
+      "cbid": 211, "correlation": 2261006
+    }
+  },
+  {
+    "ph": "s", "id": 2261006, "pid": 3494129, "tid": 3494129, "ts": 1666196969272243,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969277804, "dur": 970,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261007,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 43.555557,
+      "warps per SM": 348.44446,
+      "grid": [1568, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261007, "pid": 0, "tid": 701, "ts": 1666196969277804,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272259, "dur": 7,
+    "args": {
+      "External id": 2261007,
+      
+      "cbid": 211, "correlation": 2261007
+    }
+  },
+  {
+    "ph": "s", "id": 2261007, "pid": 3494129, "tid": 3494129, "ts": 1666196969272259,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969278775, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261009,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2261009, "pid": 0, "tid": 701, "ts": 1666196969278775,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272346, "dur": 12,
+    "args": {
+      "External id": 2261009,
+      
+      "cbid": 211, "correlation": 2261009
+    }
+  },
+  {
+    "ph": "s", "id": 2261009, "pid": 3494129, "tid": 3494129, "ts": 1666196969272346,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969278778, "dur": 478,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261010,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [1568, 1, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261010, "pid": 0, "tid": 701, "ts": 1666196969278778,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272360, "dur": 8,
+    "args": {
+      "External id": 2261010,
+      
+      "cbid": 211, "correlation": 2261010
+    }
+  },
+  {
+    "ph": "s", "id": 2261010, "pid": 3494129, "tid": 3494129, "ts": 1666196969272360,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969279258, "dur": 4,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261012,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 0.44444445,
+      "warps per SM": 1.7777778,
+      "grid": [2, 16, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 6
+    }
+  },
+  {
+    "ph": "f", "id": 2261012, "pid": 0, "tid": 701, "ts": 1666196969279258,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272440, "dur": 11,
+    "args": {
+      "External id": 2261012,
+      
+      "cbid": 211, "correlation": 2261012
+    }
+  },
+  {
+    "ph": "s", "id": 2261012, "pid": 3494129, "tid": 3494129, "ts": 1666196969272440,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969279262, "dur": 881,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261014,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 49.77778,
+      "warps per SM": 398.22223,
+      "grid": [128, 7, 4],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261014, "pid": 0, "tid": 701, "ts": 1666196969279262,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272454, "dur": 7,
+    "args": {
+      "External id": 2261014,
+      
+      "cbid": 211, "correlation": 2261014
+    }
+  },
+  {
+    "ph": "s", "id": 2261014, "pid": 3494129, "tid": 3494129, "ts": 1666196969272454,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969280144, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261016,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2261016, "pid": 0, "tid": 701, "ts": 1666196969280144,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272539, "dur": 11,
+    "args": {
+      "External id": 2261016,
+      
+      "cbid": 211, "correlation": 2261016
+    }
+  },
+  {
+    "ph": "s", "id": 2261016, "pid": 3494129, "tid": 3494129, "ts": 1666196969272539,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969280148, "dur": 967,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261017,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 43.555557,
+      "warps per SM": 348.44446,
+      "grid": [1568, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261017, "pid": 0, "tid": 701, "ts": 1666196969280148,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272552, "dur": 7,
+    "args": {
+      "External id": 2261017,
+      
+      "cbid": 211, "correlation": 2261017
+    }
+  },
+  {
+    "ph": "s", "id": 2261017, "pid": 3494129, "tid": 3494129, "ts": 1666196969272552,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969281116, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261019,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.18055555,
+      "warps per SM": 1.4444444,
+      "grid": [13, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 5
+    }
+  },
+  {
+    "ph": "f", "id": 2261019, "pid": 0, "tid": 701, "ts": 1666196969281116,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272635, "dur": 11,
+    "args": {
+      "External id": 2261019,
+      
+      "cbid": 211, "correlation": 2261019
+    }
+  },
+  {
+    "ph": "s", "id": 2261019, "pid": 3494129, "tid": 3494129, "ts": 1666196969272635,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969281119, "dur": 943,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261020,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 43.555557,
+      "warps per SM": 174.22223,
+      "grid": [1568, 2, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261020, "pid": 0, "tid": 701, "ts": 1666196969281119,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272649, "dur": 8,
+    "args": {
+      "External id": 2261020,
+      
+      "cbid": 211, "correlation": 2261020
+    }
+  },
+  {
+    "ph": "s", "id": 2261020, "pid": 3494129, "tid": 3494129, "ts": 1666196969272649,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969282063, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261022,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261022, "pid": 0, "tid": 701, "ts": 1666196969282063,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272737, "dur": 11,
+    "args": {
+      "External id": 2261022,
+      
+      "cbid": 211, "correlation": 2261022
+    }
+  },
+  {
+    "ph": "s", "id": 2261022, "pid": 3494129, "tid": 3494129, "ts": 1666196969272737,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_xregs_large_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969282067, "dur": 1022,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261023,
+      "registers per thread": 160,
+      "shared memory": 16384,
+      "blocks per SM": 10.888889,
+      "warps per SM": 43.555557,
+      "grid": [392, 2, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 38
+    }
+  },
+  {
+    "ph": "f", "id": 2261023, "pid": 0, "tid": 701, "ts": 1666196969282067,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272750, "dur": 8,
+    "args": {
+      "External id": 2261023,
+      
+      "cbid": 211, "correlation": 2261023
+    }
+  },
+  {
+    "ph": "s", "id": 2261023, "pid": 3494129, "tid": 3494129, "ts": 1666196969272750,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969283090, "dur": 3,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261025,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261025, "pid": 0, "tid": 701, "ts": 1666196969283090,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272833, "dur": 11,
+    "args": {
+      "External id": 2261025,
+      
+      "cbid": 211, "correlation": 2261025
+    }
+  },
+  {
+    "ph": "s", "id": 2261025, "pid": 3494129, "tid": 3494129, "ts": 1666196969272833,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969283093, "dur": 580,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261026,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 43.555557,
+      "warps per SM": 174.22223,
+      "grid": [392, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261026, "pid": 0, "tid": 701, "ts": 1666196969283093,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272847, "dur": 9,
+    "args": {
+      "External id": 2261026,
+      
+      "cbid": 211, "correlation": 2261026
+    }
+  },
+  {
+    "ph": "s", "id": 2261026, "pid": 3494129, "tid": 3494129, "ts": 1666196969272847,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void op_generic_tensor_kernel<4, float, float, float, 256, (cudnnGenericOp_t)0, (cudnnNanPropagation_t)0, 0>(cudnnTensorStruct, float*, cudnnTensorStruct, float const*, cudnnTensorStruct, float const*, float, float, float, cudnnActivationStruct, reducedDivisorArray, int)", "pid": 0, "tid": 701,
+    "ts": 1666196969283675, "dur": 373,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261027,
+      "registers per thread": 24,
+      "shared memory": 0,
+      "blocks per SM": 348.44446,
+      "warps per SM": 2787.5557,
+      "grid": [25088, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "ph": "f", "id": 2261027, "pid": 0, "tid": 701, "ts": 1666196969283675,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272865, "dur": 10,
+    "args": {
+      "External id": 2261027,
+      
+      "cbid": 211, "correlation": 2261027
+    }
+  },
+  {
+    "ph": "s", "id": 2261027, "pid": 3494129, "tid": 3494129, "ts": 1666196969272865,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969284049, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261030,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261030, "pid": 0, "tid": 701, "ts": 1666196969284049,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272959, "dur": 11,
+    "args": {
+      "External id": 2261030,
+      
+      "cbid": 211, "correlation": 2261030
+    }
+  },
+  {
+    "ph": "s", "id": 2261030, "pid": 3494129, "tid": 3494129, "ts": 1666196969272959,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_medium_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969284052, "dur": 1259,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261031,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 21.777779,
+      "warps per SM": 174.22223,
+      "grid": [392, 4, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261031, "pid": 0, "tid": 701, "ts": 1666196969284052,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969272973, "dur": 9,
+    "args": {
+      "External id": 2261031,
+      
+      "cbid": 211, "correlation": 2261031
+    }
+  },
+  {
+    "ph": "s", "id": 2261031, "pid": 3494129, "tid": 3494129, "ts": 1666196969272973,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969285312, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261033,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261033, "pid": 0, "tid": 701, "ts": 1666196969285312,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273060, "dur": 11,
+    "args": {
+      "External id": 2261033,
+      
+      "cbid": 211, "correlation": 2261033
+    }
+  },
+  {
+    "ph": "s", "id": 2261033, "pid": 3494129, "tid": 3494129, "ts": 1666196969273060,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969285316, "dur": 471,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261034,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 10.888889,
+      "warps per SM": 43.555557,
+      "grid": [392, 2, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261034, "pid": 0, "tid": 701, "ts": 1666196969285316,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273073, "dur": 7,
+    "args": {
+      "External id": 2261034,
+      
+      "cbid": 211, "correlation": 2261034
+    }
+  },
+  {
+    "ph": "s", "id": 2261034, "pid": 3494129, "tid": 3494129, "ts": 1666196969273073,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969285788, "dur": 5,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261036,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 1.7777778,
+      "warps per SM": 7.111111,
+      "grid": [4, 32, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 22
+    }
+  },
+  {
+    "ph": "f", "id": 2261036, "pid": 0, "tid": 701, "ts": 1666196969285788,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273152, "dur": 11,
+    "args": {
+      "External id": 2261036,
+      
+      "cbid": 211, "correlation": 2261036
+    }
+  },
+  {
+    "ph": "s", "id": 2261036, "pid": 3494129, "tid": 3494129, "ts": 1666196969273152,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969285793, "dur": 860,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261038,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 28.444445,
+      "warps per SM": 227.55556,
+      "grid": [256, 4, 2],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261038, "pid": 0, "tid": 701, "ts": 1666196969285793,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273167, "dur": 7,
+    "args": {
+      "External id": 2261038,
+      
+      "cbid": 211, "correlation": 2261038
+    }
+  },
+  {
+    "ph": "s", "id": 2261038, "pid": 3494129, "tid": 3494129, "ts": 1666196969273167,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969286655, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261040,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261040, "pid": 0, "tid": 701, "ts": 1666196969286655,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273250, "dur": 11,
+    "args": {
+      "External id": 2261040,
+      
+      "cbid": 211, "correlation": 2261040
+    }
+  },
+  {
+    "ph": "s", "id": 2261040, "pid": 3494129, "tid": 3494129, "ts": 1666196969273250,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969286658, "dur": 754,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261041,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 43.555557,
+      "warps per SM": 174.22223,
+      "grid": [392, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261041, "pid": 0, "tid": 701, "ts": 1666196969286658,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273265, "dur": 7,
+    "args": {
+      "External id": 2261041,
+      
+      "cbid": 211, "correlation": 2261041
+    }
+  },
+  {
+    "ph": "s", "id": 2261041, "pid": 3494129, "tid": 3494129, "ts": 1666196969273265,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969287412, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261043,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261043, "pid": 0, "tid": 701, "ts": 1666196969287412,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273346, "dur": 11,
+    "args": {
+      "External id": 2261043,
+      
+      "cbid": 211, "correlation": 2261043
+    }
+  },
+  {
+    "ph": "s", "id": 2261043, "pid": 3494129, "tid": 3494129, "ts": 1666196969273346,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969287416, "dur": 465,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261044,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 10.888889,
+      "warps per SM": 43.555557,
+      "grid": [392, 2, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261044, "pid": 0, "tid": 701, "ts": 1666196969287416,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273360, "dur": 7,
+    "args": {
+      "External id": 2261044,
+      
+      "cbid": 211, "correlation": 2261044
+    }
+  },
+  {
+    "ph": "s", "id": 2261044, "pid": 3494129, "tid": 3494129, "ts": 1666196969273360,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969287882, "dur": 4,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261046,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 1.7777778,
+      "warps per SM": 7.111111,
+      "grid": [4, 32, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 22
+    }
+  },
+  {
+    "ph": "f", "id": 2261046, "pid": 0, "tid": 701, "ts": 1666196969287882,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273432, "dur": 11,
+    "args": {
+      "External id": 2261046,
+      
+      "cbid": 211, "correlation": 2261046
+    }
+  },
+  {
+    "ph": "s", "id": 2261046, "pid": 3494129, "tid": 3494129, "ts": 1666196969273432,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969287887, "dur": 838,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261048,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 28.444445,
+      "warps per SM": 227.55556,
+      "grid": [256, 4, 2],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261048, "pid": 0, "tid": 701, "ts": 1666196969287887,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273445, "dur": 7,
+    "args": {
+      "External id": 2261048,
+      
+      "cbid": 211, "correlation": 2261048
+    }
+  },
+  {
+    "ph": "s", "id": 2261048, "pid": 3494129, "tid": 3494129, "ts": 1666196969273445,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969288726, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261050,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261050, "pid": 0, "tid": 701, "ts": 1666196969288726,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273527, "dur": 11,
+    "args": {
+      "External id": 2261050,
+      
+      "cbid": 211, "correlation": 2261050
+    }
+  },
+  {
+    "ph": "s", "id": 2261050, "pid": 3494129, "tid": 3494129, "ts": 1666196969273527,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969288730, "dur": 754,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261051,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 43.555557,
+      "warps per SM": 174.22223,
+      "grid": [392, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261051, "pid": 0, "tid": 701, "ts": 1666196969288730,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273541, "dur": 7,
+    "args": {
+      "External id": 2261051,
+      
+      "cbid": 211, "correlation": 2261051
+    }
+  },
+  {
+    "ph": "s", "id": 2261051, "pid": 3494129, "tid": 3494129, "ts": 1666196969273541,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969289484, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261053,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261053, "pid": 0, "tid": 701, "ts": 1666196969289484,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273621, "dur": 11,
+    "args": {
+      "External id": 2261053,
+      
+      "cbid": 211, "correlation": 2261053
+    }
+  },
+  {
+    "ph": "s", "id": 2261053, "pid": 3494129, "tid": 3494129, "ts": 1666196969273621,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969289488, "dur": 465,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261054,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 10.888889,
+      "warps per SM": 43.555557,
+      "grid": [392, 2, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261054, "pid": 0, "tid": 701, "ts": 1666196969289488,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273634, "dur": 7,
+    "args": {
+      "External id": 2261054,
+      
+      "cbid": 211, "correlation": 2261054
+    }
+  },
+  {
+    "ph": "s", "id": 2261054, "pid": 3494129, "tid": 3494129, "ts": 1666196969273634,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969289954, "dur": 4,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261056,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 1.7777778,
+      "warps per SM": 7.111111,
+      "grid": [4, 32, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 22
+    }
+  },
+  {
+    "ph": "f", "id": 2261056, "pid": 0, "tid": 701, "ts": 1666196969289954,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273705, "dur": 11,
+    "args": {
+      "External id": 2261056,
+      
+      "cbid": 211, "correlation": 2261056
+    }
+  },
+  {
+    "ph": "s", "id": 2261056, "pid": 3494129, "tid": 3494129, "ts": 1666196969273705,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969289960, "dur": 843,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261058,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 28.444445,
+      "warps per SM": 227.55556,
+      "grid": [256, 4, 2],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261058, "pid": 0, "tid": 701, "ts": 1666196969289960,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273719, "dur": 6,
+    "args": {
+      "External id": 2261058,
+      
+      "cbid": 211, "correlation": 2261058
+    }
+  },
+  {
+    "ph": "s", "id": 2261058, "pid": 3494129, "tid": 3494129, "ts": 1666196969273719,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969290804, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261060,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261060, "pid": 0, "tid": 701, "ts": 1666196969290804,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273799, "dur": 11,
+    "args": {
+      "External id": 2261060,
+      
+      "cbid": 211, "correlation": 2261060
+    }
+  },
+  {
+    "ph": "s", "id": 2261060, "pid": 3494129, "tid": 3494129, "ts": 1666196969273799,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969290807, "dur": 754,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261061,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 43.555557,
+      "warps per SM": 174.22223,
+      "grid": [392, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261061, "pid": 0, "tid": 701, "ts": 1666196969290807,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273812, "dur": 7,
+    "args": {
+      "External id": 2261061,
+      
+      "cbid": 211, "correlation": 2261061
+    }
+  },
+  {
+    "ph": "s", "id": 2261061, "pid": 3494129, "tid": 3494129, "ts": 1666196969273812,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969291562, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261063,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.055555556,
+      "warps per SM": 0.44444445,
+      "grid": [4, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 1
+    }
+  },
+  {
+    "ph": "f", "id": 2261063, "pid": 0, "tid": 701, "ts": 1666196969291562,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273896, "dur": 11,
+    "args": {
+      "External id": 2261063,
+      
+      "cbid": 211, "correlation": 2261063
+    }
+  },
+  {
+    "ph": "s", "id": 2261063, "pid": 3494129, "tid": 3494129, "ts": 1666196969273896,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_medium_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969291566, "dur": 852,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261064,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 10.888889,
+      "warps per SM": 87.111115,
+      "grid": [392, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261064, "pid": 0, "tid": 701, "ts": 1666196969291566,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273910, "dur": 7,
+    "args": {
+      "External id": 2261064,
+      
+      "cbid": 211, "correlation": 2261064
+    }
+  },
+  {
+    "ph": "s", "id": 2261064, "pid": 3494129, "tid": 3494129, "ts": 1666196969273910,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969292419, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261066,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261066, "pid": 0, "tid": 701, "ts": 1666196969292419,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969273994, "dur": 11,
+    "args": {
+      "External id": 2261066,
+      
+      "cbid": 211, "correlation": 2261066
+    }
+  },
+  {
+    "ph": "s", "id": 2261066, "pid": 3494129, "tid": 3494129, "ts": 1666196969273994,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969292422, "dur": 986,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261067,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 2.7222223,
+      "warps per SM": 21.777779,
+      "grid": [98, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261067, "pid": 0, "tid": 701, "ts": 1666196969292422,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274007, "dur": 7,
+    "args": {
+      "External id": 2261067,
+      
+      "cbid": 211, "correlation": 2261067
+    }
+  },
+  {
+    "ph": "s", "id": 2261067, "pid": 3494129, "tid": 3494129, "ts": 1666196969274007,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969293409, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261069,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261069, "pid": 0, "tid": 701, "ts": 1666196969293409,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274086, "dur": 11,
+    "args": {
+      "External id": 2261069,
+      
+      "cbid": 211, "correlation": 2261069
+    }
+  },
+  {
+    "ph": "s", "id": 2261069, "pid": 3494129, "tid": 3494129, "ts": 1666196969274086,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969293412, "dur": 498,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261070,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [98, 16, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261070, "pid": 0, "tid": 701, "ts": 1666196969293412,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274100, "dur": 7,
+    "args": {
+      "External id": 2261070,
+      
+      "cbid": 211, "correlation": 2261070
+    }
+  },
+  {
+    "ph": "s", "id": 2261070, "pid": 3494129, "tid": 3494129, "ts": 1666196969274100,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void op_generic_tensor_kernel<4, float, float, float, 256, (cudnnGenericOp_t)0, (cudnnNanPropagation_t)0, 0>(cudnnTensorStruct, float*, cudnnTensorStruct, float const*, cudnnTensorStruct, float const*, float, float, float, cudnnActivationStruct, reducedDivisorArray, int)", "pid": 0, "tid": 701,
+    "ts": 1666196969293911, "dur": 188,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261071,
+      "registers per thread": 24,
+      "shared memory": 0,
+      "blocks per SM": 174.22223,
+      "warps per SM": 1393.7778,
+      "grid": [12544, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "ph": "f", "id": 2261071, "pid": 0, "tid": 701, "ts": 1666196969293911,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274116, "dur": 10,
+    "args": {
+      "External id": 2261071,
+      
+      "cbid": 211, "correlation": 2261071
+    }
+  },
+  {
+    "ph": "s", "id": 2261071, "pid": 3494129, "tid": 3494129, "ts": 1666196969274116,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969294100, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261074,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261074, "pid": 0, "tid": 701, "ts": 1666196969294100,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274206, "dur": 11,
+    "args": {
+      "External id": 2261074,
+      
+      "cbid": 211, "correlation": 2261074
+    }
+  },
+  {
+    "ph": "s", "id": 2261074, "pid": 3494129, "tid": 3494129, "ts": 1666196969274206,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_medium_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969294103, "dur": 1226,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261075,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 10.888889,
+      "warps per SM": 87.111115,
+      "grid": [98, 8, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261075, "pid": 0, "tid": 701, "ts": 1666196969294103,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274220, "dur": 7,
+    "args": {
+      "External id": 2261075,
+      
+      "cbid": 211, "correlation": 2261075
+    }
+  },
+  {
+    "ph": "s", "id": 2261075, "pid": 3494129, "tid": 3494129, "ts": 1666196969274220,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969295331, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261077,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261077, "pid": 0, "tid": 701, "ts": 1666196969295331,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274303, "dur": 11,
+    "args": {
+      "External id": 2261077,
+      
+      "cbid": 211, "correlation": 2261077
+    }
+  },
+  {
+    "ph": "s", "id": 2261077, "pid": 3494129, "tid": 3494129, "ts": 1666196969274303,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969295334, "dur": 483,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261078,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 5.4444447,
+      "warps per SM": 21.777779,
+      "grid": [98, 4, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261078, "pid": 0, "tid": 701, "ts": 1666196969295334,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274317, "dur": 7,
+    "args": {
+      "External id": 2261078,
+      
+      "cbid": 211, "correlation": 2261078
+    }
+  },
+  {
+    "ph": "s", "id": 2261078, "pid": 3494129, "tid": 3494129, "ts": 1666196969274317,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969295818, "dur": 8,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261080,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 7.111111,
+      "warps per SM": 28.444445,
+      "grid": [8, 64, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 88
+    }
+  },
+  {
+    "ph": "f", "id": 2261080, "pid": 0, "tid": 701, "ts": 1666196969295818,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274393, "dur": 24,
+    "args": {
+      "External id": 2261080,
+      
+      "cbid": 211, "correlation": 2261080
+    }
+  },
+  {
+    "ph": "s", "id": 2261080, "pid": 3494129, "tid": 3494129, "ts": 1666196969274393,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969295827, "dur": 800,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261082,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 14.222222,
+      "warps per SM": 113.77778,
+      "grid": [512, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261082, "pid": 0, "tid": 701, "ts": 1666196969295827,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274419, "dur": 5,
+    "args": {
+      "External id": 2261082,
+      
+      "cbid": 211, "correlation": 2261082
+    }
+  },
+  {
+    "ph": "s", "id": 2261082, "pid": 3494129, "tid": 3494129, "ts": 1666196969274419,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969296629, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261084,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261084, "pid": 0, "tid": 701, "ts": 1666196969296629,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274477, "dur": 8,
+    "args": {
+      "External id": 2261084,
+      
+      "cbid": 211, "correlation": 2261084
+    }
+  },
+  {
+    "ph": "s", "id": 2261084, "pid": 3494129, "tid": 3494129, "ts": 1666196969274477,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969296632, "dur": 587,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261085,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [98, 16, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261085, "pid": 0, "tid": 701, "ts": 1666196969296632,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274487, "dur": 5,
+    "args": {
+      "External id": 2261085,
+      
+      "cbid": 211, "correlation": 2261085
+    }
+  },
+  {
+    "ph": "s", "id": 2261085, "pid": 3494129, "tid": 3494129, "ts": 1666196969274487,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969297221, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261087,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261087, "pid": 0, "tid": 701, "ts": 1666196969297221,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274541, "dur": 8,
+    "args": {
+      "External id": 2261087,
+      
+      "cbid": 211, "correlation": 2261087
+    }
+  },
+  {
+    "ph": "s", "id": 2261087, "pid": 3494129, "tid": 3494129, "ts": 1666196969274541,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969297224, "dur": 485,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261088,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 5.4444447,
+      "warps per SM": 21.777779,
+      "grid": [98, 4, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261088, "pid": 0, "tid": 701, "ts": 1666196969297224,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274550, "dur": 5,
+    "args": {
+      "External id": 2261088,
+      
+      "cbid": 211, "correlation": 2261088
+    }
+  },
+  {
+    "ph": "s", "id": 2261088, "pid": 3494129, "tid": 3494129, "ts": 1666196969274550,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969297711, "dur": 9,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261090,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 7.111111,
+      "warps per SM": 28.444445,
+      "grid": [8, 64, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 88
+    }
+  },
+  {
+    "ph": "f", "id": 2261090, "pid": 0, "tid": 701, "ts": 1666196969297711,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274600, "dur": 7,
+    "args": {
+      "External id": 2261090,
+      
+      "cbid": 211, "correlation": 2261090
+    }
+  },
+  {
+    "ph": "s", "id": 2261090, "pid": 3494129, "tid": 3494129, "ts": 1666196969274600,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969297721, "dur": 794,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261092,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 14.222222,
+      "warps per SM": 113.77778,
+      "grid": [512, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261092, "pid": 0, "tid": 701, "ts": 1666196969297721,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274609, "dur": 5,
+    "args": {
+      "External id": 2261092,
+      
+      "cbid": 211, "correlation": 2261092
+    }
+  },
+  {
+    "ph": "s", "id": 2261092, "pid": 3494129, "tid": 3494129, "ts": 1666196969274609,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969298516, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261094,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261094, "pid": 0, "tid": 701, "ts": 1666196969298516,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274667, "dur": 8,
+    "args": {
+      "External id": 2261094,
+      
+      "cbid": 211, "correlation": 2261094
+    }
+  },
+  {
+    "ph": "s", "id": 2261094, "pid": 3494129, "tid": 3494129, "ts": 1666196969274667,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969298520, "dur": 591,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261095,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [98, 16, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261095, "pid": 0, "tid": 701, "ts": 1666196969298520,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274677, "dur": 5,
+    "args": {
+      "External id": 2261095,
+      
+      "cbid": 211, "correlation": 2261095
+    }
+  },
+  {
+    "ph": "s", "id": 2261095, "pid": 3494129, "tid": 3494129, "ts": 1666196969274677,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969299111, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261097,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261097, "pid": 0, "tid": 701, "ts": 1666196969299111,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274731, "dur": 8,
+    "args": {
+      "External id": 2261097,
+      
+      "cbid": 211, "correlation": 2261097
+    }
+  },
+  {
+    "ph": "s", "id": 2261097, "pid": 3494129, "tid": 3494129, "ts": 1666196969274731,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969299115, "dur": 484,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261098,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 5.4444447,
+      "warps per SM": 21.777779,
+      "grid": [98, 4, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261098, "pid": 0, "tid": 701, "ts": 1666196969299115,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274740, "dur": 5,
+    "args": {
+      "External id": 2261098,
+      
+      "cbid": 211, "correlation": 2261098
+    }
+  },
+  {
+    "ph": "s", "id": 2261098, "pid": 3494129, "tid": 3494129, "ts": 1666196969274740,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969299600, "dur": 10,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261100,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 7.111111,
+      "warps per SM": 28.444445,
+      "grid": [8, 64, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 88
+    }
+  },
+  {
+    "ph": "f", "id": 2261100, "pid": 0, "tid": 701, "ts": 1666196969299600,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274790, "dur": 8,
+    "args": {
+      "External id": 2261100,
+      
+      "cbid": 211, "correlation": 2261100
+    }
+  },
+  {
+    "ph": "s", "id": 2261100, "pid": 3494129, "tid": 3494129, "ts": 1666196969274790,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969299611, "dur": 793,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261102,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 14.222222,
+      "warps per SM": 113.77778,
+      "grid": [512, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261102, "pid": 0, "tid": 701, "ts": 1666196969299611,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274800, "dur": 4,
+    "args": {
+      "External id": 2261102,
+      
+      "cbid": 211, "correlation": 2261102
+    }
+  },
+  {
+    "ph": "s", "id": 2261102, "pid": 3494129, "tid": 3494129, "ts": 1666196969274800,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969300405, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261104,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261104, "pid": 0, "tid": 701, "ts": 1666196969300405,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274855, "dur": 8,
+    "args": {
+      "External id": 2261104,
+      
+      "cbid": 211, "correlation": 2261104
+    }
+  },
+  {
+    "ph": "s", "id": 2261104, "pid": 3494129, "tid": 3494129, "ts": 1666196969274855,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969300408, "dur": 589,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261105,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [98, 16, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261105, "pid": 0, "tid": 701, "ts": 1666196969300408,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274865, "dur": 5,
+    "args": {
+      "External id": 2261105,
+      
+      "cbid": 211, "correlation": 2261105
+    }
+  },
+  {
+    "ph": "s", "id": 2261105, "pid": 3494129, "tid": 3494129, "ts": 1666196969274865,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969300998, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261107,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261107, "pid": 0, "tid": 701, "ts": 1666196969300998,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274920, "dur": 8,
+    "args": {
+      "External id": 2261107,
+      
+      "cbid": 211, "correlation": 2261107
+    }
+  },
+  {
+    "ph": "s", "id": 2261107, "pid": 3494129, "tid": 3494129, "ts": 1666196969274920,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969301002, "dur": 486,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261108,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 5.4444447,
+      "warps per SM": 21.777779,
+      "grid": [98, 4, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261108, "pid": 0, "tid": 701, "ts": 1666196969301002,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274929, "dur": 5,
+    "args": {
+      "External id": 2261108,
+      
+      "cbid": 211, "correlation": 2261108
+    }
+  },
+  {
+    "ph": "s", "id": 2261108, "pid": 3494129, "tid": 3494129, "ts": 1666196969274929,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969301489, "dur": 8,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261110,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 7.111111,
+      "warps per SM": 28.444445,
+      "grid": [8, 64, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 88
+    }
+  },
+  {
+    "ph": "f", "id": 2261110, "pid": 0, "tid": 701, "ts": 1666196969301489,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274980, "dur": 7,
+    "args": {
+      "External id": 2261110,
+      
+      "cbid": 211, "correlation": 2261110
+    }
+  },
+  {
+    "ph": "s", "id": 2261110, "pid": 3494129, "tid": 3494129, "ts": 1666196969274980,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969301498, "dur": 801,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261112,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 14.222222,
+      "warps per SM": 113.77778,
+      "grid": [512, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261112, "pid": 0, "tid": 701, "ts": 1666196969301498,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969274990, "dur": 5,
+    "args": {
+      "External id": 2261112,
+      
+      "cbid": 211, "correlation": 2261112
+    }
+  },
+  {
+    "ph": "s", "id": 2261112, "pid": 3494129, "tid": 3494129, "ts": 1666196969274990,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969302300, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261114,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261114, "pid": 0, "tid": 701, "ts": 1666196969302300,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275046, "dur": 8,
+    "args": {
+      "External id": 2261114,
+      
+      "cbid": 211, "correlation": 2261114
+    }
+  },
+  {
+    "ph": "s", "id": 2261114, "pid": 3494129, "tid": 3494129, "ts": 1666196969275046,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969302303, "dur": 591,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261115,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [98, 16, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261115, "pid": 0, "tid": 701, "ts": 1666196969302303,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275056, "dur": 5,
+    "args": {
+      "External id": 2261115,
+      
+      "cbid": 211, "correlation": 2261115
+    }
+  },
+  {
+    "ph": "s", "id": 2261115, "pid": 3494129, "tid": 3494129, "ts": 1666196969275056,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969302895, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261117,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261117, "pid": 0, "tid": 701, "ts": 1666196969302895,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275110, "dur": 8,
+    "args": {
+      "External id": 2261117,
+      
+      "cbid": 211, "correlation": 2261117
+    }
+  },
+  {
+    "ph": "s", "id": 2261117, "pid": 3494129, "tid": 3494129, "ts": 1666196969275110,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969302898, "dur": 485,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261118,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 5.4444447,
+      "warps per SM": 21.777779,
+      "grid": [98, 4, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261118, "pid": 0, "tid": 701, "ts": 1666196969302898,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275119, "dur": 5,
+    "args": {
+      "External id": 2261118,
+      
+      "cbid": 211, "correlation": 2261118
+    }
+  },
+  {
+    "ph": "s", "id": 2261118, "pid": 3494129, "tid": 3494129, "ts": 1666196969275119,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::winograd::generateWinogradTilesKernel<0, float, float>(cudnn::winograd::GenerateWinogradTilesParams<float, float>)", "pid": 0, "tid": 701,
+    "ts": 1666196969303384, "dur": 9,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261120,
+      "registers per thread": 56,
+      "shared memory": 8704,
+      "blocks per SM": 7.111111,
+      "warps per SM": 28.444445,
+      "grid": [8, 64, 1],
+      "block": [32, 4, 1],
+      "est. achieved occupancy %": 88
+    }
+  },
+  {
+    "ph": "f", "id": 2261120, "pid": 0, "tid": 701, "ts": 1666196969303384,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275169, "dur": 7,
+    "args": {
+      "External id": 2261120,
+      
+      "cbid": 211, "correlation": 2261120
+    }
+  },
+  {
+    "ph": "s", "id": 2261120, "pid": 3494129, "tid": 3494129, "ts": 1666196969275169,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_winograd_128x128_ldg1_ldg4_relu_tile148t_nt_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969303395, "dur": 800,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261122,
+      "registers per thread": 126,
+      "shared memory": 49152,
+      "blocks per SM": 14.222222,
+      "warps per SM": 113.77778,
+      "grid": [512, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 25
+    }
+  },
+  {
+    "ph": "f", "id": 2261122, "pid": 0, "tid": 701, "ts": 1666196969303395,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275178, "dur": 4,
+    "args": {
+      "External id": 2261122,
+      
+      "cbid": 211, "correlation": 2261122
+    }
+  },
+  {
+    "ph": "s", "id": 2261122, "pid": 3494129, "tid": 3494129, "ts": 1666196969275178,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969304195, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261124,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261124, "pid": 0, "tid": 701, "ts": 1666196969304195,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275235, "dur": 8,
+    "args": {
+      "External id": 2261124,
+      
+      "cbid": 211, "correlation": 2261124
+    }
+  },
+  {
+    "ph": "s", "id": 2261124, "pid": 3494129, "tid": 3494129, "ts": 1666196969275235,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969304199, "dur": 587,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261125,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 21.777779,
+      "warps per SM": 87.111115,
+      "grid": [98, 16, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261125, "pid": 0, "tid": 701, "ts": 1666196969304199,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275244, "dur": 5,
+    "args": {
+      "External id": 2261125,
+      
+      "cbid": 211, "correlation": 2261125
+    }
+  },
+  {
+    "ph": "s", "id": 2261125, "pid": 3494129, "tid": 3494129, "ts": 1666196969275244,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969304787, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261127,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261127, "pid": 0, "tid": 701, "ts": 1666196969304787,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275300, "dur": 8,
+    "args": {
+      "External id": 2261127,
+      
+      "cbid": 211, "correlation": 2261127
+    }
+  },
+  {
+    "ph": "s", "id": 2261127, "pid": 3494129, "tid": 3494129, "ts": 1666196969275300,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969304790, "dur": 906,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261128,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 10.888889,
+      "warps per SM": 43.555557,
+      "grid": [98, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261128, "pid": 0, "tid": 701, "ts": 1666196969304790,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275309, "dur": 5,
+    "args": {
+      "External id": 2261128,
+      
+      "cbid": 211, "correlation": 2261128
+    }
+  },
+  {
+    "ph": "s", "id": 2261128, "pid": 3494129, "tid": 3494129, "ts": 1666196969275309,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969305697, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261130,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261130, "pid": 0, "tid": 701, "ts": 1666196969305697,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275371, "dur": 8,
+    "args": {
+      "External id": 2261130,
+      
+      "cbid": 211, "correlation": 2261130
+    }
+  },
+  {
+    "ph": "s", "id": 2261130, "pid": 3494129, "tid": 3494129, "ts": 1666196969275371,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_xregs_large_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969305701, "dur": 1083,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261131,
+      "registers per thread": 160,
+      "shared memory": 16384,
+      "blocks per SM": 2.7777777,
+      "warps per SM": 11.111111,
+      "grid": [25, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 35
+    }
+  },
+  {
+    "ph": "f", "id": 2261131, "pid": 0, "tid": 701, "ts": 1666196969305701,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275381, "dur": 6,
+    "args": {
+      "External id": 2261131,
+      
+      "cbid": 211, "correlation": 2261131
+    }
+  },
+  {
+    "ph": "s", "id": 2261131, "pid": 3494129, "tid": 3494129, "ts": 1666196969275381,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969306785, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261133,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261133, "pid": 0, "tid": 701, "ts": 1666196969306785,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275441, "dur": 8,
+    "args": {
+      "External id": 2261133,
+      
+      "cbid": 211, "correlation": 2261133
+    }
+  },
+  {
+    "ph": "s", "id": 2261133, "pid": 3494129, "tid": 3494129, "ts": 1666196969275441,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969306788, "dur": 475,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261134,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 11.111111,
+      "warps per SM": 44.444443,
+      "grid": [25, 32, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261134, "pid": 0, "tid": 701, "ts": 1666196969306788,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275450, "dur": 5,
+    "args": {
+      "External id": 2261134,
+      
+      "cbid": 211, "correlation": 2261134
+    }
+  },
+  {
+    "ph": "s", "id": 2261134, "pid": 3494129, "tid": 3494129, "ts": 1666196969275450,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void op_generic_tensor_kernel<4, float, float, float, 256, (cudnnGenericOp_t)0, (cudnnNanPropagation_t)0, 0>(cudnnTensorStruct, float*, cudnnTensorStruct, float const*, cudnnTensorStruct, float const*, float, float, float, cudnnActivationStruct, reducedDivisorArray, int)", "pid": 0, "tid": 701,
+    "ts": 1666196969307265, "dur": 95,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261135,
+      "registers per thread": 24,
+      "shared memory": 0,
+      "blocks per SM": 87.111115,
+      "warps per SM": 696.8889,
+      "grid": [6272, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 100
+    }
+  },
+  {
+    "ph": "f", "id": 2261135, "pid": 0, "tid": 701, "ts": 1666196969307265,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275462, "dur": 7,
+    "args": {
+      "External id": 2261135,
+      
+      "cbid": 211, "correlation": 2261135
+    }
+  },
+  {
+    "ph": "s", "id": 2261135, "pid": 3494129, "tid": 3494129, "ts": 1666196969275462,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969307361, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261138,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261138, "pid": 0, "tid": 701, "ts": 1666196969307361,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275527, "dur": 8,
+    "args": {
+      "External id": 2261138,
+      
+      "cbid": 211, "correlation": 2261138
+    }
+  },
+  {
+    "ph": "s", "id": 2261138, "pid": 3494129, "tid": 3494129, "ts": 1666196969275527,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x128_relu_medium_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969307364, "dur": 1069,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261139,
+      "registers per thread": 128,
+      "shared memory": 32768,
+      "blocks per SM": 5.5555553,
+      "warps per SM": 44.444443,
+      "grid": [25, 16, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261139, "pid": 0, "tid": 701, "ts": 1666196969307364,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275537, "dur": 6,
+    "args": {
+      "External id": 2261139,
+      
+      "cbid": 211, "correlation": 2261139
+    }
+  },
+  {
+    "ph": "s", "id": 2261139, "pid": 3494129, "tid": 3494129, "ts": 1666196969275537,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969308434, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261141,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261141, "pid": 0, "tid": 701, "ts": 1666196969308434,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275597, "dur": 8,
+    "args": {
+      "External id": 2261141,
+      
+      "cbid": 211, "correlation": 2261141
+    }
+  },
+  {
+    "ph": "s", "id": 2261141, "pid": 3494129, "tid": 3494129, "ts": 1666196969275597,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969308437, "dur": 478,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261142,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 2.7777777,
+      "warps per SM": 11.111111,
+      "grid": [25, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 35
+    }
+  },
+  {
+    "ph": "f", "id": 2261142, "pid": 0, "tid": 701, "ts": 1666196969308437,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275606, "dur": 5,
+    "args": {
+      "External id": 2261142,
+      
+      "cbid": 211, "correlation": 2261142
+    }
+  },
+  {
+    "ph": "s", "id": 2261142, "pid": 3494129, "tid": 3494129, "ts": 1666196969275606,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969308916, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261144,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261144, "pid": 0, "tid": 701, "ts": 1666196969308916,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275674, "dur": 8,
+    "args": {
+      "External id": 2261144,
+      
+      "cbid": 211, "correlation": 2261144
+    }
+  },
+  {
+    "ph": "s", "id": 2261144, "pid": 3494129, "tid": 3494129, "ts": 1666196969275674,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969308919, "dur": 1083,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261145,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 2.7777777,
+      "warps per SM": 11.111111,
+      "grid": [25, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 35
+    }
+  },
+  {
+    "ph": "f", "id": 2261145, "pid": 0, "tid": 701, "ts": 1666196969308919,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275684, "dur": 5,
+    "args": {
+      "External id": 2261145,
+      
+      "cbid": 211, "correlation": 2261145
+    }
+  },
+  {
+    "ph": "s", "id": 2261145, "pid": 3494129, "tid": 3494129, "ts": 1666196969275684,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969310003, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261147,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261147, "pid": 0, "tid": 701, "ts": 1666196969310003,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275743, "dur": 8,
+    "args": {
+      "External id": 2261147,
+      
+      "cbid": 211, "correlation": 2261147
+    }
+  },
+  {
+    "ph": "s", "id": 2261147, "pid": 3494129, "tid": 3494129, "ts": 1666196969275743,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969310006, "dur": 492,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261148,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 11.111111,
+      "warps per SM": 44.444443,
+      "grid": [25, 32, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261148, "pid": 0, "tid": 701, "ts": 1666196969310006,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275752, "dur": 5,
+    "args": {
+      "External id": 2261148,
+      
+      "cbid": 211, "correlation": 2261148
+    }
+  },
+  {
+    "ph": "s", "id": 2261148, "pid": 3494129, "tid": 3494129, "ts": 1666196969275752,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969310499, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261150,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261150, "pid": 0, "tid": 701, "ts": 1666196969310499,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275808, "dur": 8,
+    "args": {
+      "External id": 2261150,
+      
+      "cbid": 211, "correlation": 2261150
+    }
+  },
+  {
+    "ph": "s", "id": 2261150, "pid": 3494129, "tid": 3494129, "ts": 1666196969275808,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969310503, "dur": 482,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261151,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 2.7777777,
+      "warps per SM": 11.111111,
+      "grid": [25, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 35
+    }
+  },
+  {
+    "ph": "f", "id": 2261151, "pid": 0, "tid": 701, "ts": 1666196969310503,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275817, "dur": 5,
+    "args": {
+      "External id": 2261151,
+      
+      "cbid": 211, "correlation": 2261151
+    }
+  },
+  {
+    "ph": "s", "id": 2261151, "pid": 3494129, "tid": 3494129, "ts": 1666196969275817,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969310986, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261153,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261153, "pid": 0, "tid": 701, "ts": 1666196969310986,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275876, "dur": 8,
+    "args": {
+      "External id": 2261153,
+      
+      "cbid": 211, "correlation": 2261153
+    }
+  },
+  {
+    "ph": "s", "id": 2261153, "pid": 3494129, "tid": 3494129, "ts": 1666196969275876,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_small_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969310989, "dur": 1072,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261154,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 2.7777777,
+      "warps per SM": 11.111111,
+      "grid": [25, 8, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 35
+    }
+  },
+  {
+    "ph": "f", "id": 2261154, "pid": 0, "tid": 701, "ts": 1666196969310989,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275886, "dur": 5,
+    "args": {
+      "External id": 2261154,
+      
+      "cbid": 211, "correlation": 2261154
+    }
+  },
+  {
+    "ph": "s", "id": 2261154, "pid": 3494129, "tid": 3494129, "ts": 1666196969275886,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cask_cudnn::computeOffsetsKernel<false, false>(cask_cudnn::ComputeOffsetsParams)", "pid": 0, "tid": 701,
+    "ts": 1666196969312063, "dur": 2,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261156,
+      "registers per thread": 16,
+      "shared memory": 0,
+      "blocks per SM": 0.013888889,
+      "warps per SM": 0.11111111,
+      "grid": [1, 1, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 0
+    }
+  },
+  {
+    "ph": "f", "id": 2261156, "pid": 0, "tid": 701, "ts": 1666196969312063,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275942, "dur": 8,
+    "args": {
+      "External id": 2261156,
+      
+      "cbid": 211, "correlation": 2261156
+    }
+  },
+  {
+    "ph": "s", "id": 2261156, "pid": 3494129, "tid": 3494129, "ts": 1666196969275942,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_scudnn_128x64_relu_interior_nn_v1", "pid": 0, "tid": 701,
+    "ts": 1666196969312066, "dur": 505,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261157,
+      "registers per thread": 128,
+      "shared memory": 16384,
+      "blocks per SM": 11.111111,
+      "warps per SM": 44.444443,
+      "grid": [25, 32, 1],
+      "block": [128, 1, 1],
+      "est. achieved occupancy %": 50
+    }
+  },
+  {
+    "ph": "f", "id": 2261157, "pid": 0, "tid": 701, "ts": 1666196969312066,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275951, "dur": 5,
+    "args": {
+      "External id": 2261157,
+      
+      "cbid": 211, "correlation": 2261157
+    }
+  },
+  {
+    "ph": "s", "id": 2261157, "pid": 3494129, "tid": 3494129, "ts": 1666196969275951,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void cudnn::ops::pooling_fw_4d_kernel<float, float, cudnn::averpooling_func<float, true>, (cudnnPoolingMode_t)2, false>(cudnnTensorStruct, float const*, cudnnTensorStruct, float*, cudnnPoolingStruct, float, float, int, cudnn::reduced_divisor, cudnn::reduced_divisor)", "pid": 0, "tid": 701,
+    "ts": 1666196969312572, "dur": 66,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261159,
+      "registers per thread": 58,
+      "shared memory": 3920,
+      "blocks per SM": 13.333333,
+      "warps per SM": 102.08333,
+      "grid": [1, 15, 64],
+      "block": [7, 35, 1],
+      "est. achieved occupancy %": 96
+    }
+  },
+  {
+    "ph": "f", "id": 2261159, "pid": 0, "tid": 701, "ts": 1666196969312572,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969275973, "dur": 10,
+    "args": {
+      "External id": 2261159,
+      
+      "cbid": 211, "correlation": 2261159
+    }
+  },
+  {
+    "ph": "s", "id": 2261159, "pid": 3494129, "tid": 3494129, "ts": 1666196969275973,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276021, "dur": 5,
+    "args": {
+      "External id": 2261163,
+      
+      "cbid": 251, "correlation": 2261163
+    }
+  },
+  {
+    "ph": "f", "id": 2261163, "pid": 3494129, "tid": 3494129, "ts": 1666196969276021,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void gemmk1_kernel<int, float, 256, 5, false, false, false, false, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float>, float, 0>(cublasGemmk1Params<float, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float const>, cublasGemvTensorStridedBatched<float>, float, biasType<cublasGemvTensorStridedBatched<float>::value_type, float>::type>)", "pid": 0, "tid": 701,
+    "ts": 1666196969312640, "dur": 3,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261164,
+      "registers per thread": 19,
+      "shared memory": 1024,
+      "blocks per SM": 0.8888889,
+      "warps per SM": 7.111111,
+      "grid": [32, 2, 1],
+      "block": [256, 1, 1],
+      "est. achieved occupancy %": 22
+    }
+  },
+  {
+    "ph": "f", "id": 2261164, "pid": 0, "tid": 701, "ts": 1666196969312640,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276032, "dur": 12,
+    "args": {
+      "External id": 2261164,
+      
+      "cbid": 211, "correlation": 2261164
+    }
+  },
+  {
+    "ph": "s", "id": 2261164, "pid": 3494129, "tid": 3494129, "ts": 1666196969276032,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276071, "dur": 2,
+    "args": {
+      "External id": 2261166,
+      
+      "cbid": 251, "correlation": 2261166
+    }
+  },
+  {
+    "ph": "f", "id": 2261166, "pid": 3494129, "tid": 3494129, "ts": 1666196969276071,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaStreamGetCaptureInfo", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276077, "dur": 2,
+    "args": {
+      "External id": 2261167,
+      
+      "cbid": 324, "correlation": 2261167
+    }
+  },
+  {
+    "ph": "f", "id": 2261167, "pid": 3494129, "tid": 3494129, "ts": 1666196969276077,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaEventQuery", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276081, "dur": 10,
+    "args": {
+      "External id": 2261168,
+      
+      "cbid": 138, "correlation": 2261168
+    }
+  },
+  {
+    "ph": "f", "id": 2261168, "pid": 3494129, "tid": 3494129, "ts": 1666196969276081,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "volta_sgemm_64x64_tn", "pid": 0, "tid": 701,
+    "ts": 1666196969312644, "dur": 34,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261169,
+      "registers per thread": 126,
+      "shared memory": 8704,
+      "blocks per SM": 3.5555556,
+      "warps per SM": 7.111111,
+      "grid": [16, 1, 16],
+      "block": [64, 1, 1],
+      "est. achieved occupancy %": 22
+    }
+  },
+  {
+    "ph": "f", "id": 2261169, "pid": 0, "tid": 701, "ts": 1666196969312644,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276095, "dur": 10,
+    "args": {
+      "External id": 2261169,
+      
+      "cbid": 211, "correlation": 2261169
+    }
+  },
+  {
+    "ph": "s", "id": 2261169, "pid": 3494129, "tid": 3494129, "ts": 1666196969276095,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "Kernel", 
+    "name": "void splitKreduce_kernel<32, 16, int, float, float, float, float, true, false, false>(cublasSplitKParams<float>, float const*, float const*, float*, float const*, float const*, float const*, float const*, float*, void*, long, float*, int*)", "pid": 0, "tid": 701,
+    "ts": 1666196969312679, "dur": 6,
+    "args": {
+      "queued": 0, "device": 0, "context": 1,
+      "stream": 701, "correlation": 2261171,
+      "registers per thread": 43,
+      "shared memory": 0,
+      "blocks per SM": 1.7777778,
+      "warps per SM": 28.444445,
+      "grid": [32, 4, 1],
+      "block": [32, 16, 1],
+      "est. achieved occupancy %": 89
+    }
+  },
+  {
+    "ph": "f", "id": 2261171, "pid": 0, "tid": 701, "ts": 1666196969312679,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaLaunchKernel", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276108, "dur": 9,
+    "args": {
+      "External id": 2261171,
+      
+      "cbid": 211, "correlation": 2261171
+    }
+  },
+  {
+    "ph": "s", "id": 2261171, "pid": 3494129, "tid": 3494129, "ts": 1666196969276108,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaStreamGetCaptureInfo", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276119, "dur": 0,
+    "args": {
+      "External id": 2261173,
+      
+      "cbid": 324, "correlation": 2261173
+    }
+  },
+  {
+    "ph": "f", "id": 2261173, "pid": 3494129, "tid": 3494129, "ts": 1666196969276119,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaStreamGetCaptureInfo", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276120, "dur": 0,
+    "args": {
+      "External id": 2261174,
+      
+      "cbid": 324, "correlation": 2261174
+    }
+  },
+  {
+    "ph": "f", "id": 2261174, "pid": 3494129, "tid": 3494129, "ts": 1666196969276120,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaStreamGetCaptureInfo", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276121, "dur": 0,
+    "args": {
+      "External id": 2261175,
+      
+      "cbid": 324, "correlation": 2261175
+    }
+  },
+  {
+    "ph": "f", "id": 2261175, "pid": 3494129, "tid": 3494129, "ts": 1666196969276121,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaStreamSynchronize", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969276156, "dur": 36531,
+    "args": {
+      "External id": 2261179,
+      
+      "cbid": 131, "correlation": 2261179
+    }
+  },
+  {
+    "ph": "f", "id": 2261179, "pid": 3494129, "tid": 3494129, "ts": 1666196969276156,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "ph": "X", "cat": "cuda_runtime", 
+    "name": "cudaDeviceSynchronize", "pid": 3494129, "tid": 3494129,
+    "ts": 1666196969312823, "dur": 7,
+    "args": {
+      "External id": 2261182,
+      
+      "cbid": 165, "correlation": 2261182
+    }
+  },
+  {
+    "ph": "f", "id": 2261182, "pid": 3494129, "tid": 3494129, "ts": 1666196969312823,
+    "cat": "async_cpu_to_gpu", "name": "async_gpu", "bp": "e"
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 0,
+    "args": {
+      "labels": "CPU"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 0,
+    "args": {
+      "sort_index": 3494129
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 0,
+    "args": {
+      "labels": "GPU 0"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 0,
+    "args": {
+      "sort_index": 16777216
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 1, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 1, "tid": 0,
+    "args": {
+      "labels": "GPU 1"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 1, "tid": 0,
+    "args": {
+      "sort_index": 16777217
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 2, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 2, "tid": 0,
+    "args": {
+      "labels": "GPU 2"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 2, "tid": 0,
+    "args": {
+      "sort_index": 16777218
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 3, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 3, "tid": 0,
+    "args": {
+      "labels": "GPU 3"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 3, "tid": 0,
+    "args": {
+      "sort_index": 16777219
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 4, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 4, "tid": 0,
+    "args": {
+      "labels": "GPU 4"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 4, "tid": 0,
+    "args": {
+      "sort_index": 16777220
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 5, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 5, "tid": 0,
+    "args": {
+      "labels": "GPU 5"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 5, "tid": 0,
+    "args": {
+      "sort_index": 16777221
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 6, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 6, "tid": 0,
+    "args": {
+      "labels": "GPU 6"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 6, "tid": 0,
+    "args": {
+      "sort_index": 16777222
+    }
+  },
+  {
+    "name": "process_name", "ph": "M", "ts": 1666196969257272, "pid": 7, "tid": 0,
+    "args": {
+      "name": "python"
+    }
+  },
+  {
+    "name": "process_labels", "ph": "M", "ts": 1666196969257272, "pid": 7, "tid": 0,
+    "args": {
+      "labels": "GPU 7"
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 7, "tid": 0,
+    "args": {
+      "sort_index": 16777223
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 16,
+    "args": {
+      "name": "stream 16 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 16,
+    "args": {
+      "sort_index": 16
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 51,
+    "args": {
+      "name": "stream 51 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 51,
+    "args": {
+      "sort_index": 51
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 64,
+    "args": {
+      "name": "stream 64 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 64,
+    "args": {
+      "sort_index": 64
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 77,
+    "args": {
+      "name": "stream 77 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 77,
+    "args": {
+      "sort_index": 77
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 90,
+    "args": {
+      "name": "stream 90 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 90,
+    "args": {
+      "sort_index": 90
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 103,
+    "args": {
+      "name": "stream 103 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 103,
+    "args": {
+      "sort_index": 103
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 116,
+    "args": {
+      "name": "stream 116 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 116,
+    "args": {
+      "sort_index": 116
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 129,
+    "args": {
+      "name": "stream 129 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 129,
+    "args": {
+      "sort_index": 129
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 142,
+    "args": {
+      "name": "stream 142 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 142,
+    "args": {
+      "sort_index": 142
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 155,
+    "args": {
+      "name": "stream 155 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 155,
+    "args": {
+      "sort_index": 155
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 168,
+    "args": {
+      "name": "stream 168 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 168,
+    "args": {
+      "sort_index": 168
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 181,
+    "args": {
+      "name": "stream 181 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 181,
+    "args": {
+      "sort_index": 181
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 194,
+    "args": {
+      "name": "stream 194 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 194,
+    "args": {
+      "sort_index": 194
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 207,
+    "args": {
+      "name": "stream 207 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 207,
+    "args": {
+      "sort_index": 207
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 220,
+    "args": {
+      "name": "stream 220 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 220,
+    "args": {
+      "sort_index": 220
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 233,
+    "args": {
+      "name": "stream 233 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 233,
+    "args": {
+      "sort_index": 233
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 246,
+    "args": {
+      "name": "stream 246 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 246,
+    "args": {
+      "sort_index": 246
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 259,
+    "args": {
+      "name": "stream 259 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 259,
+    "args": {
+      "sort_index": 259
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 272,
+    "args": {
+      "name": "stream 272 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 272,
+    "args": {
+      "sort_index": 272
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 285,
+    "args": {
+      "name": "stream 285 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 285,
+    "args": {
+      "sort_index": 285
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 298,
+    "args": {
+      "name": "stream 298 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 298,
+    "args": {
+      "sort_index": 298
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 311,
+    "args": {
+      "name": "stream 311 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 311,
+    "args": {
+      "sort_index": 311
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 324,
+    "args": {
+      "name": "stream 324 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 324,
+    "args": {
+      "sort_index": 324
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 337,
+    "args": {
+      "name": "stream 337 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 337,
+    "args": {
+      "sort_index": 337
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 350,
+    "args": {
+      "name": "stream 350 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 350,
+    "args": {
+      "sort_index": 350
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 363,
+    "args": {
+      "name": "stream 363 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 363,
+    "args": {
+      "sort_index": 363
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 376,
+    "args": {
+      "name": "stream 376 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 376,
+    "args": {
+      "sort_index": 376
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 389,
+    "args": {
+      "name": "stream 389 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 389,
+    "args": {
+      "sort_index": 389
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 402,
+    "args": {
+      "name": "stream 402 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 402,
+    "args": {
+      "sort_index": 402
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 415,
+    "args": {
+      "name": "stream 415 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 415,
+    "args": {
+      "sort_index": 415
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 428,
+    "args": {
+      "name": "stream 428 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 428,
+    "args": {
+      "sort_index": 428
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 441,
+    "args": {
+      "name": "stream 441 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 441,
+    "args": {
+      "sort_index": 441
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 454,
+    "args": {
+      "name": "stream 454 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 454,
+    "args": {
+      "sort_index": 454
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 467,
+    "args": {
+      "name": "stream 467 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 467,
+    "args": {
+      "sort_index": 467
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 480,
+    "args": {
+      "name": "stream 480 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 480,
+    "args": {
+      "sort_index": 480
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 493,
+    "args": {
+      "name": "stream 493 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 493,
+    "args": {
+      "sort_index": 493
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 506,
+    "args": {
+      "name": "stream 506 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 506,
+    "args": {
+      "sort_index": 506
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 519,
+    "args": {
+      "name": "stream 519 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 519,
+    "args": {
+      "sort_index": 519
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 532,
+    "args": {
+      "name": "stream 532 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 532,
+    "args": {
+      "sort_index": 532
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 545,
+    "args": {
+      "name": "stream 545 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 545,
+    "args": {
+      "sort_index": 545
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 558,
+    "args": {
+      "name": "stream 558 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 558,
+    "args": {
+      "sort_index": 558
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 571,
+    "args": {
+      "name": "stream 571 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 571,
+    "args": {
+      "sort_index": 571
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 584,
+    "args": {
+      "name": "stream 584 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 584,
+    "args": {
+      "sort_index": 584
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 597,
+    "args": {
+      "name": "stream 597 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 597,
+    "args": {
+      "sort_index": 597
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 610,
+    "args": {
+      "name": "stream 610 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 610,
+    "args": {
+      "sort_index": 610
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 623,
+    "args": {
+      "name": "stream 623 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 623,
+    "args": {
+      "sort_index": 623
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 636,
+    "args": {
+      "name": "stream 636 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 636,
+    "args": {
+      "sort_index": 636
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 649,
+    "args": {
+      "name": "stream 649 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 649,
+    "args": {
+      "sort_index": 649
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 662,
+    "args": {
+      "name": "stream 662 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 662,
+    "args": {
+      "sort_index": 662
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 675,
+    "args": {
+      "name": "stream 675 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 675,
+    "args": {
+      "sort_index": 675
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 688,
+    "args": {
+      "name": "stream 688 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 688,
+    "args": {
+      "sort_index": 688
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 701,
+    "args": {
+      "name": "stream 701 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 0, "tid": 701,
+    "args": {
+      "sort_index": 701
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 1, "tid": 30,
+    "args": {
+      "name": "stream 30 "
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 1, "tid": 30,
+    "args": {
+      "sort_index": 30
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 3494129,
+    "args": {
+      "name": "thread 3494129 (python)"
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 3494129,
+    "args": {
+      "sort_index": 3494129
+    }
+  },
+  {
+    "name": "thread_name", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 3494129,
+    "args": {
+      "name": "thread 3494129 (python)"
+    }
+  },
+  {
+    "name": "thread_sort_index", "ph": "M", "ts": 1666196969257272, "pid": 3494129, "tid": 3494129,
+    "args": {
+      "sort_index": 3494129
+    }
+  },
+  {
+    "ph": "X", "cat": "Trace", "ts": 1666196969256903, "dur": 55933,
+    "pid": "Spans", "tid": "PyTorch Profiler",
+    "name": "PyTorch Profiler (0)",
+    "args": {
+      "Op count": 0
+    }
+  },
+  {
+    "name": "process_sort_index", "ph": "M", "ts": 1666196969256903,
+    "pid": "Spans", "tid": 0,
+    "args": {
+      "sort_index": 536870912
+    }
+  },
+  {
+    "name": "Iteration Start: PyTorch Profiler", "ph": "i", "s": "g",
+    "pid": "Traces", "tid": "Trace PyTorch Profiler", "ts": 1666196969256903
+  },
+  {
+    "name": "Record Window End", "ph": "i", "s": "g",
+    "pid": "", "tid": "", "ts": 1666196969313075
+  }
+  ],
+  "traceName": "gpu_util/log/onnx-batch64/HERRON_3494129.1666196969318.pt.trace.json"
+}

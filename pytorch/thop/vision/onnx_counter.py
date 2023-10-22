@@ -66,14 +66,20 @@ def onnx_counter_conv(diction, node):
             group = attr.i
             # print(dim_dil)
     dim_input = diction[node.input[0]]
-    output_size = np.append(dim_input[0 : -np.array(dim_kernel).size - 1], dim_weight[0])
+    output_size = np.append(
+        dim_input[0 : -np.array(dim_kernel).size - 1], dim_weight[0]
+    )
     hw = np.array(dim_input[-np.array(dim_kernel).size :])
     for i in range(hw.size):
         hw[i] = int(
-            (hw[i] + 2 * dim_pad[i] - dim_dil[i] * (dim_kernel[i] - 1) - 1) / dim_stride[i] + 1
+            (hw[i] + 2 * dim_pad[i] - dim_dil[i] * (dim_kernel[i] - 1) - 1)
+            / dim_stride[i]
+            + 1
         )
     output_size = np.append(output_size, hw)
-    macs = calculate_conv(dim_bias, np.prod(dim_kernel), np.prod(output_size), dim_weight[1], group)
+    macs = calculate_conv(
+        dim_bias, np.prod(dim_kernel), np.prod(output_size), dim_weight[1], group
+    )
     output_name = node.output[0]
 
     # if '140' in diction:

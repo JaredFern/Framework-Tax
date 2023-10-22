@@ -13,7 +13,7 @@ source activate device_benchmarking;
 PLATFORM="2080ti"
 DEVICE="cuda"
 
-EXP_TAG=("fp32" "fp16" "torchscript" "torchscript-fp16" "trt" "trt-fp16")
+EXP_TAG=("fp32" "fp16")
 EXP_FLAG=(" " "--use_fp16" "--use_jit" "--use_jit --use_fp16" "--use_tensorrt" "--use_tensorrt --use_fp16")
 
 EXP_NAME="pretrained-"${EXP_TAG[$SLURM_ARRAY_TASK_ID]}

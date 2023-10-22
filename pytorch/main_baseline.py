@@ -94,7 +94,9 @@ def run_model(opts, input_shape, dataframe, results_dir):
                 "stride": input_shape[4],
                 "img_size": input_shape[5],
             }
-            model = Conv2DModel(input_shape[1], input_shape[2], input_shape[3], input_shape[4])
+            model = Conv2DModel(
+                input_shape[1], input_shape[2], input_shape[3], input_shape[4]
+            )
         elif opts.model == "self_attn":
             pass
         elif opts.model == "layer_norm":
@@ -111,11 +113,14 @@ def run_model(opts, input_shape, dataframe, results_dir):
 def main(opts):
     platform_name = opts.platform
     results_dir = os.path.join(
-        opts.results_dir, f"{datetime.datetime.now().strftime('%Y_%m%d')}_{opts.exp_name}"
+        opts.results_dir,
+        f"{datetime.datetime.now().strftime('%Y_%m%d')}_{opts.exp_name}",
     )
     Path(results_dir).mkdir(parents=True, exist_ok=True)
     results_file = f"{results_dir}/{platform_name}.csv"
-    dataframe = pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
+    dataframe = (
+        pd.read_csv(results_file) if os.path.exists(results_file) else pd.DataFrame()
+    )
 
     if opts.input_format == "bh":
         input_sizes = product(opts.batch_size, opts.hidden_size)
@@ -160,6 +165,7 @@ if __name__ == "__main__":
     parser.add_argument("--use_channel_last", action="store_true")
     parser.add_argument("--use_fp16", action="store_true")
     parser.add_argument("--use_jit", action="store_true")
+    parser.add_argument("--use_ptcompile", action="store_true")
     parser.add_argument("--use_tensorrt", action="store_true")
     parser.add_argument("--use_ipex", action="store_true")
     parser.add_argument("--use_dquant", action="store_true")

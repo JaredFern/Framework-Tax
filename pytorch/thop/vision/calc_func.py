@@ -30,7 +30,11 @@ def calculate_zero_ops():
 
 
 def calculate_conv2d_flops(
-    input_size: list, output_size: list, kernel_size: list, groups: int, bias: bool = False
+    input_size: list,
+    output_size: list,
+    kernel_size: list,
+    groups: int,
+    bias: bool = False,
 ):
     # n, out_c, oh, ow = output_size
     # n, in_c, ih, iw = input_size

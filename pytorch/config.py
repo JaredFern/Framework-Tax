@@ -1,12 +1,22 @@
 from functools import partial
 
 import transformers
+
 # from timm import create_model
 from torchvision import models
 
 NAME2MODEL_LANGUAGE = {
     "bert": [transformers.BertModel, transformers.BertTokenizer, "bert-base-uncased"],
-    "bert-large": [transformers.BertModel, transformers.BertTokenizer, "bert-large-uncased"],
+    "bert-large": [
+        transformers.BertModel,
+        transformers.BertTokenizer,
+        "bert-large-uncased",
+    ],
+    "gpt2": [
+        transformers.GPT2LMHeadModel,
+        transformers.GPT2Tokenizer,
+        "gpt2"
+    ],
     "roberta": [
         transformers.RobertaModel,
         transformers.RobertaTokenizer,
@@ -26,6 +36,16 @@ NAME2MODEL_LANGUAGE = {
         transformers.FunnelModel,
         transformers.FunnelTokenizer,
         "funnel-transformer/small",
+    ],
+    "fnet": [
+        transformers.FNetModel,
+        transformers.AutoTokenizer,
+        "google/fnet-base",
+    ],
+    'nystromformer': [
+        transformers.NystromformerModel,
+        transformers.AutoTokenizer,
+        "uw-madison/nystromformer-512"
     ],
     # "ibert": [
     #     transformers.IBertModel,
@@ -63,23 +83,23 @@ NAME2MODEL_SPEECH = {
     "speecht5": [
         transformers.SpeechT5ForSpeechToText,
         transformers.SpeechT5Processor,
-        "microsoft/speecht5_asr"
+        "microsoft/speecht5_asr",
     ],
-     "hubert": [
+    "hubert": [
         transformers.HubertForCTC,
         transformers.Wav2Vec2Processor,
-        "facebook/hubert-large-ls960-ft"
+        "facebook/hubert-large-ls960-ft",
     ],
     "wav2vec2": [
         transformers.Wav2Vec2ForCTC,
         transformers.Wav2Vec2Processor,
-        "facebook/wav2vec2-base-960h"
+        "facebook/wav2vec2-base-960h",
     ],
     "wavlm": [
         transformers.WavLMForCTC,
         transformers.Wav2Vec2FeatureExtractor,
-        "microsoft/wavlm-base"
-    ]
+        "microsoft/wavlm-base",
+    ],
 }
 
 NAME2MODEL_VISION = {

@@ -32,14 +32,14 @@ class PyTorchBenchmark(object):
     def _prepare_model(self):
         precisions = {torch.float}
         self.model = self.model.to(torch.device(self.config.device))
-        if not self.config.requires_grad:
+        if not self.config.requires_grad and not self.config.use_onnxrt:
             self.model.requires_grad_(False)
             self.model.eval()
         if self.config.use_ipex:
             self.model = ipex.optimize(self.model)
-        if self.config.use_fp16:
-            precisions = {torch.float, torch.half}
-            self.model = self.model.half()
+        if self.config.use_fp16 and not self.config.use_onnxrt:
+            precisions = {torch.float, torch.float16}
+            self.model = self.model.half ()
 
     def _optimize_model(self):
         if self.config.use_dquant:
@@ -50,10 +50,11 @@ class PyTorchBenchmark(object):
         if self.config.use_better_tf:
             self.model = BetterTransformer.transform(self.model)
         if self.config.use_jit:
-            input_example = self.input_constructor()
+            input_example = self.input_constructor().to("cuda")
             jit_model = torch.jit.trace(self.model, input_example)
             del self.model
             self.model = jit_model
+
         if self.config.use_tensorrt:
             input_example = self.input_constructor()
             jit_model = torch.jit.trace(self.model, (input_example,))
@@ -74,12 +75,10 @@ class PyTorchBenchmark(object):
                     _ = self.model(self.input_constructor())
             torch.cuda.current_stream().wait_stream(stream)
 
-
             self.cuda_graph = torch.cuda.CUDAGraph()
             self.graph_input = self.input_constructor()
             with torch.cuda.graph(self.cuda_graph):
                 _ = self.model(self.graph_input)
-
 
     def get_wallclock(self, iters=10):
         """Compute mean runtime for model execution averaged over iter runs
@@ -105,13 +104,13 @@ class PyTorchBenchmark(object):
                     "input_constructor": self.input_constructor,
                 },
             )
-        else:
+        elif self.config.use_better_tf:
             timer = benchmark.Timer(
                 stmt="""
-                model(input_tensor)
+                model(inputs[0], attention_mask=inputs[1])
                 """,
                 setup="""
-                input_tensor=input_constructor(); model(input_tensor)
+                inputs=input_constructor(); model(inputs[0], attention_mask=inputs[1])
                 """,
                 num_threads=self.config.num_threads,
                 globals={
@@ -119,6 +118,20 @@ class PyTorchBenchmark(object):
                     "input_constructor": self.input_constructor,
                 },
             )
+        else:
+                timer = benchmark.Timer(
+                    stmt="""
+                    gen_tokens = model(input_tensor)
+                    """,
+                    setup="""
+                    input_tensor=input_constructor(); model(input_tensor)
+                    """,
+                    num_threads=self.config.num_threads,
+                    globals={
+                        "model": self.model,
+                        "input_constructor": self.input_constructor,
+                    },
+                )
 
         # with torch.autograd.profiler.emit_nvtx():
         wallclock_mean = timer.timeit(iters).mean
@@ -136,14 +149,11 @@ class PyTorchBenchmark(object):
                 torch.cuda.synchronize()
                 range_pop()
             else:
-               input_tensor = self.input_constructor()
-               range_push("forward")
-               _ = self.model(input_tensor)
-               torch.cuda.synchronize()
-               range_pop()
-
-
-
+                input_tensor = self.input_constructor()
+                range_push("forward")
+                _ = self.model(input_tensor)
+                torch.cuda.synchronize()
+                range_pop()
 
     def get_memory(self):
         if "cuda" in self.config.device:
@@ -153,7 +163,9 @@ class PyTorchBenchmark(object):
             meminfo = nvml.nvmlDeviceGetMemoryInfo(handle)
             memory_bytes = meminfo.used
         else:
-            memory_bytes = memory_usage((self.model, self.input_constructor().unsqueeze(0)))
+            memory_bytes = memory_usage(
+                (self.model, self.input_constructor().unsqueeze(0))
+            )
         return memory_bytes
 
     def get_flops_count(self):
@@ -172,24 +184,24 @@ class PyTorchBenchmark(object):
         data = {}
         # Model Architecture Metrics
         self._prepare_model()
-        macs, macs_by_op, op_count = self.get_flops_count()
-        data["macs"] = macs
-        for op, macs in macs_by_op.items():
-            data[f"{op}_macs"] = macs
+        # macs, macs_by_op, op_count = self.get_flops_count()
+        # data["macs"] = macs
+        # for op, macs in macs_by_op.items():
+        #     data[f"{op}_macs"] = macs
 
-        data["total_nn_calls"] = 0
-        for op, count in op_count.items():
-            data[f"{op}_calls"] = count
-            data["total_nn_calls"] += count
-        data["total_params"] = self.get_param_count(False)
-        data["trainable_params"] = self.get_param_count(True)
+#         data["total_nn_calls"] = 0
+#         for op, count in op_count.items():
+#             data[f"{op}_calls"] = count
+#             data["total_nn_calls"] += count
+#         data["total_params"] = self.get_param_count(False)
+#         data["trainable_params"] = self.get_param_count(True)
 
         # Model Execution Metrics
         self._optimize_model()
         data["latency"] = self.get_wallclock(iters)
-        _ = self.get_profile(iters)
-        if not self.config.use_dquant:
-            memory_usage = self.get_memory()
-            data["avg_memory"] = np.mean(memory_usage)
-            data["max_memory"] = np.max(memory_usage)
+        # _ = self.get_profile(iters)
+        # if not self.config.use_dquant:
+        #     memory_usage = self.get_memory()
+        #     data["avg_memory"] = np.mean(memory_usage)
+        #     data["max_memory"] = np.max(memory_usage)
         return data
