@@ -1,7 +1,0 @@
-accelerator,act_fn,batch_size,device,dropout,hidden_dim,latency,macs,model,requires_grad,seq_len,total_params,trainable_params,use_dquant,use_torchscript
-0.0,relu,1.0,jetson_cpu,,2048.0,0.18164299869909883,2147483648.0,feedforward,0.0,256.0,8392704.0,0.0,0.0,0.0
-0.0,relu,1.0,jetson_cpu,,2048.0,0.36726746103959157,4294967296.0,feedforward,0.0,256.0,16785408.0,0.0,0.0,0.0
-0.0,relu,1.0,jetson_cpu,,2048.0,0.44556523274979554,6442450944.0,feedforward,0.0,256.0,25178112.0,0.0,0.0,0.0
-0.0,relu,1.0,jetson_cpu,,2048.0,0.5854671117290855,8589934592.0,feedforward,0.0,256.0,33570816.0,0.0,0.0,0.0
-0.0,relu,1.0,jetson_cpu,,2048.0,0.9522713109792675,12884901888.0,feedforward,0.0,256.0,50356224.0,0.0,0.0,0.0
-0.0,relu,1.0,jetson_cpu,,2048.0,1.2184157547401264,17179869184.0,feedforward,0.0,256.0,67141632.0,0.0,0.0,0.0
