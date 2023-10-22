@@ -72,7 +72,9 @@ def count_nn_conv2d(module: nn.Conv2d, input_shapes, output_shapes):
     in_channel = module.in_channels
     groups = module.groups
     kernel_ops = module.weight.shape[2:].numel()
-    total_ops = calculate_conv(bias_op, kernel_ops, out_shape.numel(), in_channel, groups).item()
+    total_ops = calculate_conv(
+        bias_op, kernel_ops, out_shape.numel(), in_channel, groups
+    ).item()
     return int(total_ops)
 
 
@@ -157,9 +159,17 @@ def fx_profile(mod: nn.Module, input: th.Tensor, verbose=False):
             node_flops = 0
         elif node.op == "call_function":
             # torch internal functions
-            key = str(node.target).split("at")[0].replace("<", "").replace(">", "").strip()
+            key = (
+                str(node.target)
+                .split("at")[0]
+                .replace("<", "")
+                .replace(">", "")
+                .strip()
+            )
             if key in count_map:
-                node_flops = count_map[key](input_shapes, output_shapes, *node.args, **node.kwargs)
+                node_flops = count_map[key](
+                    input_shapes, output_shapes, *node.args, **node.kwargs
+                )
             else:
                 missing_maps[key] = (node.op, key)
                 prRed(f"|{key}| is missing")
@@ -188,7 +198,9 @@ def fx_profile(mod: nn.Module, input: th.Tensor, verbose=False):
                 print(f"weight_shape: None")
             else:
                 print(type(m))
-                print(f"weight_shape: {mod.state_dict()[node.target + '.weight'].shape}")
+                print(
+                    f"weight_shape: {mod.state_dict()[node.target + '.weight'].shape}"
+                )
 
         v_maps[str(node.name)] = node.meta["tensor_meta"].shape
         if node_flops is not None:

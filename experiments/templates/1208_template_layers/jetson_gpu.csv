@@ -1,7 +1,0 @@
-accelerator,act_fn,batch_size,device,dropout,hidden_dim,latency,macs,model,requires_grad,seq_len,total_params,trainable_params,use_dquant,use_torchscript
-1.0,relu,1.0,jetson_gpu,,2048.0,0.0287671785405837,2147483648.0,feedforward,0.0,256.0,8392704.0,0.0,0.0,0.0
-1.0,relu,1.0,jetson_gpu,,2048.0,0.059128342820331456,4294967296.0,feedforward,0.0,256.0,16785408.0,0.0,0.0,0.0
-1.0,relu,1.0,jetson_gpu,,2048.0,0.08773131430032663,6442450944.0,feedforward,0.0,256.0,25178112.0,0.0,0.0,0.0
-1.0,relu,1.0,jetson_gpu,,2048.0,0.10439406977966428,8589934592.0,feedforward,0.0,256.0,33570816.0,0.0,0.0,0.0
-1.0,relu,1.0,jetson_gpu,,2048.0,0.14569500452955253,12884901888.0,feedforward,0.0,256.0,50356224.0,0.0,0.0,0.0
-1.0,relu,1.0,jetson_gpu,,2048.0,0.19107325843069703,17179869184.0,feedforward,0.0,256.0,67141632.0,0.0,0.0,0.0

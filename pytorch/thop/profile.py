@@ -97,7 +97,9 @@ def profile_origin(model, inputs, custom_ops=None, verbose=True, report_missing=
         m_type = type(m)
 
         fn = None
-        if m_type in custom_ops:  # if defined both op maps, use custom_ops to overwrite.
+        if (
+            m_type in custom_ops
+        ):  # if defined both op maps, use custom_ops to overwrite.
             fn = custom_ops[m_type]
             if m_type not in types_collection and verbose:
                 print("[INFO] Customize rule {}() {}.".format(fn.__qualname__, m_type))
@@ -222,7 +224,9 @@ def profile(
             # else:
             #     m_ops, m_params = m.total_ops, m.total_params
             next_dict = {}
-            if m in handler_collection and not isinstance(m, (nn.Sequential, nn.ModuleList)):
+            if m in handler_collection and not isinstance(
+                m, (nn.Sequential, nn.ModuleList)
+            ):
                 m_ops, m_params = m.total_ops.item(), m.total_params.item()
                 macs_by_op[type(m)] += m_ops
                 op_count[type(m)] += 1
